@@ -1,0 +1,35 @@
+I
+800
+OBJ
+
+TEXTURE	gunfire.png
+TEXTURE_LIT gunfire_LIT.png
+POINT_COUNTS	8 0 0 12
+
+VT	   0.0001    0.1504    0.0829	-1.000  0.000  0.000	0.9937 1.3688
+VT	   0.0001   -0.1501   -2.1637	-1.000  0.000  0.000	0.0104 1.64  
+VT	   0.0001    0.1504   -2.1637	-1.000  0.000  0.000	0.0104 1.3688
+VT	   0.0001   -0.1501    0.0829	-1.000  0.000  0.000	0.9937 1.64  
+VT	   0.1503    0.0001    0.0829	 0.000  1.000  0.000	0.9931 1.6376
+VT	  -0.1503    0.0001   -2.1637	 0.000  1.000  0.000	0.0098 1.3664
+VT	   0.1503    0.0001   -2.1637	 0.000  1.000  0.000	0.0098 1.6376
+VT	  -0.1503    0.0001    0.0829	 0.000  1.000  0.000	0.9931 1.3664
+
+IDX10	0 1 2 3 1 0 4 5 6 5
+IDX	4
+IDX	7
+
+
+ATTR_no_cull
+ATTR_diffuse_rgb	 2.5  2.5  2.5
+ATTR_shiny_rat	 0
+ANIM_begin
+ANIM_hide 0 0 sim/joystick/fire_key_is_down
+ANIM_trans	  -0.2646   -1.1784    0.0000	  -0.2646   -1.1784    0.0000	0 0	no_ref
+ANIM_rotate 0 0 1 0 360 0 0.01 sim/time/total_running_time_sec
+TRIS	0 12
+ANIM_end
+
+
+
+# Built with Blender 2.42. Exported with XPlane2Blender 2.33.
