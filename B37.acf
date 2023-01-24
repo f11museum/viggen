@@ -163,7 +163,7 @@ P _gear/0/_gear_can_retract 1
 P _gear/0/_gear_castors 0
 P _gear/0/_gear_def_empty 7.010000229
 P _gear/0/_gear_def_gross 7.019999981
-P _gear/0/_gear_load_fraction 0.115484625
+P _gear/0/_gear_load_fraction 0.113639817
 P _gear/0/_gear_type 3
 P _gear/0/_gear_x 0.0
 P _gear/0/_gear_y -2.657480240
@@ -176,7 +176,7 @@ P _gear/0/_lonE 0.0
 P _gear/0/_lonN 0.0
 P _gear/0/_lonR 90.0
 P _gear/0/_scon 16098.079101562
-P _gear/0/_stat_def 0.292833209
+P _gear/0/_stat_def 0.287903219
 P _gear/0/_steerdeg_hispeed 5.0
 P _gear/0/_steerdeg_lospeed 33.0
 P _gear/0/_strut_comp 0.0
@@ -197,7 +197,7 @@ P _gear/1/_gear_can_retract 1
 P _gear/1/_gear_castors 0
 P _gear/1/_gear_def_empty 7.010000229
 P _gear/1/_gear_def_gross 7.019999981
-P _gear/1/_gear_load_fraction 0.442257673
+P _gear/1/_gear_load_fraction 0.443180114
 P _gear/1/_gear_type 4
 P _gear/1/_gear_x 7.906824112
 P _gear/1/_gear_y -1.870078683
@@ -210,7 +210,7 @@ P _gear/1/_lonE 0.0
 P _gear/1/_lonN 0.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 23097.244140625
-P _gear/1/_stat_def 0.780708492
+P _gear/1/_stat_def 0.782546639
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 3.0
@@ -231,7 +231,7 @@ P _gear/2/_gear_can_retract 1
 P _gear/2/_gear_castors 0
 P _gear/2/_gear_def_empty 7.010000229
 P _gear/2/_gear_def_gross 7.019999981
-P _gear/2/_gear_load_fraction 0.442257673
+P _gear/2/_gear_load_fraction 0.443180114
 P _gear/2/_gear_type 4
 P _gear/2/_gear_x -7.906824112
 P _gear/2/_gear_y -1.870078683
@@ -244,7 +244,7 @@ P _gear/2/_lonE 0.0
 P _gear/2/_lonN 0.0
 P _gear/2/_lonR 0.0
 P _gear/2/_scon 23097.244140625
-P _gear/2/_stat_def 0.780708492
+P _gear/2/_stat_def 0.782546639
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 3.0
@@ -580,7 +580,7 @@ P _obja/9/_v10_att_z_acf_prt_ref 30.971126556
 P _obja/9/_v10_is_internal 363503200
 P _obja/9/_v10_steers_with_gear 0
 P _obja/count 22
-P _panel_inst_3d 89
+P _panel_inst_3d 90
 P _part/0/_bot_s1 0.015625000
 P _part/0/_bot_s2 0.0
 P _part/0/_bot_t1 0.255859375
@@ -24090,7 +24090,7 @@ P _part/85/_part_specs_invis 0
 P _part/85/_part_tex 0
 P _part/85/_part_the 0.0
 P _part/85/_part_x 0.0
-P _part/85/_part_y -6.629738331
+P _part/85/_part_y -6.634668350
 P _part/85/_part_z 23.982938766
 P _part/85/_patt_con 0
 P _part/85/_patt_prt 0
@@ -25560,7 +25560,7 @@ P _part/86/_part_specs_invis 0
 P _part/86/_part_tex 0
 P _part/86/_part_the 0.0
 P _part/86/_part_x 7.906824112
-P _part/86/_part_y -6.010630131
+P _part/86/_part_y -6.008791924
 P _part/86/_part_z 42.355640411
 P _part/86/_patt_con 0
 P _part/86/_patt_prt 0
@@ -27030,7 +27030,7 @@ P _part/87/_part_specs_invis 0
 P _part/87/_part_tex 0
 P _part/87/_part_the 0.0
 P _part/87/_part_x -7.906824112
-P _part/87/_part_y -6.010630131
+P _part/87/_part_y -6.008791924
 P _part/87/_part_z 42.355640411
 P _part/87/_patt_con 0
 P _part/87/_patt_prt 0
@@ -36695,7 +36695,7 @@ P acf/_ground_pwr/0 0.0
 P acf/_ground_pwr/1 0.0
 P acf/_ground_pwr/2 0.0
 P acf/_ground_pwr/count 3
-P acf/_h_eqlbm 7.127206326
+P acf/_h_eqlbm 7.126203537
 P acf/_has_ADG 0
 P acf/_has_APU_bleed_air 0
 P acf/_has_APU_generator 0
@@ -36727,7 +36727,7 @@ P acf/_has_get_tow 0
 P acf/_has_get_tow_new 0
 P acf/_has_give_tow 0
 P acf/_has_ground_pwr 0
-P acf/_has_hsi 1
+P acf/_has_hsi 0
 P acf/_has_pre_rotate 0
 P acf/_has_push_back 0
 P acf/_has_radio_alt_callout 0
@@ -37397,7 +37397,7 @@ P acf/_tank_xyz_full/8,1 0.0
 P acf/_tank_xyz_full/8,2 0.0
 P acf/_tank_xyz_full/i_count 9
 P acf/_tank_xyz_full/j_count 3
-P acf/_the_eqlbm 0.908839762
+P acf/_the_eqlbm 0.928661406
 P acf/_thro_non_vect_props_at_sin_vect 0
 P acf/_thro_x_ctr 0.0
 P acf/_throt_max_fwd_emr 1.0
@@ -37566,7 +37566,7 @@ P acf/_yel_lo_xmsn_T 0
 PROPERTIES_END
 PANEL_2D_BEGIN
 EFIS_map_t_GA EFIS_map_t_GA
-  POS 816.000000 106.000000
+  POS 547.000000 -36.000000
   DATAREF 
   SIZE 1.170000
   LIGHT_MODE MECHANICAL
@@ -37604,24 +37604,8 @@ ann_burner ann_burner
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
-AOA_round AOA_round
-  POS 333.000000 444.000000
-  DATAREF 
-  SIZE 0.900000
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-asi_adap_HM_nodig asi_adap_HM_nodig
-  POS 298.000000 332.000000
-  DATAREF 
-  SIZE 0.940000
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
 ott_lev_eng_BC ott_lev_eng_BC
-  POS 206.000000 354.000000
+  POS 206.500000 354.500000
   DATAREF 
   SIZE 0.890000
   LIGHT_MODE MECHANICAL
@@ -37644,14 +37628,14 @@ gear_handle_BC gear_handle_BC
   BUS_SRC 1
 
 ott_spd_sel ott_spd_sel
-  POS 951.000000 -176.500000
+  POS 951.500000 -177.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
 vvi_lin vvi_lin
-  POS 179.000000 142.000000
+  POS 179.500000 142.500000
   DATAREF 
   SIZE 0.500000
   LIGHT_MODE MECHANICAL
@@ -37659,16 +37643,8 @@ vvi_lin vvi_lin
   BUS_SRC 1
 
 but_autoreverse but_autoreverse
-  POS 17.000000 -4.000000
+  POS 17.000000 -3.500000
   DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-EFIS_horizon_CDIs EFIS_horizon_CDIs
-  POS 509.000000 88.000000
-  DATAREF 
-  SIZE 1.900001
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
@@ -37681,21 +37657,21 @@ but_map_zoom but_map_zoom
   BUS_SRC 1
 
 but_land_light but_land_light
-  POS 724.000000 548.000000
+  POS 724.500000 548.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
 ann_master_accept ann_master_accept
-  POS 105.000000 -143.000000
+  POS 105.500000 -143.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
 but_HUD_power but_HUD_power
-  POS 748.000000 538.000000
+  POS 748.500000 538.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -37742,7 +37718,7 @@ ott_hdg_eng_BC ott_hdg_eng_BC
   BUS_SRC 1
 
 ALL_fuel_round_GA ALL_fuel_round_GA
-  POS 807.000000 326.000000
+  POS 808.000000 65.000000
   DATAREF 
   SIZE 1.400000
   LIGHT_MODE MECHANICAL
@@ -37750,7 +37726,7 @@ ALL_fuel_round_GA ALL_fuel_round_GA
   BUS_SRC 1
 
 ott_spd_disp ott_spd_disp
-  POS 989.000000 -174.000000
+  POS 989.500000 -173.500000
   DATAREF 
   SIZE 0.800000
   LIGHT_MODE MECHANICAL
@@ -37758,37 +37734,29 @@ ott_spd_disp ott_spd_disp
   BUS_SRC 1
 
 ann_master_caution ann_master_caution
-  POS 241.000000 452.000000
+  POS 241.500000 452.500000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
 ann_reverse_on ann_reverse_on
-  POS 18.000000 199.500000
+  POS 18.500000 199.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
 ott_alt_disp ott_alt_disp
-  POS 986.000000 -224.000000
+  POS 986.000000 -223.500000
   DATAREF 
   SIZE 0.800000
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
-EFIS_altitude EFIS_altitude
-  POS 587.000000 59.000000
-  DATAREF 
-  SIZE 1.490000
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
 ott_vvi_eng_BC ott_vvi_eng_BC
-  POS 559.000000 -115.500000
+  POS 559.000000 -116.000000
   DATAREF 
   SIZE 1.300000
   LIGHT_MODE MECHANICAL
@@ -37811,33 +37779,9 @@ ott_loc_eng_BC ott_loc_eng_BC
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
-ins_gmeter_round ins_gmeter_round
-  POS 707.000000 332.000000
-  DATAREF 
-  SIZE 0.970000
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-EFIS_airspeed EFIS_airspeed
-  POS 448.000000 60.500000
-  DATAREF 
-  SIZE 1.500000
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
 EFIS_map_wxr EFIS_map_wxr
-  POS 909.000000 -52.000000
+  POS 909.500000 -52.000000
   DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-EFIS_hsi_tape EFIS_hsi_tape
-  POS 509.500000 176.000000
-  DATAREF 
-  SIZE 1.620000
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
@@ -37850,29 +37794,14 @@ baro_pressure_disp baro_pressure_disp
   BUS_SRC 1
 
 but_hsi_12GPS but_hsi_12GPS
-  POS 909.000000 -185.000000
+  POS 909.500000 -184.500000
   DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-but_map_mode but_map_mode
-  POS 679.000000 267.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-EFIS_radar EFIS_radar
-  POS 511.000000 74.000000
-  DATAREF 
-  SIZE 1.900000
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
 but_brakes but_brakes
-  POS 105.000000 -111.000000
+  POS 105.000000 -110.500000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -37902,23 +37831,15 @@ horiz_small_adj horiz_small_adj
   BUS_SRC 1
 
 alt_HM_small alt_HM_small
-  POS 92.000000 -23.000000
+  POS 92.500000 -22.500000
   DATAREF 
   SIZE 0.910000
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
-ins_RMI_ADF1VOR2_HM ins_RMI_ADF1VOR2_HM
-  POS 587.000000 371.000000
-  DATAREF 
-  SIZE 0.990000
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
 but_artstab but_artstab
-  POS 111.000000 309.000000
+  POS 111.500000 309.500000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -37940,7 +37861,7 @@ ann_GPWS ann_GPWS
   BUS_SRC 1
 
 ann_inverter_off ann_inverter_off
-  POS 50.000000 -160.000000
+  POS 50.500000 -160.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -37954,35 +37875,35 @@ but_avionics but_avionics
   BUS_SRC 1
 
 han_sbrake_manual han_sbrake_manual
-  POS 59.000000 -224.500000
+  POS 59.500000 -225.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
 EFIS_map_ndb EFIS_map_ndb
-  POS 762.000000 -52.000000
+  POS 762.500000 -52.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
 gear_light_one_BC gear_light_one_BC
-  POS 50.000000 -110.000000
+  POS 50.500000 -110.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
 EFIS_map_vor EFIS_map_vor
-  POS 799.000000 -52.000000
+  POS 799.500000 -52.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
 but_taxi_light but_taxi_light
-  POS 736.000000 543.000000
+  POS 736.500000 543.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -38003,14 +37924,14 @@ but_strobe_light but_strobe_light
   BUS_SRC 1
 
 but_water_scoop but_water_scoop
-  POS 773.000000 527.000000
+  POS 773.500000 527.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
 ins_stall ins_stall
-  POS 268.000000 339.000000
+  POS 456.500000 380.000000
   DATAREF 
   SIZE 0.830000
   LIGHT_MODE MECHANICAL
@@ -38068,7 +37989,7 @@ HUD_radioalt HUD_radioalt
   BUS_SRC 1
 
 EFIS_radio_alt EFIS_radio_alt
-  POS 724.500000 260.000000
+  POS 724.000000 260.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -38082,28 +38003,28 @@ EFIS_machnumber EFIS_machnumber
   BUS_SRC 1
 
 ins_clock_GA ins_clock_GA
-  POS 809.000000 -140.000000
+  POS 809.500000 -139.500000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
 EFIS_map_apt EFIS_map_apt
-  POS 725.000000 -51.000000
+  POS 725.500000 -51.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
 EFIS_map_fix EFIS_map_fix
-  POS 835.000000 -52.000000
+  POS 835.500000 -52.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
 EFIS_map_tcas EFIS_map_tcas
-  POS 872.000000 -52.000000
+  POS 872.500000 -52.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -38117,7 +38038,7 @@ wpn_ind_flare wpn_ind_flare
   BUS_SRC 1
 
 wpn_ind_bull wpn_ind_bull
-  POS 852.000000 273.000000
+  POS 852.000000 273.500000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -38132,14 +38053,14 @@ rhe_ins_brt_BC rhe_ins_brt_BC
   BUS_SRC 1
 
 ann_master_caution ann_master_caution
-  POS 279.000000 452.000000
+  POS 279.500000 452.500000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
 ann_master_warning ann_master_warning
-  POS 105.000000 -127.000000
+  POS 105.500000 -127.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -38153,7 +38074,7 @@ ann_fuel_press_lo ann_fuel_press_lo
   BUS_SRC 1
 
 ott_hdg_disp ott_hdg_disp
-  POS 992.000000 -197.000000
+  POS 992.500000 -196.500000
   DATAREF 
   SIZE 0.800000
   LIGHT_MODE MECHANICAL
@@ -38161,7 +38082,7 @@ ott_hdg_disp ott_hdg_disp
   BUS_SRC 1
 
 ann_transonic ann_transonic
-  POS 911.000000 334.500000
+  POS 911.000000 334.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -38176,21 +38097,21 @@ but_ann_test but_ann_test
   BUS_SRC 1
 
 ann_hyd_press ann_hyd_press
-  POS 105.000000 -160.000000
+  POS 105.500000 -160.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
 ann_fuel_quant ann_fuel_quant
-  POS 50.000000 -143.000000
+  POS 50.500000 -143.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
 ann_engine_fire ann_engine_fire
-  POS 105.000000 -176.000000
+  POS 105.500000 -176.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -38204,14 +38125,14 @@ rhe_HUD_brt_GA rhe_HUD_brt_GA
   BUS_SRC 1
 
 ott_hdg_sel ott_hdg_sel
-  POS 951.000000 -203.500000
+  POS 951.500000 -204.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
 wpn_sel_gun_roc_mis wpn_sel_gun_roc_mis
-  POS 126.000000 -243.000000
+  POS 126.500000 -242.500000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -38223,6 +38144,49 @@ rhe_OBS1_GA rhe_OBS1_GA
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
+
+gen_needle gen_needle.png
+  POS 345.000000 471.000000
+  DATAREF sim/flightmodel2/position/alpha
+  SIZE 0.700000
+  LIGHT_MODE MECHANICAL
+  LIGHT_RHEOSTAT 0
+  KEY_FRAME 5.000000 180.000000 1.000000
+  KEY_FRAME 15.000000 270.000000
+  IS_DRAGGABLE 0
+  OFFSET 0.000000
+
+gen_needle gen_needle.png
+  POS 732.000000 363.000000
+  DATAREF sim/flightmodel/forces/g_nrml
+  LIGHT_MODE MECHANICAL
+  LIGHT_RHEOSTAT 0
+  KEY_FRAME 0.000000 0.000000 1.000000
+  KEY_FRAME 6.000000 180.000000
+  IS_DRAGGABLE 0
+  OFFSET 0.000000
+
+gen_needle gen_needle.png
+  POS 304.000000 342.000000
+  DATAREF sim/cockpit2/gauges/indicators/airspeed_kts_pilot
+  LIGHT_MODE MECHANICAL
+  LIGHT_RHEOSTAT 0
+  KEY_FRAME 0.000000 29.000000 1.000000
+  KEY_FRAME 54.000000 30.000000 1.000000
+  KEY_FRAME 130.000000 90.000000 1.000000
+  KEY_FRAME 243.000000 180.000000 1.000000
+  KEY_FRAME 460.000000 270.000000 1.000000
+  KEY_FRAME 756.000000 360.000000
+  IS_DRAGGABLE 0
+  OFFSET 0.000000
+
+ins_fuel_round fuel_round.png
+  POS 795.000000 183.000000
+  DATAREF 
+  LIGHT_MODE MECHANICAL
+  LIGHT_RHEOSTAT 0
+  KEY_FRAME 0.000000 0.000000 1.000000
+  KEY_FRAME 1.000000 1.000000
 
 PANEL_2D_END
 PANEL_3D_BEGIN
