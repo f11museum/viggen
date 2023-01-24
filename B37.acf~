@@ -176,7 +176,7 @@ P _gear/0/_lonE 0.0
 P _gear/0/_lonN 0.0
 P _gear/0/_lonR 90.0
 P _gear/0/_scon 16673.496093750
-P _gear/0/_stat_def 0.278869539
+P _gear/0/_stat_def 0.278869599
 P _gear/0/_steerdeg_hispeed 5.0
 P _gear/0/_steerdeg_lospeed 33.0
 P _gear/0/_strut_comp 0.0
@@ -210,7 +210,7 @@ P _gear/1/_lonE 0.0
 P _gear/1/_lonN 0.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 23922.843750000
-P _gear/1/_stat_def 0.755225897
+P _gear/1/_stat_def 0.755225837
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 3.0
@@ -244,7 +244,7 @@ P _gear/2/_lonE 0.0
 P _gear/2/_lonN 0.0
 P _gear/2/_lonR 0.0
 P _gear/2/_scon 23922.843750000
-P _gear/2/_stat_def 0.755225897
+P _gear/2/_stat_def 0.755225837
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 3.0
@@ -28490,8 +28490,8 @@ P _part/56/_locked/9,8 0
 P _part/56/_locked/9,9 0
 P _part/56/_locked/i_count 20
 P _part/56/_locked/j_count 18
-P _part/56/_part_area_rule 0.500000000
-P _part/56/_part_cd 0.119999997
+P _part/56/_part_area_rule 0.300000012
+P _part/56/_part_cd 0.140000001
 P _part/56/_part_phi 0.0
 P _part/56/_part_psi 0.0
 P _part/56/_part_rad 5.971128941
