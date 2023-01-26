@@ -176,7 +176,7 @@ P _gear/0/_lonE 0.0
 P _gear/0/_lonN 0.0
 P _gear/0/_lonR 90.0
 P _gear/0/_scon 16098.079101562
-P _gear/0/_stat_def 0.287903279
+P _gear/0/_stat_def 0.287903249
 P _gear/0/_steerdeg_hispeed 5.0
 P _gear/0/_steerdeg_lospeed 33.0
 P _gear/0/_strut_comp 0.0
@@ -210,7 +210,7 @@ P _gear/1/_lonE 0.0
 P _gear/1/_lonN 0.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 23097.244140625
-P _gear/1/_stat_def 0.782546639
+P _gear/1/_stat_def 0.782546818
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 3.0
@@ -244,7 +244,7 @@ P _gear/2/_lonE 0.0
 P _gear/2/_lonN 0.0
 P _gear/2/_lonR 0.0
 P _gear/2/_scon 23097.244140625
-P _gear/2/_stat_def 0.782546639
+P _gear/2/_stat_def 0.782546818
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 3.0
@@ -25560,7 +25560,7 @@ P _part/86/_part_specs_invis 0
 P _part/86/_part_tex 0
 P _part/86/_part_the 0.0
 P _part/86/_part_x 7.906824112
-P _part/86/_part_y -6.008791924
+P _part/86/_part_y -6.008791447
 P _part/86/_part_z 42.355640411
 P _part/86/_patt_con 0
 P _part/86/_patt_prt 0
@@ -27030,7 +27030,7 @@ P _part/87/_part_specs_invis 0
 P _part/87/_part_tex 0
 P _part/87/_part_the 0.0
 P _part/87/_part_x -7.906824112
-P _part/87/_part_y -6.008791924
+P _part/87/_part_y -6.008791447
 P _part/87/_part_z 42.355640411
 P _part/87/_patt_con 0
 P _part/87/_patt_prt 0
@@ -34404,13 +34404,13 @@ P acf/_SFC_alt_hi_JET 33000.0
 P acf/_SFC_alt_hi_PRP 0.0
 P acf/_SFC_alt_lo_JET 0.0
 P acf/_SFC_alt_lo_PRP 0.0
-P acf/_SFC_full_hi_JET 0.545000017
+P acf/_SFC_full_hi_JET 1.0
 P acf/_SFC_full_hi_PRP 0.0
-P acf/_SFC_full_lo_JET 0.640999973
+P acf/_SFC_full_lo_JET 1.039999962
 P acf/_SFC_full_lo_PRP 0.0
-P acf/_SFC_half_hi_JET 0.574000001
+P acf/_SFC_half_hi_JET 1.100000024
 P acf/_SFC_half_hi_PRP 0.0
-P acf/_SFC_half_lo_JET 0.610000014
+P acf/_SFC_half_lo_JET 1.039999962
 P acf/_SFC_half_lo_PRP 0.0
 P acf/_TOGA_discos_servos 0
 P acf/_TRQ_is_pcnt 0
@@ -35294,7 +35294,7 @@ P acf/_bus_gen_is_on/6 0
 P acf/_bus_gen_is_on/7 0
 P acf/_bus_gen_is_on/count 8
 P acf/_buses_always_tied 0
-P acf/_bypass_ratio 0.0
+P acf/_bypass_ratio 0.100000001
 P acf/_callsign S 5 8
 P acf/_camera_fov_zoom 60.0
 P acf/_camera_offset_phi 0.0
@@ -36516,7 +36516,7 @@ P acf/_feather_on_mixt_pull_EQ 0
 P acf/_feather_on_prop_pull_EQ 0
 P acf/_feather_prop_with_oilp 0
 P acf/_feathered_pitch 0.0
-P acf/_ff_rat_idle_JET 0.200000003
+P acf/_ff_rat_idle_JET 0.300000012
 P acf/_ff_rat_idle_PRP 0.0
 P acf/_file_writer_version 115501
 P acf/_flap1_cd 0.0
@@ -37641,13 +37641,6 @@ but_autoreverse but_autoreverse
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
-but_map_zoom but_map_zoom
-  POS 955.000000 267.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
 ann_master_accept ann_master_accept
   POS 105.500000 -143.000000
   DATAREF 
@@ -37960,7 +37953,7 @@ ott_hdg_disp ott_hdg_disp
   BUS_SRC 1
 
 ann_transonic ann_transonic
-  POS 911.000000 334.000000
+  POS 903.000000 235.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -38050,6 +38043,14 @@ ins_fuel_round fuel_round.png
   POS 851.000000 214.000000
   DATAREF 
   SIZE 0.500000
+  LIGHT_MODE MECHANICAL
+  LIGHT_RHEOSTAT 0
+  KEY_FRAME 0.000000 0.000000 1.000000
+  KEY_FRAME 1.000000 1.000000
+
+but_burner_enable but_afterburner_ena
+  POS 161.000000 245.000000
+  DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   KEY_FRAME 0.000000 0.000000 1.000000
