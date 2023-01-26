@@ -210,7 +210,7 @@ P _gear/1/_lonE 0.0
 P _gear/1/_lonN 0.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 23097.244140625
-P _gear/1/_stat_def 0.782546759
+P _gear/1/_stat_def 0.782546639
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 3.0
@@ -244,7 +244,7 @@ P _gear/2/_lonE 0.0
 P _gear/2/_lonN 0.0
 P _gear/2/_lonR 0.0
 P _gear/2/_scon 23097.244140625
-P _gear/2/_stat_def 0.782546759
+P _gear/2/_stat_def 0.782546639
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 3.0
@@ -34386,7 +34386,7 @@ P acf/_FBW_apply_R_to_engine/count 8
 P acf/_FF_is_lbsph 0
 P acf/_Gneg 2.0
 P acf/_Gpos 7.0
-P acf/_HUD_del_x 110.0
+P acf/_HUD_del_x 160.0
 P acf/_HUD_del_y 120.0
 P acf/_ICAO S58
 P acf/_ITT_is_C 0
@@ -35334,14 +35334,14 @@ P acf/_chute_z/count 3
 P acf/_click_step_otto_alt 10.0
 P acf/_click_step_otto_vvi 100.0
 P acf/_click_step_radio_alt 10.0
-P acf/_cockpit_planned_vanish_y/0 640.0
-P acf/_cockpit_planned_vanish_y/1 555.0
-P acf/_cockpit_planned_vanish_y/2 555.0
-P acf/_cockpit_planned_vanish_y/3 555.0
-P acf/_cockpit_planned_vanish_y/4 555.0
-P acf/_cockpit_planned_vanish_y/5 555.0
-P acf/_cockpit_planned_vanish_y/6 555.0
-P acf/_cockpit_planned_vanish_y/7 555.0
+P acf/_cockpit_planned_vanish_y/0 480.0
+P acf/_cockpit_planned_vanish_y/1 595.0
+P acf/_cockpit_planned_vanish_y/2 595.0
+P acf/_cockpit_planned_vanish_y/3 595.0
+P acf/_cockpit_planned_vanish_y/4 595.0
+P acf/_cockpit_planned_vanish_y/5 595.0
+P acf/_cockpit_planned_vanish_y/6 595.0
+P acf/_cockpit_planned_vanish_y/7 595.0
 P acf/_cockpit_planned_vanish_y/8 640.0
 P acf/_cockpit_planned_vanish_y/count 9
 P acf/_cockpit_type 2
@@ -36741,7 +36741,7 @@ P acf/_heat_x_ctr 0.0
 P acf/_hide_prop_at_00_vect 0
 P acf/_hide_prop_at_90_vect 0
 P acf/_hoops_hud_EQ 0
-P acf/_hud_tapes_track_vector 1
+P acf/_hud_tapes_track_vector 0
 P acf/_hyd_brakes 1
 P acf/_hyd_ele_pump_0123 1
 P acf/_hyd_engn_pump_0123/0 1
@@ -36865,13 +36865,13 @@ P acf/_name F11 Viggen SF 37
 P acf/_new_plot_XP3D_cock/0 0
 P acf/_new_plot_XP3D_cock/1 1
 P acf/_new_plot_XP3D_cock/2 0
-P acf/_new_plot_XP3D_cock/3 1
+P acf/_new_plot_XP3D_cock/3 0
 P acf/_new_plot_XP3D_cock/4 1
 P acf/_new_plot_XP3D_cock/count 5
 P acf/_new_plot_outer_acf/0 0
 P acf/_new_plot_outer_acf/1 1
 P acf/_new_plot_outer_acf/2 0
-P acf/_new_plot_outer_acf/3 1
+P acf/_new_plot_outer_acf/3 0
 P acf/_new_plot_outer_acf/4 1
 P acf/_new_plot_outer_acf/count 5
 P acf/_no_default_engine_fx 0
@@ -37476,7 +37476,7 @@ P acf/_wheel_tire_t1/count 2
 P acf/_wheel_tire_t2/0 0.497999996
 P acf/_wheel_tire_t2/1 0.490000010
 P acf/_wheel_tire_t2/count 2
-P acf/_windshield_scratchy 0
+P acf/_windshield_scratchy 1
 P acf/_wing_damp_rat 1.0
 P acf/_wing_frac_mass 0.250000000
 P acf/_wing_mid_dihed_per_g 0.0
@@ -37519,8 +37519,8 @@ P acf/_yawbr_rat2 1.0
 P acf/_yawbr_ud 0.0
 P acf/_yawbr_v1 0.0
 P acf/_yawbr_v2 599.0
-P acf/_yawstring_x 0.0
-P acf/_yawstring_y 0.0
+P acf/_yawstring_x 512.0
+P acf/_yawstring_y 231.0
 P acf/_yel_hi_CHT 0
 P acf/_yel_hi_EGT 0
 P acf/_yel_hi_EPR 0
@@ -37597,7 +37597,7 @@ alt_HM alt_HM
   BUS_SRC 1
 
 ann_burner ann_burner
-  POS 289.000000 256.000000
+  POS 910.000000 192.000000
   DATAREF 
   SIZE 1.230000
   LIGHT_MODE MECHANICAL
@@ -37605,17 +37605,9 @@ ann_burner ann_burner
   BUS_SRC 1
 
 ott_lev_eng_BC ott_lev_eng_BC
-  POS 206.500000 354.500000
+  POS 117.500000 231.500000
   DATAREF 
   SIZE 0.890000
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-total_attitude total_attitude
-  POS 251.000000 142.000000
-  DATAREF 
-  SIZE 1.400000
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
@@ -37656,22 +37648,8 @@ but_map_zoom but_map_zoom
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
-but_land_light but_land_light
-  POS 724.500000 548.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
 ann_master_accept ann_master_accept
   POS 105.500000 -143.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-but_HUD_power but_HUD_power
-  POS 748.500000 538.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -37694,7 +37672,7 @@ ott_lch_eng_BC ott_lch_eng_BC
   BUS_SRC 1
 
 ott_pit_eng_BC ott_pit_eng_BC
-  POS 170.500000 353.500000
+  POS 81.500000 230.500000
   DATAREF 
   SIZE 0.980000
   LIGHT_MODE MECHANICAL
@@ -37734,7 +37712,7 @@ ott_spd_disp ott_spd_disp
   BUS_SRC 1
 
 ann_master_caution ann_master_caution
-  POS 241.500000 452.500000
+  POS 90.500000 261.500000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -37823,13 +37801,6 @@ eng_rnd_EPR eng_rnd_EPR
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
-horiz_small_adj horiz_small_adj
-  POS 86.000000 237.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
 alt_HM_small alt_HM_small
   POS 92.500000 -22.500000
   DATAREF 
@@ -37839,7 +37810,7 @@ alt_HM_small alt_HM_small
   BUS_SRC 1
 
 but_artstab but_artstab
-  POS 111.500000 309.500000
+  POS 52.500000 205.500000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -37848,14 +37819,6 @@ but_artstab but_artstab
 rhe_baro_HM rhe_baro_HM
   POS 124.000000 65.000000
   DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-ann_GPWS ann_GPWS
-  POS 462.000000 551.000000
-  DATAREF 
-  SIZE 0.800000
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
@@ -37902,36 +37865,8 @@ EFIS_map_vor EFIS_map_vor
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
-but_taxi_light but_taxi_light
-  POS 736.500000 543.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-wpn_ind_chaff wpn_ind_chaff
-  POS 769.000000 273.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-but_strobe_light but_strobe_light
-  POS 759.500000 533.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-but_water_scoop but_water_scoop
-  POS 773.500000 527.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
 ins_stall ins_stall
-  POS 456.500000 380.000000
+  POS 443.500000 218.000000
   DATAREF 
   SIZE 0.830000
   LIGHT_MODE MECHANICAL
@@ -37945,58 +37880,15 @@ han_dihed han_dihed
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
-HUD_horizon HUD_horizon
-  POS 512.000000 640.000000
-  DATAREF 
-  SIZE 0.830000
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-HUD_altitude HUD_altitude
-  POS 614.000000 630.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-HUD_airspeed HUD_airspeed
-  POS 420.000000 630.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
 EFIS_groundspeed EFIS_groundspeed
-  POS 726.000000 273.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-HUD_machnumber HUD_machnumber
-  POS 425.000000 553.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-HUD_radioalt HUD_radioalt
-  POS 597.000000 555.000000
+  POS 690.000000 221.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
 EFIS_radio_alt EFIS_radio_alt
-  POS 724.000000 260.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-EFIS_machnumber EFIS_machnumber
-  POS 897.000000 272.000000
+  POS 715.000000 221.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -38030,20 +37922,6 @@ EFIS_map_tcas EFIS_map_tcas
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
-wpn_ind_flare wpn_ind_flare
-  POS 803.000000 273.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-wpn_ind_bull wpn_ind_bull
-  POS 852.000000 273.500000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
 rhe_ins_brt_BC rhe_ins_brt_BC
   POS 394.000000 200.000000
   DATAREF 
@@ -38053,7 +37931,7 @@ rhe_ins_brt_BC rhe_ins_brt_BC
   BUS_SRC 1
 
 ann_master_caution ann_master_caution
-  POS 279.500000 452.500000
+  POS 128.500000 261.500000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -38089,7 +37967,7 @@ ann_transonic ann_transonic
   BUS_SRC 1
 
 but_ann_test but_ann_test
-  POS 260.000000 452.500000
+  POS 109.000000 261.500000
   DATAREF 
   SIZE 0.680000
   LIGHT_MODE MECHANICAL
@@ -38117,13 +37995,6 @@ ann_engine_fire ann_engine_fire
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
-rhe_HUD_brt_GA rhe_HUD_brt_GA
-  POS 455.000000 284.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
 ott_hdg_sel ott_hdg_sel
   POS 951.500000 -204.000000
   DATAREF 
@@ -38138,17 +38009,10 @@ wpn_sel_gun_roc_mis wpn_sel_gun_roc_mis
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
-rhe_OBS1_GA rhe_OBS1_GA
-  POS 571.000000 284.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
 gen_needle gen_needle.png
-  POS 345.000000 471.000000
+  POS 299.000000 262.000000
   DATAREF sim/flightmodel2/position/alpha
-  SIZE 0.700000
+  SIZE 0.400000
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   KEY_FRAME 5.000000 180.000000 1.000000
@@ -38157,8 +38021,9 @@ gen_needle gen_needle.png
   OFFSET 0.000000
 
 gen_needle gen_needle.png
-  POS 732.000000 363.000000
+  POS 789.000000 244.000000
   DATAREF sim/flightmodel/forces/g_nrml
+  SIZE 0.500000
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   KEY_FRAME 0.000000 0.000000 1.000000
@@ -38167,8 +38032,9 @@ gen_needle gen_needle.png
   OFFSET 0.000000
 
 gen_needle gen_needle.png
-  POS 304.000000 342.000000
+  POS 224.000000 233.000000
   DATAREF sim/cockpit2/gauges/indicators/airspeed_kts_pilot
+  SIZE 0.500000
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   KEY_FRAME 0.000000 29.000000 1.000000
@@ -38181,8 +38047,9 @@ gen_needle gen_needle.png
   OFFSET 0.000000
 
 ins_fuel_round fuel_round.png
-  POS 795.000000 183.000000
+  POS 851.000000 214.000000
   DATAREF 
+  SIZE 0.500000
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   KEY_FRAME 0.000000 0.000000 1.000000
