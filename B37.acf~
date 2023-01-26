@@ -176,7 +176,7 @@ P _gear/0/_lonE 0.0
 P _gear/0/_lonN 0.0
 P _gear/0/_lonR 90.0
 P _gear/0/_scon 16098.079101562
-P _gear/0/_stat_def 0.287903368
+P _gear/0/_stat_def 0.287903279
 P _gear/0/_steerdeg_hispeed 5.0
 P _gear/0/_steerdeg_lospeed 33.0
 P _gear/0/_strut_comp 0.0
@@ -210,7 +210,7 @@ P _gear/1/_lonE 0.0
 P _gear/1/_lonN 0.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 23097.244140625
-P _gear/1/_stat_def 0.782546997
+P _gear/1/_stat_def 0.782546759
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 3.0
@@ -244,7 +244,7 @@ P _gear/2/_lonE 0.0
 P _gear/2/_lonN 0.0
 P _gear/2/_lonR 0.0
 P _gear/2/_scon 23097.244140625
-P _gear/2/_stat_def 0.782546997
+P _gear/2/_stat_def 0.782546759
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 3.0
@@ -580,7 +580,7 @@ P _obja/9/_v10_att_z_acf_prt_ref 30.971126556
 P _obja/9/_v10_is_internal 363503200
 P _obja/9/_v10_steers_with_gear 0
 P _obja/count 22
-P _panel_inst_3d 90
+P _panel_inst_3d 83
 P _part/0/_bot_s1 0.015625000
 P _part/0/_bot_s2 0.0
 P _part/0/_bot_t1 0.255859375
@@ -25560,7 +25560,7 @@ P _part/86/_part_specs_invis 0
 P _part/86/_part_tex 0
 P _part/86/_part_the 0.0
 P _part/86/_part_x 7.906824112
-P _part/86/_part_y -6.008791447
+P _part/86/_part_y -6.008791924
 P _part/86/_part_z 42.355640411
 P _part/86/_patt_con 0
 P _part/86/_patt_prt 0
@@ -27030,7 +27030,7 @@ P _part/87/_part_specs_invis 0
 P _part/87/_part_tex 0
 P _part/87/_part_the 0.0
 P _part/87/_part_x -7.906824112
-P _part/87/_part_y -6.008791447
+P _part/87/_part_y -6.008791924
 P _part/87/_part_z 42.355640411
 P _part/87/_patt_con 0
 P _part/87/_patt_prt 0
@@ -34246,7 +34246,7 @@ P _wing/9/_yawbr/8 0
 P _wing/9/_yawbr/9 0
 P _wing/9/_yawbr/count 10
 P _wing/count 56
-P _wpna/0/_v10_att_file_stl DropTankViggen.wpn
+P _wpna/0/_v10_att_file_stl placeholder.wpn
 P _wpna/0/_v10_att_part -1
 P _wpna/0/_v10_att_phi_ref 0.0
 P _wpna/0/_v10_att_psi_ref 0.0
@@ -34256,7 +34256,7 @@ P _wpna/0/_v10_att_y_acf_prt_ref -3.937007904
 P _wpna/0/_v10_att_z_acf_prt_ref 35.039371490
 P _wpna/0/_v10_is_internal 0
 P _wpna/0/_v10_steers_with_gear 0
-P _wpna/1/_v10_att_file_stl RB24.wpn
+P _wpna/1/_v10_att_file_stl placeholder.wpn
 P _wpna/1/_v10_att_part -1
 P _wpna/1/_v10_att_phi_ref 0.0
 P _wpna/1/_v10_att_psi_ref 0.0
@@ -34266,7 +34266,7 @@ P _wpna/1/_v10_att_y_acf_prt_ref -4.527558804
 P _wpna/1/_v10_att_z_acf_prt_ref 32.808399200
 P _wpna/1/_v10_is_internal 0
 P _wpna/1/_v10_steers_with_gear 0
-P _wpna/2/_v10_att_file_stl RB24.wpn
+P _wpna/2/_v10_att_file_stl placeholder.wpn
 P _wpna/2/_v10_att_part -1
 P _wpna/2/_v10_att_phi_ref 0.0
 P _wpna/2/_v10_att_psi_ref 0.0
@@ -34276,7 +34276,7 @@ P _wpna/2/_v10_att_y_acf_prt_ref -4.527558804
 P _wpna/2/_v10_att_z_acf_prt_ref 32.808399200
 P _wpna/2/_v10_is_internal 0
 P _wpna/2/_v10_steers_with_gear 0
-P _wpna/3/_v10_att_file_stl RB24.wpn
+P _wpna/3/_v10_att_file_stl placeholder.wpn
 P _wpna/3/_v10_att_part -1
 P _wpna/3/_v10_att_phi_ref 0.0
 P _wpna/3/_v10_att_psi_ref 0.0
@@ -34286,7 +34286,7 @@ P _wpna/3/_v10_att_y_acf_prt_ref -2.952755690
 P _wpna/3/_v10_att_z_acf_prt_ref 44.619422913
 P _wpna/3/_v10_is_internal 0
 P _wpna/3/_v10_steers_with_gear 0
-P _wpna/4/_v10_att_file_stl RB24.wpn
+P _wpna/4/_v10_att_file_stl placeholder.wpn
 P _wpna/4/_v10_att_part -1
 P _wpna/4/_v10_att_phi_ref 0.0
 P _wpna/4/_v10_att_psi_ref 0.0
