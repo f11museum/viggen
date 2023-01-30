@@ -46,7 +46,7 @@ dr_wpn_fuel_warhead_mass_now = find_dataref("sim/weapons/fuel_warhead_mass_now")
 sim_heartbeat = 1015
 dr_m_fuel_total = find_dataref("sim/flightmodel/weight/m_fuel_total") 
 sim_heartbeat = 1016
-
+dr_m_fuel1 = find_dataref("sim/flightmodel/weight/m_fuel1") 
 sim_heartbeat = 1017
 dr_groundspeed = find_dataref("sim/flightmodel/position/groundspeed") 
 sim_heartbeat = 1018
@@ -76,7 +76,7 @@ dr_payload =  find_dataref("sim/flightmodel/weight/m_fixed") -- den dumma extra 
 sim_heartbeat = 103
 -- Lokala variabler
 -- justerade från verkliga siffror för att matcha dom riktiga graferna på flygtider och bränsleåtgång
-zon3 = 0.000080714
+zon3 = 0.0000790 --713
 zon2 = 0.0000436778993647
 dry  = 0.0000284 -- enligt verklig data 0.0000173
 
@@ -158,6 +158,7 @@ run_at_interval(totalFuel, 1.0)
 heartbeat = 0
 function before_physics() 
 	sim_heartbeat = 300
+	--dr_m_fuel1 = 2341
 	dr_override_fuel = 1
 	if dr_burning > 0.02 then
 		sim_heartbeat = 301
