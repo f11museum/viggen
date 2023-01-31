@@ -176,7 +176,7 @@ P _gear/0/_lonE 0.0
 P _gear/0/_lonN 0.0
 P _gear/0/_lonR 90.0
 P _gear/0/_scon 16098.079101562
-P _gear/0/_stat_def 0.287903279
+P _gear/0/_stat_def 0.287903219
 P _gear/0/_steerdeg_hispeed 5.0
 P _gear/0/_steerdeg_lospeed 33.0
 P _gear/0/_strut_comp 0.0
@@ -210,7 +210,7 @@ P _gear/1/_lonE 0.0
 P _gear/1/_lonN 0.0
 P _gear/1/_lonR 0.0
 P _gear/1/_scon 23097.244140625
-P _gear/1/_stat_def 0.782546759
+P _gear/1/_stat_def 0.782546580
 P _gear/1/_steerdeg_hispeed 0.0
 P _gear/1/_steerdeg_lospeed 0.0
 P _gear/1/_strut_comp 3.0
@@ -244,7 +244,7 @@ P _gear/2/_lonE 0.0
 P _gear/2/_lonN 0.0
 P _gear/2/_lonR 0.0
 P _gear/2/_scon 23097.244140625
-P _gear/2/_stat_def 0.782546759
+P _gear/2/_stat_def 0.782546580
 P _gear/2/_steerdeg_hispeed 0.0
 P _gear/2/_steerdeg_lospeed 0.0
 P _gear/2/_strut_comp 3.0
@@ -21140,7 +21140,7 @@ P _part/56/_locked/9,8 0
 P _part/56/_locked/9,9 0
 P _part/56/_locked/i_count 20
 P _part/56/_locked/j_count 18
-P _part/56/_part_area_rule 1.0
+P _part/56/_part_area_rule 0.899999976
 P _part/56/_part_cd 0.001000000
 P _part/56/_part_phi 0.0
 P _part/56/_part_psi 0.0
@@ -34321,14 +34321,14 @@ P acf/_APU_cooldown_time 0.001000000
 P acf/_APU_door_time 0.001000000
 P acf/_APU_spooldn_time 15.0
 P acf/_APU_spoolup_time 15.0
-P acf/_AShi_G_k 0.000400000
-P acf/_AShi_Gdot_k 0.000300000
+P acf/_AShi_G_k 0.100400001
+P acf/_AShi_Gdot_k 0.010300000
 P acf/_AShi_alpha_k 0.019600000
 P acf/_AShi_alphadot_k 0.005500000
 P acf/_AShi_beta_k 0.451499999
 P acf/_AShi_betadot_k 0.289999992
 P acf/_AShi_hdng_rat 1.0
-P acf/_AShi_max_G 7.0
+P acf/_AShi_max_G 6.0
 P acf/_AShi_max_alpha 17.0
 P acf/_AShi_max_beta 2.0
 P acf/_AShi_max_phidot 180.0
@@ -35265,7 +35265,7 @@ P acf/_bouncer_spring_k/i_count 14
 P acf/_bouncer_spring_k/j_count 3
 P acf/_brake_co 0.850000024
 P acf/_brake_to_steer_power 0.0
-P acf/_burner_inc 12000.0
+P acf/_burner_inc 11500.0
 P acf/_bus_bat_is_on/0 0
 P acf/_bus_bat_is_on/1 0
 P acf/_bus_bat_is_on/2 0
@@ -36847,7 +36847,7 @@ P acf/_max_gen_amp_per_gen/5 0.0
 P acf/_max_gen_amp_per_gen/6 0.0
 P acf/_max_gen_amp_per_gen/7 0.0
 P acf/_max_gen_amp_per_gen/count 8
-P acf/_max_mach_eff 2.190000057
+P acf/_max_mach_eff 2.690000057
 P acf/_max_oilT 245.0
 P acf/_max_press_diff 14.699999809
 P acf/_max_vac 8.0
