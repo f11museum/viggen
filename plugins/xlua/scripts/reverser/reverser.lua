@@ -5,6 +5,7 @@ dr_rev_handle = find_dataref("sim/cockpit2/switches/auto_reverse_on")
 dr_rev_status = find_dataref("sim/cockpit2/annunciators/reverser_deployed") 
 rev_cmd = find_command("sim/engines/thrust_reverse_toggle")
 
+dr_flap = find_dataref("sim/cockpit2/controls/flap_handle_request_ratio") 
 
 sim_heartbeat = 102
 heartbeat = 0
@@ -33,7 +34,10 @@ function before_physics()
             rev_cmd:once()
         end
     end
-
+	sim_heartbeat = 310
+    -- ibland startar spelet med flaps ute, detta fixar det
+    dr_flap = 0
+    
 	sim_heartbeat = 399
 	sim_heartbeat = heartbeat
 	heartbeat = heartbeat + 1
