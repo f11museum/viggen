@@ -3259,7 +3259,7 @@ P _body/0/_locked/9,8 0
 P _body/0/_locked/9,9 0
 P _body/0/_locked/i_count 20
 P _body/0/_locked/j_count 18
-P _body/0/_part_area_rule 0.500000000
+P _body/0/_part_area_rule 0.800000012
 P _body/0/_part_cd 0.200000003
 P _body/0/_part_phi 0.000000000
 P _body/0/_part_psi 0.000000000
@@ -7954,9 +7954,9 @@ P _wing/11/_yawbr/count 10
 P _wing/11/_yawbr_hyd0123 0
 P _wing/12/_Croot 11.122047424
 P _wing/12/_Ctip 1.968503952
-P _wing/12/_afl_file_1 deltawing_viggen_xp12.afl
-P _wing/12/_afl_file_2 deltawing_viggen_xp12.afl
-P _wing/12/_afl_file_3 deltawing_viggen_xp12.afl
+P _wing/12/_afl_file_1 canard_viggen_xp12.afl
+P _wing/12/_afl_file_2 canard_viggen_xp12.afl
+P _wing/12/_afl_file_3 canard_viggen_xp12.afl
 P _wing/12/_ailn1/0 0
 P _wing/12/_ailn1/1 0
 P _wing/12/_ailn1/2 0
@@ -9757,9 +9757,9 @@ P _wing/12/_yawbr/count 10
 P _wing/12/_yawbr_hyd0123 0
 P _wing/13/_Croot 11.122047424
 P _wing/13/_Ctip 1.968503952
-P _wing/13/_afl_file_1 deltawing_viggen_xp12.afl
-P _wing/13/_afl_file_2 deltawing_viggen_xp12.afl
-P _wing/13/_afl_file_3 deltawing_viggen_xp12.afl
+P _wing/13/_afl_file_1 canard_viggen_xp12.afl
+P _wing/13/_afl_file_2 canard_viggen_xp12.afl
+P _wing/13/_afl_file_3 canard_viggen_xp12.afl
 P _wing/13/_ailn1/0 0
 P _wing/13/_ailn1/1 0
 P _wing/13/_ailn1/2 0
@@ -18867,7 +18867,7 @@ P acf/_AShi_alpha_sec 0.100000001
 P acf/_AShi_beta_k 0.000000000
 P acf/_AShi_beta_sec 0.000000000
 P acf/_AShi_hdng_rat 1.000000000
-P acf/_AShi_max_G 11.000000000
+P acf/_AShi_max_G 20.000000000
 P acf/_AShi_max_G_init 10.000000000
 P acf/_AShi_max_alpha 20.000000000
 P acf/_AShi_max_beta 6.000000000
@@ -21449,7 +21449,7 @@ P acf/_idle_rat/count 2
 P acf/_incidence_with_flaps 0
 P acf/_inlet_compression_efficiency 1.000000000
 P acf/_integrated_approach_navigation 0
-P acf/_inverted_fuel_oil_EQ 0
+P acf/_inverted_fuel_oil_EQ 1
 P acf/_inverter_for_elec_gyros 0
 P acf/_inverter_for_ind_trq 0
 P acf/_inverter_for_otto 0
