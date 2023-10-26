@@ -17,7 +17,9 @@ dr_fuel_flow =  find_dataref("sim/flightmodel/engine/ENGN_FF_")
 dr_thrust = find_dataref("sim/cockpit2/engine/indicators/thrust_n[0]")
 dr_burning = find_dataref("sim/flightmodel/engine/ENGN_burnrat[0]")
 
-
+aj37_ebk_zon1 = create_dataref("AJ37/ebk/zon1", "number")
+aj37_ebk_zon2 = create_dataref("AJ37/ebk/zon2", "number")
+aj37_ebk_zon3 = create_dataref("AJ37/ebk/zon3", "number")
 
 aj37_fuel_total = create_dataref("AJ37/fuel/total", "number")
 aj37_fuel_eta = create_dataref("AJ37/fuel/eta", "number")
@@ -154,6 +156,28 @@ end
 
 run_at_interval(totalFuel, 1.0)
 
+function EBKLampor()
+	if dr_burning > 0 then
+		
+		if dr_burning < 0.25 then
+			aj37_ebk_zon1 = 1
+			aj37_ebk_zon2 = 0
+			aj37_ebk_zon3 = 0
+		elseif dr_burning < 0.52 then
+			aj37_ebk_zon1 = 1
+			aj37_ebk_zon2 = 1
+			aj37_ebk_zon3 = 0
+		elseif dr_burning < 1.1 then
+			aj37_ebk_zon1 = 1
+			aj37_ebk_zon2 = 1
+			aj37_ebk_zon3 = 1
+		end
+	else 
+		aj37_ebk_zon1 = 0
+		aj37_ebk_zon2 = 0
+		aj37_ebk_zon3 = 0
+	end
+end
 
 heartbeat = 0
 function before_physics() 
@@ -172,6 +196,9 @@ function before_physics()
 	end
 	
 	aj37_fuel_sfc_kgs_kN = dr_fuel_flow[0]/dr_thrust*1000
+	sim_heartbeat = 305
+	EBKLampor()
+	sim_heartbeat = 306
 	sim_heartbeat = heartbeat
 	heartbeat = heartbeat + 1
 end

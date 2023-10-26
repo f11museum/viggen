@@ -10,6 +10,12 @@ dr_flap = find_dataref("sim/cockpit2/controls/flap_handle_request_ratio")
 sim_heartbeat = 102
 heartbeat = 0
 
+function flight_start() 
+	sim_heartbeat = 200
+	dr_rev_handle = 0
+	sim_heartbeat = 299
+end
+
 function before_physics() 
 	sim_heartbeat = 300
     

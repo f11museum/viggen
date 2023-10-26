@@ -3485,7 +3485,7 @@ P _lite/3/_width 0.000000000
 P _lite/count 4
 P _lite_equip/_land_lite_off_on_retract_EQ 1
 P _lite_equip/_taxi_lite_off_on_retract_EQ 1
-P _obja/0/_obj_flags 4124
+P _obja/0/_obj_flags 4120
 P _obja/0/_v10_att_body -1
 P _obja/0/_v10_att_file_stl ../VIGGEN37_cockpit_out.obj
 P _obja/0/_v10_att_gear -1
@@ -3667,7 +3667,7 @@ P _obja/20/_v10_att_y_acf_prt_ref -0.098425195
 P _obja/20/_v10_att_z_acf_prt_ref 30.971126556
 P _obja/20/_v10_is_internal 363503200
 P _obja/20/_v10_steers_with_gear 0
-P _obja/21/_obj_flags 2076
+P _obja/21/_obj_flags 24
 P _obja/21/_v10_att_body -1
 P _obja/21/_v10_att_file_stl ../VIGGEN37_cockpit_inn.obj
 P _obja/21/_v10_att_gear -1
@@ -19845,7 +19845,7 @@ P acf/_bouncer_spring_k/9,1 0.000000000
 P acf/_bouncer_spring_k/9,2 0.000000000
 P acf/_bouncer_spring_k/i_count 14
 P acf/_bouncer_spring_k/j_count 3
-P acf/_brake_co 0.870000005
+P acf/_brake_co 0.970000029
 P acf/_brake_max_stopping_KTGS 250.000000000
 P acf/_brake_to_steer_power 0.000000000
 P acf/_burner_delay_sec 0.100000001
@@ -20390,7 +20390,7 @@ P acf/_cus_rnd_hi_val/26 0.000000000
 P acf/_cus_rnd_hi_val/27 0.000000000
 P acf/_cus_rnd_hi_val/28 40.000000000
 P acf/_cus_rnd_hi_val/29 0.000000000
-P acf/_cus_rnd_hi_val/3 1E4
+P acf/_cus_rnd_hi_val/3 3.2801E4
 P acf/_cus_rnd_hi_val/30 0.000000000
 P acf/_cus_rnd_hi_val/31 0.000000000
 P acf/_cus_rnd_hi_val/32 0.000000000
@@ -20756,7 +20756,7 @@ P acf/_elec_regen_eta 0.000000000
 P acf/_elec_regen_rat 0.000000000
 P acf/_elev1_cratR 0.150000006
 P acf/_elev1_cratT 0.170000002
-P acf/_elev1_dn 12.000000000
+P acf/_elev1_dn 15.000000000
 P acf/_elev1_max_sweep_rat 1.000000000
 P acf/_elev1_rat1 1.000000000
 P acf/_elev1_rat2 0.899999976
@@ -20779,7 +20779,7 @@ P acf/_elev2_v2 0.000000000
 P acf/_elev_def_time 0.400000006
 P acf/_elev_tab 0.000000000
 P acf/_elev_trim_time 5.000000000
-P acf/_elev_with_flap_rat -0.090000004
+P acf/_elev_with_flap_rat 0.000000000
 P acf/_engine_friction_ratio 1.000000000
 P acf/_engine_pwr_rat_from_crit_alt 0.000000000
 P acf/_engine_rev_time_sec 1.000000000
@@ -21629,9 +21629,9 @@ P acf/_prop_inlet_recovery_v12 0.000000000
 P acf/_prop_pitch_deg_per_sec 45.000000000
 P acf/_prop_pitch_deg_per_sec_unfeather 45.000000000
 P acf/_prop_x_ctr 0.000000000
-P acf/_ptch_acft_dn_trim_rat 0.333333343
+P acf/_ptch_acft_dn_trim_rat 0.660000026
 P acf/_ptch_acft_trim_mode 1
-P acf/_ptch_acft_up_trim_rat 0.699999988
+P acf/_ptch_acft_up_trim_rat 0.500000000
 P acf/_ptch_but_adjusts_alt_hold 0
 P acf/_ptch_max_full_def_KIAS 324.000000000
 P acf/_puff_LMN/0 0.000000000
@@ -21745,7 +21745,7 @@ P acf/_rock_max_vac 0.000000000
 P acf/_roll_acft_lf_trim_rat 0.250000000
 P acf/_roll_acft_rt_trim_rat 0.250000000
 P acf/_roll_acft_trim_mode 0
-P acf/_roll_co 0.059999999
+P acf/_roll_co 0.035000000
 P acf/_roll_max_full_def_KIAS 999.000000000
 P acf/_roll_to_eng_spo1 0.000000000
 P acf/_roll_to_eng_spo2 0.000000000
@@ -22288,15 +22288,15 @@ ott_alt_sel ott_alt_sel
   BUS_SRC 1
 
 alt_HM alt_HM
-  POS 69.500000 114.000000
+  POS 349.928558 269.714294
   DATAREF 
-  SIZE 0.980000
+  SIZE 0.700000
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
 ann_burner ann_burner
-  POS 954.500000 236.000000
+  POS 948.500000 153.000000
   DATAREF 
   SIZE 1.230000
   LIGHT_MODE MECHANICAL
@@ -22423,7 +22423,6 @@ ott_alt_disp ott_alt_disp
   SIZE 0.800000
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
-  BUS_SRC 1
 
 ott_vvi_eng_BC ott_vvi_eng_BC
   POS 554.000000 -13.000000
@@ -22457,7 +22456,7 @@ EFIS_map_wxr EFIS_map_wxr
   BUS_SRC 1
 
 baro_pressure_disp baro_pressure_disp
-  POS 69.000000 94.000000
+  POS 175.000000 51.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -22493,14 +22492,6 @@ eng_rnd_EPR eng_rnd_EPR
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
-alt_HM_small alt_HM_small
-  POS 265.500000 92.500000
-  DATAREF 
-  SIZE 0.910000
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
 but_artstab but_artstab
   POS 52.500000 205.500000
   DATAREF 
@@ -22509,7 +22500,7 @@ but_artstab but_artstab
   BUS_SRC 1
 
 rhe_baro_HM rhe_baro_HM
-  POS 124.000000 65.000000
+  POS 142.000000 51.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -22702,7 +22693,7 @@ wpn_sel_gun_roc_mis wpn_sel_gun_roc_mis
   BUS_SRC 1
 
 gen_needle viggen_alfa
-  POS 346.000000 292.000000
+  POS 315.857147 366.000000
   IMAGE viggen_alfa
   DATAREF sim/flightmodel2/position/alpha
   SIZE 0.600000
@@ -22770,6 +22761,75 @@ gen_needle viggen_fuel
   KEY_FRAME 140.000000 170.000000
   IS_DRAGGABLE 0
   OFFSET 0.000000
+
+gen_needle viggen_trim
+  POS 101.000000 317.000000
+  IMAGE viggen_trim
+  DATAREF sim/cockpit2/controls/elevator_trim
+  SIZE 0.500000
+  LIGHT_MODE MECHANICAL
+  LIGHT_RHEOSTAT 0
+  KEY_FRAME -1.000000 308.000000 1.000000
+  KEY_FRAME 0.000000 270.000000 1.000000
+  KEY_FRAME 1.000000 220.000000
+  IS_DRAGGABLE 0
+  OFFSET 0.000000
+  NEEDLE_OFFSET_X 50.000000
+
+gen_trigger gen_trigger.png
+  POS -228.000000 650.000000
+  COMMAND 
+  LIGHT_MODE MECHANICAL
+  LIGHT_RHEOSTAT 0
+  KEY_FRAME 0.000000 0.000000 1.000000
+  KEY_FRAME 1.000000 1.000000
+  CLICK_RADIUS 10.000000
+  CLICK_RADIUS_DY 0.000000
+  CURSOR DEFAULT
+  CLICK_DX 0
+  CLICK_DY 0
+
+gen_annun viggen_zon1
+  POS 931.000000 245.000000
+  IMAGE viggen_zon1
+  DATAREF 
+  SHOW_LESS 0.500000 sim/cockpit/warnings/annunciators/afterburners_on
+  SIZE 0.500000
+  LIGHT_MODE MECHANICAL
+  LIGHT_RHEOSTAT 0
+  KEY_FRAME 0.000000 0.000000 1.000000
+  KEY_FRAME 1.000000 1.000000
+
+gen_annun viggen_zon2
+  POS 948.000000 245.142853
+  IMAGE viggen_zon1
+  DATAREF 
+  SHOW_LESS 0.500000 AJ37/ebk/zon2
+  SIZE 0.500000
+  LIGHT_MODE MECHANICAL
+  LIGHT_RHEOSTAT 0
+  KEY_FRAME 0.000000 0.000000 1.000000
+  KEY_FRAME 1.000000 1.000000
+
+gen_annun viggen_zon3
+  POS 965.285706 245.142853
+  IMAGE viggen_zon1
+  DATAREF 
+  SHOW_LESS 0.500000 AJ37/ebk/zon3
+  SIZE 0.500000
+  LIGHT_MODE MECHANICAL
+  LIGHT_RHEOSTAT 0
+  KEY_FRAME 0.000000 0.000000 1.000000
+  KEY_FRAME 1.000000 1.000000
+
+mach_tape_bc Mach_display_BC.png
+  POS 231.000000 298.500000
+  DATAREF 
+  SIZE 1.200000
+  LIGHT_MODE MECHANICAL
+  LIGHT_RHEOSTAT 0
+  KEY_FRAME 0.000000 0.000000 1.000000
+  KEY_FRAME 1.000000 1.000000
 
 PANEL_2D_END
 PANEL_3D_BEGIN
