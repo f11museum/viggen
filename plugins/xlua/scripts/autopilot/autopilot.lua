@@ -13,6 +13,9 @@ dr_yoke_roll_ratio = find_dataref("sim/joystick/yoke_roll_ratio")
 dr_yoke_heading_ratio = find_dataref("sim/joystick/yoke_heading_ratio") 
 dr_yoke_pitch_ratio = find_dataref("sim/joystick/yoke_pitch_ratio") 
 
+dr_override_wheel = find_dataref("sim/operation/override/override_wheel_steer") 
+dr_tire_steer = find_dataref("sim/flightmodel2/gear/tire_steer_command_deg[0]") 
+
 dr_pitch = find_dataref("sim/flightmodel/position/theta") 
 dr_acf_vx = find_dataref("sim/flightmodel/position/local_vx") 
 dr_acf_vy = find_dataref("sim/flightmodel/position/local_vy") 
@@ -28,7 +31,8 @@ dr_airspeed_kts_pilot = find_dataref("sim/flightmodel/position/indicated_airspee
 dr_ias = find_dataref("sim/flightmodel/position/indicated_airspeed")
 dr_gear = find_dataref("sim/cockpit/switches/gear_handle_status") 
 dr_groundspeed = find_dataref("sim/flightmodel/position/groundspeed") 
-dr_true_speed = find_dataref("sim/flightmodel/position/true_airspeed")
+dr_true_speed = find_dataref("sim/flightmodel/position/true_airspeed") 
+dr_mach = find_dataref("sim/flightmodel/misc/machno")
 
 dr_altitude = find_dataref("sim/flightmodel/misc/h_ind") 
 sim_altitude = find_dataref("sim/flightmodel/misc/h_ind") 
@@ -451,6 +455,76 @@ function autopilot()
 	
 end
 
+deadzone_pedaler = 0.020
+max_yaw_rate = 50
+sim_acf_yawrate_filtered = 0
+function calculateRudder()
+  dr_override_wheel = 1
+	fadelagg = 1/sim_FRP
+  sim_heartbeat = 3071
+	machfade = constrain(1.5-dr_mach, 0.1,1)
+	sim_heartbeat = 3072
+	
+	rate_to_deg = (fadelagg*18)/320
+	input = 0
+	if (dr_yoke_heading_ratio<deadzone_pedaler and dr_yoke_heading_ratio > -deadzone_pedaler) then
+		input = 0
+		
+	else
+		-- piloten rör pedaler
+		if (dr_yoke_heading_ratio<0) then
+			input = dr_yoke_heading_ratio + deadzone_pedaler
+		else
+			input = dr_yoke_heading_ratio - deadzone_pedaler
+		end
+		machfade = constrain(1.5-dr_mach, 0.5,1)
+	end
+  sim_heartbeat = 3073
+	d_machfade = machfade
+  sim_heartbeat = 3074
+	-- Först kollar vi vad piloten vill ha för ändring på rollen, multiplicerat med en faktor för maximal roitationshastighet
+	wanted_rate = input * max_yaw_rate
+  sim_heartbeat = 30741
+	sim_acf_yawrate_filtered = myfilter (sim_acf_yawrate_filtered, dr_acf_yawrate, 2)
+  sim_heartbeat = 3075
+	-- Kollar vad planet har för nuvarande rotationshastighet 
+	current_rate = dr_acf_yawrate
+	sim_heartbeat = 3076
+	-- räknar ut en skillnad mellan nuvarande rotation och den piloten begär
+	delta = -current_rate*0.1
+	--if (g_groundContact == 1) then
+	--	delta = 0
+	--else
+	--	delta = -current_rate*0.1
+	--end
+	
+	sim_heartbeat = 3077
+	rudder_delta_prev = delta
+	
+		-- Först kollar vi vad piloten vill ha för ändring på rollen, multiplicerat med en faktor för maximal roitationshastighet
+	wanted_rate = input * max_yaw_rate
+	
+	-- Kollar vad planet har för nuvarande rotationshastighet 
+	current_rate = dr_acf_yawrate
+	-- räknar ut en skillnad mellan nuvarande rotation och den piloten begär
+	delta = wanted_rate-current_rate
+
+	m_rudder = delta*rate_to_deg * current_fade_out * machfade
+
+	
+	
+	if (sim_jas_auto_mode == 3) then
+		m_rudder = 0
+	end
+	
+	-- Noshjulet
+	nos = interpolate(0, 45, 20, 1, dr_groundspeed )
+	nos_multi = math.abs(constrain(nos, 5,45))
+	nos_auto = constrain(m_rudder*0.9, -10,10)
+	d_nos = nos_multi
+	dr_tire_steer = constrain(input * nos_multi + nos_auto, -45,45)
+end
+
 heartbeat = 0
 function before_physics() 
 	sim_heartbeat = 300
@@ -467,6 +541,10 @@ function before_physics()
 	update_lamps()
 	sim_heartbeat = 306
 	autopilot()
+  
+	sim_heartbeat = 307
+  calculateRudder()
+  
 	sim_heartbeat = 312
 	systest()
 
