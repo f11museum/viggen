@@ -1677,7 +1677,7 @@ P _blad/0/_locked/j_count 18
 P _blad/0/_part_phi 0.000000000
 P _blad/0/_part_psi 0.000000000
 P _blad/0/_part_specs_eq 0
-P _blad/0/_part_specs_invis 0
+P _blad/0/_part_specs_invis 1
 P _blad/0/_part_specs_rmod 1
 P _blad/0/_part_tex 0
 P _blad/0/_part_the 0.000000000
@@ -3265,7 +3265,7 @@ P _body/0/_part_phi 0.000000000
 P _body/0/_part_psi 0.000000000
 P _body/0/_part_rad 5.971128941
 P _body/0/_part_specs_eq 1
-P _body/0/_part_specs_invis 0
+P _body/0/_part_specs_invis 1
 P _body/0/_part_specs_rmod 1
 P _body/0/_part_tex 0
 P _body/0/_part_the 0.000000000
@@ -3281,7 +3281,7 @@ P _body/0/_top_t2 0.949999988
 P _body/count 39
 P _engn/0/_RSC_max_pwr_ENGN 1.000000000
 P _engn/0/_RSC_redline_ENGN 1.000000000
-P _engn/0/_burner_inc 1.3E4
+P _engn/0/_burner_inc 1.4E4
 P _engn/0/_engn_clutch_EQ 0
 P _engn/0/_engn_freewheels 0
 P _engn/0/_engn_vector_EQ 0
@@ -3295,8 +3295,8 @@ P _engn/0/_part_x 0.000000000
 P _engn/0/_part_y -0.295275599
 P _engn/0/_part_z 46.259841919
 P _engn/0/_power_max_limit 0.000000000
-P _engn/0/_thrust_max_limit 1.2E4
-P _engn/0/_type JET_1SPOOL
+P _engn/0/_thrust_max_limit 1.1E4
+P _engn/0/_type JET_2SPOOL
 P _engn/count 16
 P _gear/0/_axiE 0.000000000
 P _gear/0/_axiR 0.000000000
@@ -3306,7 +3306,7 @@ P _gear/0/_eagle_claw_deg 0.000000000
 P _gear/0/_gear_brakes 0
 P _gear/0/_gear_can_retract 1
 P _gear/0/_gear_castors 0
-P _gear/0/_gear_renders_geo 1
+P _gear/0/_gear_renders_geo 0
 P _gear/0/_gear_type 3
 P _gear/0/_gear_x 0.000000000
 P _gear/0/_gear_y -2.657480240
@@ -3338,7 +3338,7 @@ P _gear/1/_eagle_claw_deg 0.000000000
 P _gear/1/_gear_brakes 1
 P _gear/1/_gear_can_retract 1
 P _gear/1/_gear_castors 0
-P _gear/1/_gear_renders_geo 1
+P _gear/1/_gear_renders_geo 0
 P _gear/1/_gear_type 4
 P _gear/1/_gear_x 7.906824112
 P _gear/1/_gear_y -1.870078683
@@ -3370,7 +3370,7 @@ P _gear/2/_eagle_claw_deg 0.000000000
 P _gear/2/_gear_brakes 1
 P _gear/2/_gear_can_retract 1
 P _gear/2/_gear_castors 0
-P _gear/2/_gear_renders_geo 1
+P _gear/2/_gear_renders_geo 0
 P _gear/2/_gear_type 4
 P _gear/2/_gear_x -7.906824112
 P _gear/2/_gear_y -1.870078683
@@ -13236,7 +13236,7 @@ P _wing/16/_locked/j_count 18
 P _wing/16/_part_phi 0.000000000
 P _wing/16/_part_psi 0.000000000
 P _wing/16/_part_specs_eq 1
-P _wing/16/_part_specs_invis 0
+P _wing/16/_part_specs_invis 1
 P _wing/16/_part_specs_rmod 1
 P _wing/16/_part_tex 0
 P _wing/16/_part_the 0.000000000
@@ -15039,7 +15039,7 @@ P _wing/17/_locked/j_count 18
 P _wing/17/_part_phi 0.000000000
 P _wing/17/_part_psi 0.000000000
 P _wing/17/_part_specs_eq 1
-P _wing/17/_part_specs_invis 0
+P _wing/17/_part_specs_invis 1
 P _wing/17/_part_specs_rmod 1
 P _wing/17/_part_tex 0
 P _wing/17/_part_the 0.000000000
@@ -18876,8 +18876,8 @@ P acf/_AShi_max_G_init 10.000000000
 P acf/_AShi_max_alpha 20.000000000
 P acf/_AShi_max_beta 6.000000000
 P acf/_AShi_max_phidot 240.000000000
-P acf/_AShi_phi_V 0.000000000
-P acf/_AShi_phidot_k 0.000000000
+P acf/_AShi_phi_V 200.000000000
+P acf/_AShi_phidot_k 0.010000000
 P acf/_AShi_psi_V 0.000000000
 P acf/_AShi_ptch_rat 0.899999976
 P acf/_AShi_roll_rat 1.000000000
@@ -19032,7 +19032,7 @@ P acf/_ailn2_sbrk_gnd_only 0
 P acf/_ailn2_up 20.000000000
 P acf/_ailn2_v1 200.000000000
 P acf/_ailn2_v2 400.000000000
-P acf/_ailn_def_time 0.400000006
+P acf/_ailn_def_time 0.200000003
 P acf/_ailn_tab 0.000000000
 P acf/_ailn_trim_time 5.000000000
 P acf/_airbus_FBW 0
@@ -19633,7 +19633,7 @@ P acf/_ap_crs_src 0
 P acf/_apt_req_plane 0
 P acf/_asi_is_kts 1
 P acf/_author Bengt F11 Airfoils, flight control system
-P acf/_auto_cowl_flaps_EQ 32767
+P acf/_auto_cowl_flaps_EQ 32766
 P acf/_auto_engage_BC_deg 0.000000000
 P acf/_auto_omega_fire 2.000000000
 P acf/_auto_omega_idle 0.000000000
@@ -20781,7 +20781,7 @@ P acf/_elev2_sbrk_gnd_only 0
 P acf/_elev2_up 0.000000000
 P acf/_elev2_v1 0.000000000
 P acf/_elev2_v2 0.000000000
-P acf/_elev_def_time 0.400000006
+P acf/_elev_def_time 0.200000003
 P acf/_elev_tab 0.000000000
 P acf/_elev_trim_time 5.000000000
 P acf/_elev_with_flap_rat 0.000000000
@@ -21067,7 +21067,7 @@ P acf/_fadec_tla/0 0.000000000
 P acf/_fadec_tla/1 0.000000000
 P acf/_fadec_tla/2 0.000000000
 P acf/_fadec_tla/count 3
-P acf/_fan_rpm_for_n1_100 1.2E4
+P acf/_fan_rpm_for_n1_100 1.195E4
 P acf/_fbrk_on_td_EQ 0
 P acf/_fdir_needed_to_engage_servo 0
 P acf/_feather_on_engn_fail_EQ 0
@@ -21456,8 +21456,8 @@ P acf/_hyd_rat_pump_0123 1
 P acf/_hyd_slats 3
 P acf/_hyd_thrust_rev_L 0
 P acf/_hyd_thrust_rev_R 0
-P acf/_idle_rat/0 0.709999979
-P acf/_idle_rat/1 1.049999952
+P acf/_idle_rat/0 1.210000038
+P acf/_idle_rat/1 1.350000024
 P acf/_idle_rat/count 2
 P acf/_incidence_with_flaps 0
 P acf/_inlet_compression_efficiency 0.899999976
@@ -21572,7 +21572,7 @@ P acf/_mixt_x_ctr 0.000000000
 P acf/_n1_power_curve1 2.000000000
 P acf/_n1_power_curve2 3.000000000
 P acf/_n1_rated_thrust 100.000000000
-P acf/_n2_power_curve 1.000000000
+P acf/_n2_power_curve 2.000000000
 P acf/_name F11 Viggen SF 37 XP12
 P acf/_new_plot_XP3D_cock/0 0
 P acf/_new_plot_outer_acf/0 0
@@ -21669,8 +21669,8 @@ P acf/_rad_alt_sens_xyz/0 0.000000000
 P acf/_rad_alt_sens_xyz/1 0.000000000
 P acf/_rad_alt_sens_xyz/2 40.157478333
 P acf/_rad_alt_sens_xyz/count 3
-P acf/_radiator_cd 0.000000000
-P acf/_radiator_duct_expansion 0.000000000
+P acf/_radiator_cd 1.000000000
+P acf/_radiator_duct_expansion 1.000000000
 P acf/_radiator_frontal_area 0.000000000
 P acf/_radiator_in_propwash 0
 P acf/_radio_alt_callout_advance 0.000000000
@@ -21792,7 +21792,7 @@ P acf/_rudd2_sbrk 0.000000000
 P acf/_rudd2_sbrk_gnd_only 0
 P acf/_rudd2_v1 0.000000000
 P acf/_rudd2_v2 0.000000000
-P acf/_rudd_def_time 0.400000006
+P acf/_rudd_def_time 0.200000003
 P acf/_rudd_tab 0.000000000
 P acf/_rudd_trim_time 5.000000000
 P acf/_rudd_with_ailn_rat 0.000000000
@@ -21875,7 +21875,7 @@ P acf/_snd_rpm_eng 0.000000000
 P acf/_snd_rpm_prp 0.000000000
 P acf/_solar_cover_part 0.000000000
 P acf/_solar_eta 0.000000000
-P acf/_speedbrake_ext_time 1.000000000
+P acf/_speedbrake_ext_time 2.000000000
 P acf/_speedbrake_ret_time 1.000000000
 P acf/_speedbrake_size 2.900000095
 P acf/_spoi1_cratR 0.000000000
@@ -21900,7 +21900,7 @@ P acf/_spoi2_v2 599.000000000
 P acf/_spoi2_with_flit_sbrk 0.000000000
 P acf/_spoi2_with_grnd_pitch 0.000000000
 P acf/_spoi2_with_grnd_sbrk 0.000000000
-P acf/_spool_time_compressor_jet 1.000000000
+P acf/_spool_time_compressor_jet 2.000000000
 P acf/_spool_time_compressor_prop 5.000000000
 P acf/_spot1_3d_rgb/0 0.000000000
 P acf/_spot1_3d_rgb/1 0.000000000
@@ -22141,6 +22141,7 @@ P acf/_vect_min_nace 0.000000000
 P acf/_vect_power_aft 1.000000000
 P acf/_vect_power_for 1.000000000
 P acf/_vect_rate 0.000000000
+P acf/_version Beta 1
 P acf/_vnav_descend_auto_arm 0
 P acf/_vor_mode_has_dead_reckon 0
 P acf/_vvi_but_adjusts_pitch 0
@@ -22342,7 +22343,7 @@ ott_lev_eng_BC ott_lev_eng_BC
   BUS_SRC 1
 
 gear_handle_BC gear_handle_BC
-  POS 974.500000 -6.000000
+  POS 47.500000 69.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -22378,7 +22379,7 @@ ann_master_accept ann_master_accept
   BUS_SRC 1
 
 ott_alt_eng_BC ott_alt_eng_BC
-  POS 525.000000 -13.000000
+  POS 580.000000 -196.000000
   DATAREF 
   SIZE 1.300000
   LIGHT_MODE MECHANICAL
@@ -22386,7 +22387,7 @@ ott_alt_eng_BC ott_alt_eng_BC
   BUS_SRC 1
 
 ott_lch_eng_BC ott_lch_eng_BC
-  POS 581.000000 -13.000000
+  POS 651.000000 -196.000000
   DATAREF 
   SIZE 1.300000
   LIGHT_MODE MECHANICAL
@@ -22402,7 +22403,7 @@ ott_pit_eng_BC ott_pit_eng_BC
   BUS_SRC 1
 
 ott_atr_eng_BC ott_atr_eng_BC
-  POS 403.000000 -13.000000
+  POS 450.000000 -202.000000
   DATAREF 
   SIZE 1.300000
   LIGHT_MODE MECHANICAL
@@ -22410,7 +22411,7 @@ ott_atr_eng_BC ott_atr_eng_BC
   BUS_SRC 1
 
 ott_hdg_eng_BC ott_hdg_eng_BC
-  POS 432.000000 -12.500000
+  POS 486.000000 -195.500000
   DATAREF 
   SIZE 1.300000
   LIGHT_MODE MECHANICAL
@@ -22455,7 +22456,7 @@ ott_alt_disp ott_alt_disp
   LIGHT_RHEOSTAT 0
 
 ott_vvi_eng_BC ott_vvi_eng_BC
-  POS 554.000000 -13.000000
+  POS 605.000000 -196.000000
   DATAREF 
   SIZE 1.300000
   LIGHT_MODE MECHANICAL
@@ -22463,7 +22464,7 @@ ott_vvi_eng_BC ott_vvi_eng_BC
   BUS_SRC 1
 
 ott_gls_eng_BC ott_gls_eng_BC
-  POS 487.000000 -12.500000
+  POS 547.000000 -195.500000
   DATAREF 
   SIZE 1.300000
   LIGHT_MODE MECHANICAL
@@ -22471,16 +22472,9 @@ ott_gls_eng_BC ott_gls_eng_BC
   BUS_SRC 1
 
 ott_loc_eng_BC ott_loc_eng_BC
-  POS 459.000000 -12.500000
+  POS 511.000000 -195.500000
   DATAREF 
   SIZE 1.300000
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-EFIS_map_wxr EFIS_map_wxr
-  POS 904.500000 51.000000
-  DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
@@ -22530,7 +22524,7 @@ but_artstab but_artstab
   BUS_SRC 1
 
 rhe_baro_HM rhe_baro_HM
-  POS 142.000000 51.000000
+  POS 135.000000 51.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -22543,13 +22537,6 @@ ann_inverter_off ann_inverter_off
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
-but_avionics but_avionics
-  POS 389.500000 121.500000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
 han_sbrake_manual han_sbrake_manual
   POS 54.500000 -122.000000
   DATAREF 
@@ -22557,22 +22544,8 @@ han_sbrake_manual han_sbrake_manual
   LIGHT_RHEOSTAT 0
   BUS_SRC 1
 
-EFIS_map_ndb EFIS_map_ndb
-  POS 757.500000 51.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
 gear_light_one_BC gear_light_one_BC
-  POS 45.500000 -7.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-EFIS_map_vor EFIS_map_vor
-  POS 794.500000 51.000000
+  POS 45.500000 109.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -22609,27 +22582,6 @@ EFIS_radio_alt EFIS_radio_alt
 
 ins_clock_GA ins_clock_GA
   POS 804.500000 -36.500000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-EFIS_map_apt EFIS_map_apt
-  POS 720.500000 52.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-EFIS_map_fix EFIS_map_fix
-  POS 830.500000 51.000000
-  DATAREF 
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  BUS_SRC 1
-
-EFIS_map_tcas EFIS_map_tcas
-  POS 867.500000 51.000000
   DATAREF 
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
@@ -22723,7 +22675,7 @@ wpn_sel_gun_roc_mis wpn_sel_gun_roc_mis
   BUS_SRC 1
 
 gen_needle viggen_alfa
-  POS 315.857147 366.000000
+  POS 315.000000 366.000000
   IMAGE viggen_alfa
   DATAREF sim/flightmodel2/position/alpha
   SIZE 0.600000
@@ -22762,15 +22714,6 @@ gen_needle viggen_hastighet
   KEY_FRAME 756.000000 360.000000
   IS_DRAGGABLE 0
   OFFSET 0.000000
-
-ins_fuel_round fuel_round.png
-  POS 727.000000 128.000000
-  DATAREF 
-  SIZE 0.500000
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 0
-  KEY_FRAME 0.000000 0.000000 1.000000
-  KEY_FRAME 1.000000 1.000000
 
 but_burner_enable but_afterburner_ena
   POS 956.000000 189.000000
@@ -22855,7 +22798,7 @@ gen_annun viggen_zon3
 mach_tape_bc Mach_display_BC.png
   POS 231.000000 298.500000
   DATAREF 
-  SIZE 1.200000
+  SIZE 1.800000
   LIGHT_MODE MECHANICAL
   LIGHT_RHEOSTAT 0
   KEY_FRAME 0.000000 0.000000 1.000000
