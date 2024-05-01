@@ -5,6 +5,8 @@
 sim_heartbeat = create_dataref("AJ37/heartbeat/autopilot", "number")
 sim_heartbeat = 100
 
+aj37_debug_autopilot_rudderhelp = create_dataref("AJ37/autopilot/rudderhelp", "number")
+
 dr_FRP = find_dataref("sim/operation/misc/frame_rate_period")
 sim_heartbeat = 101
 -- input från användaren
@@ -518,11 +520,12 @@ function calculateRudder()
 	end
 	
 	-- Noshjulet
-	nos = interpolate(0, 45, 20, 1, dr_groundspeed )
+	nos = interpolate(0, 30, 20, 1, dr_groundspeed )
 	nos_multi = math.abs(constrain(nos, 5,45))
 	nos_auto = constrain(m_rudder*0.9, -10,10)
 	d_nos = nos_multi
-	dr_tire_steer = constrain(input * nos_multi + nos_auto, -45,45)
+	dr_tire_steer = constrain(input * nos_multi + nos_auto, -30,30)
+  aj37_debug_autopilot_rudderhelp = nos_auto
 end
 
 heartbeat = 0
