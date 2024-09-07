@@ -3259,7 +3259,7 @@ P _body/0/_locked/9,8 0
 P _body/0/_locked/9,9 0
 P _body/0/_locked/i_count 20
 P _body/0/_locked/j_count 18
-P _body/0/_part_area_rule 6.300000191
+P _body/0/_part_area_rule 0.699999988
 P _body/0/_part_cd 0.209999993
 P _body/0/_part_phi 0.000000000
 P _body/0/_part_psi 0.000000000
@@ -3295,7 +3295,7 @@ P _engn/0/_part_x 0.000000000
 P _engn/0/_part_y -0.295275599
 P _engn/0/_part_z 46.259841919
 P _engn/0/_power_max_limit 0.000000000
-P _engn/0/_thrust_max_limit 1.1E4
+P _engn/0/_thrust_max_limit 1.2E4
 P _engn/0/_type JET_2SPOOL
 P _engn/count 16
 P _gear/0/_axiE 0.000000000
@@ -19635,7 +19635,7 @@ P acf/_ap_crs_src 0
 P acf/_apt_req_plane 0
 P acf/_asi_is_kts 1
 P acf/_author Bengt F11 Airfoils, flight control system
-P acf/_auto_cowl_flaps_EQ 32767
+P acf/_auto_cowl_flaps_EQ 32766
 P acf/_auto_engage_BC_deg 0.000000000
 P acf/_auto_omega_fire 2.000000000
 P acf/_auto_omega_idle 0.000000000
@@ -19908,7 +19908,7 @@ P acf/_cgY 0.000000000
 P acf/_cgZ 40.518371582
 P acf/_cgZ_aft 42.322834015
 P acf/_cgZ_fwd 39.370079041
-P acf/_cg_in_mac 1
+P acf/_cg_in_mac 0
 P acf/_chaff_max 120
 P acf/_chute_line_len/0 0.000000000
 P acf/_chute_line_len/1 0.000000000
@@ -19965,7 +19965,7 @@ P acf/_crew_2/0 0.000000000
 P acf/_crew_2/1 0.000000000
 P acf/_crew_2/2 0.000000000
 P acf/_crew_2/count 3
-P acf/_crit_alt_mtr 4892.351562500
+P acf/_crit_alt_mtr 6804.824707031
 P acf/_cus_dig_dec/0 0
 P acf/_cus_dig_dec/1 0
 P acf/_cus_dig_dec/10 0
@@ -21065,7 +21065,7 @@ P acf/_face_rocket 0.000000000
 P acf/_fadec_EQ_mixture 0
 P acf/_fadec_EQ_rpm_limit 0
 P acf/_fadec_parameter 0
-P acf/_fadec_prevents_overboost 0
+P acf/_fadec_prevents_overboost 1
 P acf/_fadec_prevents_temp_EGT 0
 P acf/_fadec_prevents_temp_ITT 0
 P acf/_fadec_target/0 0.000000000
@@ -21139,12 +21139,12 @@ P acf/_fixed_role/6 0
 P acf/_fixed_role/7 0
 P acf/_fixed_role/8 0
 P acf/_fixed_role/count 9
-P acf/_flap1_cd 0.001000000
+P acf/_flap1_cd 0.036860351
 P acf/_flap1_cl 0.646803021
 P acf/_flap1_cm -0.245001152
 P acf/_flap1_cratR 0.239999995
 P acf/_flap1_cratT 0.500000000
-P acf/_flap1_dn/0 -2.000000000
+P acf/_flap1_dn/0 -4.000000000
 P acf/_flap1_dn/1 30.000000000
 P acf/_flap1_dn/10 0.000000000
 P acf/_flap1_dn/11 0.000000000
@@ -21349,7 +21349,7 @@ P acf/_ground_pwr/2 0.000000000
 P acf/_ground_pwr/count 3
 P acf/_gyro_spooldown_time 60.000000000
 P acf/_gyro_spoolup_time 5.000000000
-P acf/_h_eqlbm 7.793506145
+P acf/_h_eqlbm 7.793549538
 P acf/_has_ADG 0
 P acf/_has_APU_bleed_air 0
 P acf/_has_APU_generator 0
@@ -21473,8 +21473,8 @@ P acf/_idle_rat/1 1.350000024
 P acf/_idle_rat/count 2
 P acf/_incidence_with_flaps 0
 P acf/_inlet_compression_efficiency 0.899999976
-P acf/_inlet_max_KEAS 700.000000000
-P acf/_inlet_max_temp_C 133.000000000
+P acf/_inlet_max_KEAS 800.000000000
+P acf/_inlet_max_temp_C 80.000000000
 P acf/_integrated_approach_navigation 0
 P acf/_inverted_fuel_oil_EQ 1
 P acf/_inverter_for_elec_gyros 0
@@ -22114,7 +22114,7 @@ P acf/_tank_xyz_full/8,1 0.000000000
 P acf/_tank_xyz_full/8,2 0.000000000
 P acf/_tank_xyz_full/i_count 9
 P acf/_tank_xyz_full/j_count 3
-P acf/_the_eqlbm -0.250622779
+P acf/_the_eqlbm -0.250824571
 P acf/_thro_non_vect_props_at_sin_vect 0
 P acf/_thro_x_ctr 0.000000000
 P acf/_throt_max_fwd_emr 1.000000000
