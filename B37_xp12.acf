@@ -18966,9 +18966,9 @@ P acf/_HUD_del_x 2048.000000000
 P acf/_HUD_del_y 1024.000000000
 P acf/_ICAO U58
 P acf/_ITT_is_C 0
-P acf/_Jxx_unitmass 15.190288544
-P acf/_Jyy_unitmass 8.628609657
-P acf/_Jzz_unitmass 3.805774212
+P acf/_Jxx_unitmass 18.471128464
+P acf/_Jyy_unitmass 11.909448624
+P acf/_Jzz_unitmass 4.461942196
 P acf/_Mmo 2.200000048
 P acf/_RSC_idlespeed_ENGN 0.000000000
 P acf/_RSC_maxgreen_ENGN 1.000000000
@@ -21468,8 +21468,8 @@ P acf/_hyd_rat_pump_0123 1
 P acf/_hyd_slats 3
 P acf/_hyd_thrust_rev_L 0
 P acf/_hyd_thrust_rev_R 0
-P acf/_idle_rat/0 1.210000038
-P acf/_idle_rat/1 1.350000024
+P acf/_idle_rat/0 0.800000012
+P acf/_idle_rat/1 0.050000001
 P acf/_idle_rat/count 2
 P acf/_incidence_with_flaps 0
 P acf/_inlet_compression_efficiency 0.899999976
@@ -21584,8 +21584,8 @@ P acf/_min_n2_ITT 49.000000000
 P acf/_min_rwy_len 0.000000000
 P acf/_min_vec_on_ground 0.000000000
 P acf/_mixt_x_ctr 0.000000000
-P acf/_n1_power_curve1 2.000000000
-P acf/_n1_power_curve2 3.000000000
+P acf/_n1_power_curve1 9.989999771
+P acf/_n1_power_curve2 3.890000105
 P acf/_n1_rated_thrust 100.000000000
 P acf/_n2_power_curve 2.000000000
 P acf/_name F11 Viggen SF 37 XP12
@@ -22119,11 +22119,11 @@ P acf/_thro_non_vect_props_at_sin_vect 0
 P acf/_thro_x_ctr 0.000000000
 P acf/_throt_max_fwd_emr 1.000000000
 P acf/_throt_max_fwd_nrm 1.000000000
-P acf/_throt_max_rev 0.990000010
+P acf/_throt_max_rev 1.000000000
 P acf/_throt_time_jet 0.500000000
 P acf/_throt_time_prop 0.100000001
-P acf/_throttle_drives_EPR 0
-P acf/_throttle_drives_N2 1
+P acf/_throttle_drives_EPR 1
+P acf/_throttle_drives_N2 0
 P acf/_thrust_max_limit 1.17E4
 P acf/_thrust_rev_dep_time 0.200000003
 P acf/_tip_AOA_des 0.000000000
