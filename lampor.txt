@@ -2,6 +2,30 @@
 # Use tab character and not space to seperate after each type
 # name TAB type TAB writable TAB unit TAB description
 
+# Viggen Pratorn
+#AJ37/pratorn/tal/71			int		sys	unit	unit2	Description
+#AJ37/pratorn/tal/74			int		sys	unit	unit2	Description
+#AJ37/pratorn/tal/99		int		sys	unit	unit2	Description
+#AJ37/pratorn/tal/akan			int		sys	unit	unit2	Description
+#AJ37/pratorn/tal/facklor				int		sys	unit	unit2	Description
+#AJ37/pratorn/tal/gimbal		int		sys	unit	unit2	Description
+#AJ37/pratorn/tal/handover			int		sys	unit	unit2	Description
+#AJ37/pratorn/tal/marktryck			int		sys	unit	unit2	Description
+#AJ37/pratorn/tal/remsor	int		sys	unit	unit2	Description
+#AJ37/pratorn/tal/vapenlös		int		sys	unit	unit2	Description
+AJ37/pratorn/tal/systemtest		int		sys	unit	unit2	Description
+
+AJ37/pratorn/larm/mkv			int		sys	unit	unit2	Description
+AJ37/pratorn/larm/transsonik		int		sys	unit	unit2	Description
+AJ37/pratorn/larm/gransvarde		int		sys	unit	unit2	Description
+AJ37/pratorn/larm/gransvarde_g		int		sys	unit	unit2	Description
+AJ37/pratorn/larm/master			int		sys	unit	unit2	Description
+
+
+AJ37/heartbeat/pratorn		int	sys	unit	unit2	Description
+AJ37/heartbeat/pratornlua	int	sys	unit	unit2	Description
+
+
 # Variabler
 JAS/huvudmod			int		sys	unit	unit2	Description
 JAS/fuel/total				float	sys	unit	unit2	Beräknad total bränsle
