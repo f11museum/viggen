@@ -24,6 +24,7 @@ jas_pratorn_tal_transsonik = find_dataref("AJ37/pratorn/tal/transsonik")
 jas_pratorn_tal_systemtest = find_dataref("AJ37/pratorn/tal/systemtest")
 sim_heartbeat = 101
 jas_pratorn_larm_mkv = find_dataref("AJ37/pratorn/larm/mkv")
+
 jas_pratorn_larm_transsonik = find_dataref("AJ37/pratorn/larm/transsonik")
 jas_pratorn_larm_gransvarde = find_dataref("AJ37/pratorn/larm/gransvarde")
 jas_pratorn_larm_master = find_dataref("AJ37/pratorn/larm/master")
@@ -134,16 +135,11 @@ function before_physics()
 	sim_heartbeat = 302
 	transsonic()
   sim_heartbeat = 303
-	if (jas_sys_larm_transsonik >= 1) then
-		if (transsonik_once == 0) then
-			jas_pratorn_tal_transsonik = 1
-			--jas_pratorn_larm_transsonik = 1
-			transsonik_once = 1
-		end
-	else
-		transsonik_once = 0
+	if (jas_sys_mkv_larm >= 1) then
+    jas_sys_larm_master = 1
 	end
-	
+  
+  sim_heartbeat = 304
 	--Minska fart
 	if (jas_sys_larm_minskafart >= 1) then
 		jas_pratorn_tal_minskafart = 1
@@ -159,6 +155,7 @@ function before_physics()
 	-- Huvudvarning
 	if (jas_sys_larm_master >=1) then
 		jas_pratorn_larm_master = 2
+    jas_sys_larm_master = 0
 	else
 		jas_pratorn_larm_master = 0
 	end

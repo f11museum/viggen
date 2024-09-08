@@ -17,7 +17,7 @@
 -- i numeriska värden vid symbolens nederkant.
 
 
-sim_mkv_heartbeat = find_dataref("JAS/system/mkv/heartbeat") 
+sim_mkv_heartbeat = find_dataref("AJ37/heartbeat/mkv") 
 
 sim_mkv_heartbeat = 100
 
@@ -40,8 +40,9 @@ jas_io_vu22_lamp_mkv = find_dataref("JAS/io/vu22/lamp/mkv")
 jas_io_vu22_lamp_tb = find_dataref("JAS/io/vu22/lamp/termbatt")
 
 -- Egna dataref
-jas_sys_mkv_eta = find_dataref("JAS/system/mkv/eta")
-jas_sys_mkv_larm = find_dataref("JAS/system/mkv/larm")
+jas_sys_mkv_eta = find_dataref("AJ37/system/mkv/eta")
+aj_sys_mkv_larm = find_dataref("AJ37/system/mkv/larm")
+jas_sys_mkv_larm = find_dataref("JAS/system/mkv/larm") -- för HUD
 jas_sys_mkv_gneed = find_dataref("JAS/system/mkv/gneed")
 jas_sys_mkv_needmore = find_dataref("JAS/system/mkv/needmore")
 jas_sys_mkv_lastfaktor = find_dataref("JAS/system/mkv/lastfaktor")
@@ -58,7 +59,7 @@ jas_fbw_max_roll_rate = find_dataref("JAS/fbw/max_roll_rate")
 jas_auto_mode = find_dataref("JAS/autopilot/mode")
 
 -- debug
-d_ground_diff = create_dataref("JAS/debug/mkv/ground_diff", "number")
+d_tid = create_dataref("AJ37/debug/mkv/tid", "number")
 d_upprullningstid = create_dataref("JAS/debug/mkv/upprull", "number")
 d_gneed = create_dataref("JAS/debug/mkv/gneed", "number")
 d_radie = create_dataref("JAS/debug/mkv/radie", "number")
@@ -79,7 +80,7 @@ dr_alpha = find_dataref("sim/flightmodel/position/alpha")
 dr_acf_pitch = find_dataref("sim/flightmodel/position/theta") 
 dr_g_nrml = find_dataref("sim/flightmodel/forces/g_nrml") 
 
-sim_gear = find_dataref("sim/cockpit/switches/gear_handle_status")
+dr_gear = find_dataref("sim/cockpit/switches/gear_handle_status")
 
 
 sim_mkv_heartbeat = 101
@@ -242,218 +243,23 @@ function mkv()
 	speed = dr_true_speed
 	radaralt = sim_radar_alt
 	seaalt = dr_above_sea_alt
-	gear = sim_gear
-	vy  = sim_vy
-	roll = math.abs(dr_acf_roll)
-	
-	max_roll_rate = jas_fbw_max_roll_rate
-	
-	sim_mkv_heartbeat = 4001
-	
-	-- Beräkna maximal tillåten lastfaktor
-	lastfaktor = interpolate(200, 1.0, 550, 5.0, dr_ias* 1.85200 )
-	lastfaktor = constrain(lastfaktor, 1.0,5.0)
-	jas_sys_mkv_lastfaktor = lastfaktor
-	-- Beräkna en terrängprofil
-	ground = seaalt - radaralt
-	if (ground> ground_max) then
-		ground_max = ground
-	end
-	ground_diff = ground_max - ground
-	d_ground_diff = ground_diff
-	sim_mkv_heartbeat = 401	
-	local i = 1
-	while (profil1[i] and i<9 )do
-		if (profil1[i] > ground) then
-			break
-		end
-		i = i + 1
-	end
-	
-	-- Säg HÖJD om vi flyger på en höjd som kan träffa ett plötsligt berg
-	
-	if (radaralt < profil1[i] and dr_gear == 0) then
-		if (hojd_timer < blinktimer) then
-			jas_pratorn_tal_hojd = 1
-			hojd_timer = blinktimer + 3.0
-		end
-	end
-	sim_mkv_heartbeat = 402
-	
-	
-	hsak_alt = radaralt - 7 -- 7 meter säkerhetshöjd
-	
-	if (hsak_alt < 1) then
-		hsak_alt = 1
-	end
-	
-	-- Räkna ut upprullningstid och uppbyggnadstid
-	upprullningstid = (roll/max_roll_rate)*2.5
-	d_upprullningstid = upprullningstid
-	
-	-- 5g ska ta 1s att bygga upp
-	uppbyggnadstid = (9-dr_g_nrml)*0.2
-	
-	sim_mkv_heartbeat = 403
-	-- Räkna ut höjden efter upprullning och uppbyggnad
-	upp_alt = (hsak_alt*0.90) - (-vy*upprullningstid) - (-vy*uppbyggnadstid)
-	if (upp_alt<=1) then
-		upp_alt = 1
-	end
-	d_uppalt = upp_alt
-	sim_mkv_heartbeat = 4032
-	
-	-- Räkna ut vinkeln på cirkeln med lastfaktorn
-	radie_m = (speed * speed) / (lastfaktor * 9.82);
-	bb = radie_m - upp_alt;
-	vinkel_m = math.acos(bb / radie_m);
-	d_vinkel_m = vinkel_m
-	
-	-- Räkna ut vinkeln på våran cirkel
-	vinkel = -math.rad(dr_acf_pitch-dr_alpha)
-	d_vinkel = vinkel
-	radie = upp_alt/(1-math.cos(vinkel))
-	d_radie = radie
-	
-	-- Räkna ut deltan mellan våran vinkel och vinkeln för upptagningskurvan
-	sim_mkv_heartbeat = 404
-	skillnad = vinkel-vinkel_m
-	delta_skillnad = skillnad-skillnad_prev
-	
-	
-	if (sim_FRP>0) then
-		delta = delta_skillnad / sim_FRP
-	end
-	d_uppalt = delta
-	sim_mkv_heartbeat = 4041
-	ny_eta = 15.0
-	if (delta ~= 0 and skillnad < 1000 and skillnad > -1000) then
-		ny_eta = -skillnad/delta
-	end
-	if (skillnad <0 and ny_eta <0 and delta<0) then
-		if (ny_eta<0) then
-			ny_eta = -ny_eta
-		end
-	end
-	if (skillnad > skillnad_prev) then
-		
-	end
-	
-	math.abs(ny_eta)
-	skillnad_prev = skillnad
-	d_radie = skillnad
-	sim_mkv_heartbeat = 4042
-	if (ny_eta < 2000 and ny_eta > -2000) then
-		ny_eta2 = (eta_prev*9 + ny_eta) /10
-	end
-	
-	sim_mkv_heartbeat = 4043
-	
-	eta_prev = ny_eta2
-	jas_sys_mkv_eta = ny_eta2
-	
-	sim_mkv_heartbeat = 4044
-	ny_eta = ny_eta2
-	sim_mkv_heartbeat = 4045
-
-	gneed = (dr_true_speed*dr_true_speed) / radie
-	gneed = gneed/9.82 +1
-	jas_sys_mkv_gneed = gneed
-	sim_mkv_heartbeat = 4046
-	
-	sim_mkv_heartbeat = 4047
-	
-	larmtid = 3.0
-	larmtid2 = 1.8
-	if (dr_acf_pitch-dr_alpha) < 5 then
-		larmtid = 1.6
-		larmtid2 = 1.1
-	end
-	
-	sim_mkv_heartbeat = 4048
-	
-	if (jas_auto_mode >1) then
-		larmtid =  5.0
-		larmtid2 = 2.8
-		
-	end
-	sim_mkv_heartbeat = 4049
-	sim_mkv_heartbeat = 405
+	gear = dr_gear
 	larm = 0
-	if (gear == 0) then
-		
-		if (vy < 0) then
-			if (gneed>3.0) then
-				timeLeft = radaralt/-vy
-				--jas_sys_mkv_eta = timeLeft
-				larm = 1
-			end
-			if ( ny_eta < larmtid) then
-				--timeLeft = radaralt/-vy
-				--jas_sys_mkv_eta = timeLeft
-				larm = 1
-			end
-		end
-	else
-		-- Markkollitionsvarning fast vi har stället ute om en hög hastighet nedåt uppstår, ska kunna ske enligt haveriraporten om man tolkat rätt?
-
-		if (vy < -6) then
-			if ( (-vy * 6) > radaralt) then
-				timeLeft = radaralt/-vy
-				--jas_sys_mkv_eta = timeLeft
-				larm = 1
-			end
-		end
-		
-	end
-	sim_mkv_heartbeat = 406
-	-- Öka pådrag larmet
-	fart_minskar = 0
-	if (dr_ias < speed_prev) then
-		fart_minskar = 1
-	end
-	speed_prev = dr_ias
-	jas_sys_larm_okapadrag = 0
-	-- Larm vid hastighet under 300km/h(160knop) och höjd under 300m(1000foot) och markkontakt inom 12s, och lågt pådrag
-	if (gear == 0 and dr_ias < 160 and radaralt < 1000 and fart_minskar == 1 and dr_throttle[0] < 0.55) then
-		if (vy < 0) then
-			if ( (-vy * 15) > radaralt) then
-				jas_sys_larm_okapadrag = 1
-			end
-		end
-	else
-		-- Markkollitionsvarning fast vi har stället ute om en hög hastighet nedåt uppstår, ska kunna ske enligt haveriraporten om man tolkat rätt?
-		-- TODO
-	end
-	sim_mkv_heartbeat = 407
+  
+  if (dr_gear == 0) then
+    tidkvar = sim_radar_alt / sim_vy
+    d_tid = tidkvar
+  	sim_mkv_heartbeat = 407
+    if (tidkvar <0 and tidkvar > -12 ) then
+      larm = 1
+      jas_sys_mkv_eta = -tidkvar
+    end
+  end
+  sim_mkv_heartbeat = 408
 	jas_sys_mkv_larm = larm
-	if (larm == 1) then
-		sim_mkv_heartbeat = 4071
-		-- Nivå A
-		jas_pratorn_tal_taupp = 2
-		jas_sys_mkv_needmore = 0
-		if (ny_eta < larmtid2  ) then
-			sim_mkv_heartbeat = 4072
-			-- Nivå B aktivera tonorgel och höjdvarningslampa
-			jas_sys_vat_larmmkv = 1
-			jas_pratorn_larm_mkv = 2
-			jas_io_frontpanel_lamp_hojdvarn = 1
-			if (dr_g_nrml < jas_sys_mkv_gneed ) then
-				jas_sys_mkv_needmore = blink025s
-			else
-				jas_sys_mkv_needmore = 0
-			end
-		end
-		-- if (6 < 5) then
-		-- 	-- Nivå C
-		-- end
-		
-	else
-		jas_pratorn_tal_taupp = 0
-		jas_pratorn_larm_mkv = 0
-		jas_sys_vat_larmmkv = 0
-		jas_io_frontpanel_lamp_hojdvarn = 0
-	end
+	aj_sys_mkv_larm = larm
+  
+	
 	sim_mkv_heartbeat = 499
 end
 
@@ -484,8 +290,8 @@ function before_physics()
 	
 	blink1sFunc()
 	mkv()
-	systest()
-	vu22()
+	--systest()
+	--vu22()
 	sim_mkv_heartbeat = heartbeat
     heartbeat = heartbeat + 1
 end

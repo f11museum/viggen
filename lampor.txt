@@ -24,7 +24,18 @@ AJ37/pratorn/larm/master			int		sys	unit	unit2	Description
 
 AJ37/heartbeat/pratorn		int	sys	unit	unit2	Description
 AJ37/heartbeat/pratornlua	int	sys	unit	unit2	Description
+AJ37/heartbeat/mkv		int	sys	unit	unit2	Description
 
+## MKV
+AJ37/system/mkv/larm			int		sys	unit	unit2	Description
+AJ37/system/mkv/eta			float	sys	unit	unit2	Tidkvar till markkontakt
+AJ37/system/mkv/gneed		float	sys	unit	unit2	Lastfaktor som behövs för att klara sig ur
+AJ37/system/mkv/needmore		int		sys	unit	unit2	Lastfaktorn måste ökas
+AJ37/system/mkv/lastfaktor	float	sys	unit	unit2	Beräknad lastfaktor
+AJ37/system/mkv/help			int		sys	unit	unit2	Description
+
+# Master larm
+AJ37/system/larm/master		int		sys	unit	unit2	Description
 
 # Variabler
 JAS/huvudmod			int		sys	unit	unit2	Description
