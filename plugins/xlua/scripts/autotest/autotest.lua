@@ -176,8 +176,8 @@ blinktimer = 0
 th_cumError = create_dataref("AA/debug/th/th_cumError", "number")
 th_lastError = create_dataref("AA/debug/th/th_lastError", "number")
 function PIDth(error)
-	l_kp = 0.7
-	l_ki = 0.03 -- cumulative error
+	l_kp = 0.8
+	l_ki = 0.06 -- cumulative error
 	l_kd = 0.1 --rate error
 	-- PID försök 
 
@@ -363,8 +363,9 @@ function autopilot()
 	sim_heartbeat = 3061
 	if (aa_autofart == 12) then
 		-- AFK på alfa 12
-		error = aj37_true_alpha - 11.2
+		error = aj37_true_alpha - 12.0
 		res = PIDth(error)
+    res = error + 0.6
 		sim_heartbeat = 30611
 		debug_th_error = res
 
@@ -372,16 +373,19 @@ function autopilot()
 		
 		--error = jas_auto_afk - dr_airspeed_kts_pilot
 		
-		demand = constrain(PIDth(error), 0.2,1.0)
-debug_th_res = demand
+		demand = constrain(res, 0.2,1.0)
+    debug_th_res = demand
 		dr_throttle_use[0] = demand
 		--dr_throttle_burner[0] = constrain( (demand-0.9)*10, 0.0,1.0)
 	end
 	sim_heartbeat = 3062
 	if (aa_autofart == 15) then
 		-- AFK på alfa 12
-		error = aj37_true_alpha - 14.8
+		error = aj37_true_alpha - 15.0
 		res = PIDth(error)
+    error = aj37_true_alpha - 15.5
+		
+    res = error + 0.6
 		sim_heartbeat = 30631
 		debug_th_error = res
 
@@ -389,7 +393,7 @@ debug_th_res = demand
 		
 		--error = jas_auto_afk - dr_airspeed_kts_pilot
 		
-		demand = constrain(PIDth(error), 0.4,1.0)
+		demand = constrain(PIDth(error), 0.2,1.0)
 debug_th_res = demand
 		dr_throttle_use[0] = demand
 		--dr_throttle_burner[0] = constrain( (demand-0.9)*10, 0.0,1.0)

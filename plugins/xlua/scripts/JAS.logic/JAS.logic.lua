@@ -253,12 +253,7 @@ g_groundContact = 0
 XLuaSetNumber(XLuaFindDataRef("JAS/system/logic/heartbeat"), 104)
 function flight_start() 
 	XLuaSetNumber(XLuaFindDataRef("JAS/system/logic/heartbeat"), 201)
-	
-		
-	
-	XLuaSetNumber(dr_fuel1, 2200)
-	XLuaSetNumber(dr_fuel2, 2200)
-	XLuaSetNumber(dr_payload, 0) 
+
 	--XLuaSetNumber(dr_fuel2, 1600) 
 	--XLuaSetNumber(dr_override_surfaces, 1) 
 	XLuaSetNumber(XLuaFindDataRef("sim/joystick/eq_pfc_yoke"), 1) -- ta bort krysset som dyker upp om man inte har joystick
@@ -1141,6 +1136,7 @@ function before_physics()
   jas_ti_land_lon = 16.929337430874178
   jas_ti_land_alt = 40.0
   jas_ti_land_head = 263
+  jas_ti_land_lmod = 1
   
     --update_buttons()
 	sim_heartbeat = 302
