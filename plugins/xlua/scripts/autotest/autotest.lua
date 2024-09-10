@@ -21,6 +21,9 @@ dr_acf_roll = find_dataref("sim/flightmodel/position/phi")
 dr_acf_rollrate = find_dataref("sim/flightmodel/position/P") 
 dr_acf_pitchrate = find_dataref("sim/flightmodel/position/Q") 
 dr_acf_yawrate = find_dataref("sim/flightmodel/position/R") 
+dr_lat = find_dataref("sim/flightmodel/position/latitude") 
+dr_lon = find_dataref("sim/flightmodel/position/longitude") 
+dr_alt = find_dataref("sim/flightmodel/position/elevation") 
 
 sim_heartbeat = 102
 
@@ -79,6 +82,10 @@ debug_th_res = create_dataref("AA/debug/th_res", "number")
 aj37_true_alpha = create_dataref("AA/calc/true_alpha", "number")
 aj37_flight_angle = create_dataref("AA/calc/flight_angle", "number")
 aj37_markkontakt = create_dataref("AA/calc/markkontakt", "number")
+
+
+aa_landlength = create_dataref("AA/calc/landlength", "number")
+aa_takeofflength = create_dataref("AA/calc/takeofflength", "number")
 
 
 
@@ -163,6 +170,32 @@ function myGetFlightAngle()
 		return 0.0
 	end
 end
+
+function distance(lat, long, lat22, long22)
+	sim_heartbeat = 810
+	lat1 = math.rad(lat)
+	-- sim_heartbeat = 8001
+	long1 = math.rad(long)
+	-- sim_heartbeat = 8002
+		
+	lat2 = math.rad(lat22)
+	-- sim_heartbeat = 8003
+	long2 = math.rad(long22)
+	-- sim_heartbeat = 8004
+	dlong = long2 - long1
+	-- sim_heartbeat = 8005
+	dlat = lat2 - lat1
+	-- sim_heartbeat = 8006
+	ans = math.pow(math.sin(dlat / 2), 2) + math.cos(lat1) * math.cos(lat2) * math.pow(math.sin(dlong / 2), 2)
+	-- sim_heartbeat = 8007
+	ans = 2 * math.asin(math.sqrt(ans))
+	-- sim_heartbeat = 8008
+	R = 6371000
+	ans = ans * R
+	sim_heartbeat = 8009
+	return ans
+end
+
 
 blink1s = 0
 blink05s = 0
@@ -394,7 +427,7 @@ function autopilot()
 		--error = jas_auto_afk - dr_airspeed_kts_pilot
 		
 		demand = constrain(PIDth(error), 0.2,1.0)
-debug_th_res = demand
+    debug_th_res = demand
 		dr_throttle_use[0] = demand
 		--dr_throttle_burner[0] = constrain( (demand-0.9)*10, 0.0,1.0)
 	end
@@ -405,18 +438,64 @@ debug_th_res = demand
 end
 
 
-heartbeat = 0
+touchdown_lat = 0
+touchdown_lon = 0
+touchdown_airborne = 0
+
+function landingDistance()
+  if (g_markkontakt > 0) then
+    if (touchdown_airborne == 1) then
+      touchdown_airborne = 0
+      touchdown_lat = dr_lat
+      touchdown_lon = dr_lon
+    end
+    
+    aa_landlength = distance(touchdown_lat, touchdown_lon, dr_lat, dr_lon)
+  else
+    touchdown_airborne = 1
+  end
+
+end
+
+takeoff_lat = 0
+takeoff_lon = 0
+takeoff_airborne = 0
+
+function takeoffDistance()
+sim_heartbeat = 3041
+  if (dr_groundspeed < 1) then
+  sim_heartbeat = 3042
+    takeoff_airborne = 0
+    takeoff_lat = dr_lat
+    takeoff_lon = dr_lon
+  end
+  sim_heartbeat = 3043
+  if (g_markkontakt == 0) then
+  sim_heartbeat = 3044
+    takeoff_airborne = 1
+  end
+  sim_heartbeat = 3045
+  if (takeoff_airborne == 0) then
+  sim_heartbeat = 3046
+    aa_takeofflength = distance(takeoff_lat, takeoff_lon, dr_lat, dr_lon)
+  end
+sim_heartbeat = 3049
+end
+
+heartbeat = 198
+
+
 function before_physics() 
 	sim_heartbeat = 300
 	
 	sim_heartbeat = 301
-
+  
 	sim_heartbeat = 302
 	update_dataref()
 	sim_heartbeat = 303
-	
+	landingDistance()
 	sim_heartbeat = 304
-
+  takeoffDistance()
 	sim_heartbeat = 305
 
 	sim_heartbeat = 306

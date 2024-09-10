@@ -27,6 +27,7 @@ aj37_fuel_eta_minuter = create_dataref("AJ37/fuel/eta_minuter", "number")
 aj37_fuel_range = create_dataref("AJ37/fuel/range", "number")
 aj37_fuel_range_km = create_dataref("AJ37/fuel/range_km", "number")
 aj37_fuel_pct = create_dataref("AJ37/fuel/pct", "number")
+jas_fuel_pct = find_dataref("JAS/fuel/pct", "number")
 aj37_fuel_home = create_dataref("AJ37/fuel/home", "number")
 aj37_fuel_b_per_min = create_dataref("AJ37/fuel/b_per_min", "number")
 
@@ -136,6 +137,7 @@ function totalFuel()
 	
 	sim_heartbeat = 4061
 	aj37_fuel_pct = aj37_fuel_total /(4200)*100
+	jas_fuel_pct = aj37_fuel_pct
 	sim_heartbeat = 4062
 	-- d_fuel = aj37_fuel
 	if (dr_fuel_flow[0]>0) then

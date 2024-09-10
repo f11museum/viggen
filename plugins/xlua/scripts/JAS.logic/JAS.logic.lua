@@ -133,6 +133,8 @@ jas_si_nav_alt = find_dataref("JAS/si/nav/alt")
 jas_si_nav_course = find_dataref("JAS/si/nav/course")
 jas_si_nav_dist = find_dataref("JAS/si/nav/dist")
 jas_si_nav_namn = find_dataref("JAS/si/nav/namn")
+jas_si_nav_stolpe_x = find_dataref("JAS/si/nav/stolpe_x")
+jas_si_nav_stolpe_y = find_dataref("JAS/si/nav/stolpe_y")
 
 jas_udat_lon = find_dataref("JAS/udat/lon")
 jas_udat_lat = find_dataref("JAS/udat/lat")
@@ -844,7 +846,7 @@ function landingprick()
 		--		     /|
 		--		  c / | a
 		--		   /  |
-		--        /   |
+		--		  /   |
 		--    <3.0-----
 		--          b
 		-- d_land = 2
@@ -1134,7 +1136,7 @@ function before_physics()
   end
   jas_ti_land_lat = 58.789736111992106
   jas_ti_land_lon = 16.929337430874178
-  jas_ti_land_alt = 40.0
+  jas_ti_land_alt = 41.5
   jas_ti_land_head = 263
   jas_ti_land_lmod = 1
   
