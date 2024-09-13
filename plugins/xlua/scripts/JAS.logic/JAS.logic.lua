@@ -57,9 +57,9 @@ dr_speedbrake_ratio = XLuaFindDataRef("sim/cockpit2/controls/speedbrake_ratio")
 
 XLuaSetNumber(XLuaFindDataRef("JAS/system/logic/heartbeat"), 105)
 
-dr_nose_gear_depress = XLuaFindDataRef("sim/flightmodel/parts/tire_vrt_def_veh[0]") 
-dr_left_gear_depress = XLuaFindDataRef("sim/flightmodel/parts/tire_vrt_def_veh[1]") 
-dr_right_gear_depress = XLuaFindDataRef("sim/flightmodel/parts/tire_vrt_def_veh[2]") 
+dr_nose_gear_depress = find_dataref("sim/flightmodel/parts/tire_vrt_def_veh[0]") 
+dr_left_gear_depress = find_dataref("sim/flightmodel/parts/tire_vrt_def_veh[1]") 
+dr_right_gear_depress = find_dataref("sim/flightmodel/parts/tire_vrt_def_veh[2]") 
 
 dr_airspeed_kts_pilot = XLuaFindDataRef("sim/flightmodel/position/indicated_airspeed") 
 dr_gear = find_dataref("sim/cockpit/switches/gear_handle_status") 
@@ -250,6 +250,7 @@ simCMD_reset_flight = find_command("sim/operation/reset_flight")
 -- publika variabler
 
 g_groundContact = 0
+g_markkontakt = 0
 
 -- Plugin funktioner
 XLuaSetNumber(XLuaFindDataRef("JAS/system/logic/heartbeat"), 104)
@@ -371,9 +372,9 @@ function update_dataref()
 	sim_acf_vz = getnumber(dr_acf_vz)
 	-- sim_acf_flight_angle = myGetFlightAngle()
 	-- XLuaSetNumber(XLuaFindDataRef("JAS/system/logic/heartbeat"), 402)
-	sim_left_gear_depress = getnumber(dr_left_gear_depress)
-	sim_right_gear_depress = getnumber(dr_right_gear_depress)
-	sim_nose_gear_depress = getnumber(dr_nose_gear_depress)
+	sim_left_gear_depress = dr_left_gear_depress
+	sim_right_gear_depress = dr_right_gear_depress
+	sim_nose_gear_depress = dr_nose_gear_depress
 	-- XLuaSetNumber(XLuaFindDataRef("JAS/system/logic/heartbeat"), 403)
 	sim_speedbrake_ratio = getnumber(dr_speedbrake_ratio)
 	-- sim_braking_ratio = getnumber(dr_braking_ratio)
@@ -408,6 +409,16 @@ function update_dataref()
 		g_groundContact = 1 
 	else 
 		g_groundContact = 0 
+	end
+  g_markkontakt = 0
+	if (dr_nose_gear_depress>0 ) then
+		g_markkontakt = g_markkontakt+1
+	end
+	if (dr_left_gear_depress>0 ) then
+		g_markkontakt = g_markkontakt+1
+	end
+	if (dr_right_gear_depress>0) then
+		g_markkontakt = g_markkontakt+1
 	end
 	-- XLuaSetNumber(XLuaFindDataRef("JAS/system/logic/heartbeat"), 407)
 	XLuaSetNumber(dr_fog, 0.1) 
@@ -912,7 +923,9 @@ function landingprick()
 		jas_si_nav_namn[2] = 0
 		jas_si_nav_namn[3] = 0
 	end
-	
+	if (g_markkontakt > 0) then
+    jas_si_nav_prickactive = 0
+  end
 	sim_heartbeat = 1199
 end
 
@@ -1128,21 +1141,16 @@ function before_physics()
 	sim_heartbeat = 301
 	sim_apu_power = 1
   
-  if (dr_gear == 1) then
-    jas_ti_menu_currentmenu = 3
-  else
-    jas_ti_menu_currentmenu = 0
-    
-  end
-  jas_ti_land_lat = 58.789736111992106
-  jas_ti_land_lon = 16.929337430874178
-  jas_ti_land_alt = 41.5
-  jas_ti_land_head = 263
-  jas_ti_land_lmod = 1
+
+  --jas_ti_land_lat = 58.789736111992106
+  --jas_ti_land_lon = 16.929337430874178
+  --jas_ti_land_alt = 41.5
+  --jas_ti_land_head = 263
+  --jas_ti_land_lmod = 1
   
     --update_buttons()
 	sim_heartbeat = 302
-    --lampAirbrake()
+  lampAirbrake()
     --lampMasterWarning()
 	sim_heartbeat = 303
 	--lampAPUGar()

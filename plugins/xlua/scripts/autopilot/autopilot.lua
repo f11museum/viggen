@@ -17,6 +17,7 @@ dr_yoke_pitch_ratio = find_dataref("sim/joystick/yoke_pitch_ratio")
 
 dr_override_wheel = find_dataref("sim/operation/override/override_wheel_steer") 
 dr_tire_steer = find_dataref("sim/flightmodel2/gear/tire_steer_command_deg[0]") 
+dr_nose_speed = find_dataref("sim/flightmodel/misc/nosewheel_speed") 
 
 dr_pitch = find_dataref("sim/flightmodel/position/theta") 
 dr_acf_vx = find_dataref("sim/flightmodel/position/local_vx") 
@@ -513,8 +514,6 @@ function calculateRudder()
 
 	m_rudder = delta*rate_to_deg * current_fade_out * machfade
 
-	
-	
 	if (sim_jas_auto_mode == 3) then
 		m_rudder = 0
 	end
@@ -524,8 +523,12 @@ function calculateRudder()
 	nos_multi = math.abs(constrain(nos, 5,45))
 	nos_auto = constrain(m_rudder*0.9, -10,10)
 	d_nos = nos_multi
-	dr_tire_steer = constrain(input * nos_multi + nos_auto, -30,30)
-  aj37_debug_autopilot_rudderhelp = nos_auto
+	if (dr_nose_speed>30) then
+		dr_tire_steer = constrain(input * nos_multi + nos_auto, -30,30)
+		aj37_debug_autopilot_rudderhelp = nos_auto
+	else
+		dr_tire_steer = constrain(input * nos_multi, -30,30)
+	end
 end
 
 heartbeat = 0

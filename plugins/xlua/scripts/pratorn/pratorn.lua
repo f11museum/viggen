@@ -35,6 +35,8 @@ sim_heartbeat = 104
 -- Knappar
 jas_io_vu22_knapp_syst = find_dataref("AJ37/io/vu22/knapp/syst")
 
+
+
 -- Egna dataref
 
 jas_sys_mkv_larm = find_dataref("AJ37/system/mkv/larm")
@@ -59,7 +61,7 @@ sim_heartbeat = 103
 
 
 -- Lokala variabler
-mach_lo = 0.96
+mach_lo = 0.97
 mach_hi = 1.04
 mach_pass = 0
 mach_mute = 0
@@ -79,7 +81,7 @@ end
 function transsonic()
 	sim_mach = dr_mach + 0.0
 	if (sim_mach > mach_lo and sim_mach < mach_hi and mach_pass == 0) then
-			jas_pratorn_larm_transsonik = 1
+		jas_pratorn_larm_transsonik = 1
 	end
 end
 

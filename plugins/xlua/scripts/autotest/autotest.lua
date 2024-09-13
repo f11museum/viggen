@@ -24,6 +24,22 @@ dr_acf_yawrate = find_dataref("sim/flightmodel/position/R")
 dr_lat = find_dataref("sim/flightmodel/position/latitude") 
 dr_lon = find_dataref("sim/flightmodel/position/longitude") 
 dr_alt = find_dataref("sim/flightmodel/position/elevation") 
+dr_acf_x = find_dataref("sim/flightmodel/position/local_x") 
+dr_acf_y = find_dataref("sim/flightmodel/position/local_y") 
+dr_acf_z = find_dataref("sim/flightmodel/position/local_z") 
+
+
+dr_ref_lat = find_dataref("sim/flightmodel/position/lat_ref")  -- Reference latitude in degrees
+dr_ref_lon = find_dataref("sim/flightmodel/position/lon_ref")  -- Reference longitude in degrees
+dr_pos_x = find_dataref("sim/graphics/view/view_x")            -- X position in meters
+dr_pos_y = find_dataref("sim/graphics/view/view_y")            -- Y position in meters (altitude)
+dr_pos_z = find_dataref("sim/graphics/view/view_z")            -- Z position in meters
+
+dr_boat_x = find_dataref("sim/world/boat/x_mtr")            -- Z position in meters
+dr_boat_y = find_dataref("sim/world/boat/y_mtr")            -- Z position in meters
+dr_boat_z = find_dataref("sim/world/boat/z_mtr")            -- Z position in meters
+
+
 
 sim_heartbeat = 102
 
@@ -88,6 +104,12 @@ aa_landlength = create_dataref("AA/calc/landlength", "number")
 aa_takeofflength = create_dataref("AA/calc/takeofflength", "number")
 
 
+aa_boat1_lat = create_dataref("AA/boat/boat1_lat", "number")
+aa_boat1_lon = create_dataref("AA/boat/boat1_lon", "number")
+aa_boat2_lat = create_dataref("AA/boat/boat2_lat", "number")
+aa_boat2_lon = create_dataref("AA/boat/boat2_lon", "number")
+
+
 
 sim_heartbeat = 106
 
@@ -99,6 +121,34 @@ g_markkontakt = 0
 current_fade_out = 1.0
 fade_out = 0.6
 -- Plugin funktioner
+
+
+
+function xyz_to_lat_lon(obj_x, obj_y, obj_z)
+	ref_x = dr_acf_x
+	ref_y =dr_acf_y
+	ref_z =dr_acf_z
+	
+	ref_lat = dr_ref_lat
+	ref_lon = dr_ref_lon
+	ref_lat = dr_lat
+	ref_lon = dr_lon
+	local R = 6378137  -- Earth's radius in meters (WGS-84 standard)
+
+	-- Calculate the offset from the reference point in meters
+	local delta_x = obj_x - ref_x  -- East/West offset in meters
+	local delta_z = obj_z - ref_z  -- North/South offset in meters
+
+	-- Convert the offsets to changes in latitude and longitude
+	local d_lat = -delta_z / R * (180 / math.pi)  -- Convert north offset to degrees latitude
+	local d_lon = delta_x / (R * math.cos(math.rad(ref_lat))) * (180 / math.pi)  -- Convert east offset to degrees longitude
+
+	-- Calculate the object's latitude and longitude by applying offsets to the reference GPS coordinates
+	local obj_lat = ref_lat + d_lat
+	local obj_lon = ref_lon + d_lon
+
+	return obj_lat, obj_lon
+end
 
 function flight_start() 
 	sim_heartbeat = 200
@@ -230,6 +280,7 @@ end
 -- Våra program funktioner
 sim_FRP = 1
 sim_acf_flight_angle = 0
+
 function update_dataref()
 	sim_heartbeat = 4100
 	local getnumber = XLuaGetNumber
@@ -484,6 +535,20 @@ end
 
 heartbeat = 198
 
+jas_ti_land_lat = find_dataref("JAS/ti/land/lat")
+jas_ti_land_lon = find_dataref("JAS/ti/land/lon")
+function findBoats()
+	
+	lat, lon = xyz_to_lat_lon(dr_boat_x[0], dr_boat_y[0], dr_boat_z[0])
+	aa_boat1_lat = lat
+	aa_boat1_lon = lon
+	lat, lon = xyz_to_lat_lon(dr_boat_x[1], dr_boat_y[1], dr_boat_z[1])
+	aa_boat2_lat = lat
+	aa_boat2_lon = lon
+	-- jas_ti_land_lat  = lat
+	-- jas_ti_land_lon = lon
+	
+end
 
 function before_physics() 
 	sim_heartbeat = 300
@@ -497,7 +562,7 @@ function before_physics()
 	sim_heartbeat = 304
   takeoffDistance()
 	sim_heartbeat = 305
-
+	findBoats()
 	sim_heartbeat = 306
 	autopilot()
   

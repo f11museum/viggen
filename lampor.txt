@@ -213,6 +213,20 @@ JAS/el/stromskena/batteri_c	int	sys	unit	unit2	AFPL krikiska block samt broms
 #apubrand	lampa	vu22	JAS/lampprov/p1	JAS/system/ess/power	DescriptionM24
 hydr1	lampa	vat	JAS/lampprov/p1	JAS/vat/power	Description
 
+## Lampor Viggen
+zon1	lampa	aj37	JAS/lampprov/p1	JAS/vat/power	EBK Zon1
+zon2	lampa	aj37	JAS/lampprov/p1	JAS/vat/power	EBK Zon2
+zon3	lampa	aj37	JAS/lampprov/p1	JAS/vat/power	EBK Zon3
+ebk	lampa	aj37	JAS/lampprov/p1	JAS/vat/power	EBK AV/PÅ Används av IS
+
+reverser	lampa	aj37	JAS/lampprov/p1	JAS/vat/power	Reverserings lampa
+transsonik	lampa	aj37	JAS/lampprov/p1	JAS/vat/power	Transsonik lampa
+
+tils_on	knapp	aj37	JAS/vu22/override/knappar	JAS/vat/power	TILS på, finns i is
+tils_off	knapp	aj37	JAS/vu22/override/knappar	JAS/vat/power	TILS av, finns i is
+tils_on	lampa	aj37	JAS/lampprov/p1	JAS/vat/power	TILS på, finns i is
+tils_off	lampa	aj37	JAS/lampprov/p1	JAS/vat/power	TILS av, finns i is
+
 #VU22
 apubrand	lampa	vu22	JAS/lampprov/p1	JAS/vat/power	M24 0:PB0
 apugar		lampa	vu22	JAS/lampprov/p1	JAS/system/apu/power	M25 0:PB1
@@ -223,8 +237,8 @@ rhm			lampa	vu22	JAS/lampprov/p1	JAS/vat/power	M29 0:PB5
 mkv			lampa	vu22	JAS/lampprov/p1	JAS/vat/power	M30 0:PB6
 belysning	lampa	vu22	JAS/lampprov/p1	JAS/vat/power	M31 0:PB7
 
-JAS/io/vu22/lamp/belysning
-JAS/io/vu22/lo/belysning
+#JAS/io/vu22/lamp/belysning
+#JAS/io/vu22/lo/belysning
 
 #Knappar i VU22
 lampprov	knapp	vu22	JAS/vu22/override/knappar	JAS/vat/power	M0 0:PA0

@@ -1,5 +1,10 @@
 sim_heartbeat = create_dataref("AJ37/heartbeat/reverser", "number")
 sim_heartbeat = 100
+
+
+io_aj37_lamp_reverser = find_dataref("JAS/io/aj37/lamp/reverser")
+
+
 dr_nose_gear_depress = find_dataref("sim/flightmodel/parts/tire_vrt_def_veh[0]") 
 dr_rev_handle = find_dataref("sim/cockpit2/switches/auto_reverse_on") 
 dr_rev_status = find_dataref("sim/cockpit2/annunciators/reverser_deployed") 
@@ -36,9 +41,12 @@ function before_physics()
         end
     end
     if dr_rev_handle == 0 then
+			io_aj37_lamp_reverser = 0
         if dr_rev_status == 1 then
             rev_cmd:once()
         end
+		else
+			io_aj37_lamp_reverser = 1
     end
 	sim_heartbeat = 310
     -- ibland startar spelet med flaps ute, detta fixar det

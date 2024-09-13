@@ -21,6 +21,11 @@ aj37_ebk_zon1 = create_dataref("AJ37/ebk/zon1", "number")
 aj37_ebk_zon2 = create_dataref("AJ37/ebk/zon2", "number")
 aj37_ebk_zon3 = create_dataref("AJ37/ebk/zon3", "number")
 
+JAS_io_aj37_lamp_zon1 = find_dataref("JAS/io/aj37/lamp/zon1", "number")
+JAS_io_aj37_lamp_zon2 = find_dataref("JAS/io/aj37/lamp/zon2", "number")
+JAS_io_aj37_lamp_zon3 = find_dataref("JAS/io/aj37/lamp/zon3", "number")
+JAS_io_aj37_lamp_ebk = find_dataref("JAS/io/aj37/lamp/ebk")
+
 aj37_fuel_total = create_dataref("AJ37/fuel/total", "number")
 aj37_fuel_eta = create_dataref("AJ37/fuel/eta", "number")
 aj37_fuel_eta_minuter = create_dataref("AJ37/fuel/eta_minuter", "number")
@@ -52,6 +57,8 @@ sim_heartbeat = 1016
 dr_m_fuel1 = find_dataref("sim/flightmodel/weight/m_fuel1") 
 sim_heartbeat = 1017
 dr_groundspeed = find_dataref("sim/flightmodel/position/groundspeed") 
+
+dr_throttle_pos = find_dataref("sim/cockpit2/engine/actuators/throttle_ratio[0]")
 sim_heartbeat = 1018
 
 sim_heartbeat = 102
@@ -178,6 +185,14 @@ function EBKLampor()
 		aj37_ebk_zon1 = 0
 		aj37_ebk_zon2 = 0
 		aj37_ebk_zon3 = 0
+	end
+	JAS_io_aj37_lamp_zon1 = aj37_ebk_zon1
+	JAS_io_aj37_lamp_zon2 = aj37_ebk_zon2
+	JAS_io_aj37_lamp_zon3 = aj37_ebk_zon3
+	if dr_throttle_pos >= 0.9 then
+		JAS_io_aj37_lamp_ebk = 1
+	else
+		JAS_io_aj37_lamp_ebk = 0
 	end
 end
 
