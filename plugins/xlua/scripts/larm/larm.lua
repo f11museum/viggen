@@ -14,6 +14,7 @@ dr_nose_gear_depress = find_dataref("sim/flightmodel/parts/tire_vrt_def_veh[0]")
 dr_left_gear_depress = find_dataref("sim/flightmodel/parts/tire_vrt_def_veh[1]") 
 dr_right_gear_depress = find_dataref("sim/flightmodel/parts/tire_vrt_def_veh[2]") 
 
+jas_vat_power = find_dataref("JAS/vat/power")
 
 sim_FRP = find_dataref("sim/operation/misc/frame_rate_period")
 dr_mach = find_dataref("sim/flightmodel/misc/machno")
@@ -132,7 +133,7 @@ function before_physics()
   sim_heartbeat = 303 
   transsonik()
   sim_heartbeat = 304
-  
+  jas_vat_power = 1
   sim_heartbeat = 305 
   
   

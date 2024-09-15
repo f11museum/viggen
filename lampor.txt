@@ -63,6 +63,11 @@ JAS/fbw/override_roll	float	sys	unit	unit2	värde som läggs på beräkningen
 JAS/fbw/override_pitch	float	sys	unit	unit2	värde som läggs på beräkningen
 JAS/fbw/override_yaw	float	sys	unit	unit2	värde som läggs på beräkningen
 
+JAS/fbw/extra_roll	float	sys	unit	unit2	värde som läggs på beräkningen
+JAS/fbw/extra_pitch	float	sys	unit	unit2	värde som läggs på beräkningen
+JAS/fbw/extra_yaw	float	sys	unit	unit2	värde som läggs på beräkningen
+
+
 #Heartbeats
 JAS/system/mkv/heartbeat	int	sys	unit	unit2	Description
 JAS/system/sys/heartbeat	int	sys	unit	unit2	Description

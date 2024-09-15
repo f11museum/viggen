@@ -15,6 +15,7 @@ dr_yoke_roll_ratio = find_dataref("sim/joystick/yoke_roll_ratio")
 dr_yoke_heading_ratio = find_dataref("sim/joystick/yoke_heading_ratio") 
 dr_yoke_pitch_ratio = find_dataref("sim/joystick/yoke_pitch_ratio") 
 
+dr_override_surfaces = find_dataref("sim/operation/override/override_control_surfaces") 
 dr_override_wheel = find_dataref("sim/operation/override/override_wheel_steer") 
 dr_tire_steer = find_dataref("sim/flightmodel2/gear/tire_steer_command_deg[0]") 
 dr_nose_speed = find_dataref("sim/flightmodel/misc/nosewheel_speed") 
@@ -38,11 +39,10 @@ dr_true_speed = find_dataref("sim/flightmodel/position/true_airspeed")
 dr_mach = find_dataref("sim/flightmodel/misc/machno")
 
 dr_altitude = find_dataref("sim/flightmodel/misc/h_ind") 
-sim_altitude = find_dataref("sim/flightmodel/misc/h_ind") 
-
 
 dr_trim_pitch = find_dataref("sim/flightmodel/controls/elv_trim") 
 dr_trim_ail = find_dataref("sim/flightmodel/controls/ail_trim") 
+
 
 dr_nose_gear_depress = find_dataref("sim/flightmodel/parts/tire_vrt_def_veh[0]") 
 dr_left_gear_depress = find_dataref("sim/flightmodel/parts/tire_vrt_def_veh[1]") 
@@ -83,6 +83,15 @@ jas_auto_afk_mode = find_dataref("JAS/autopilot/afk_mode")
 jas_auto_ks_mode = find_dataref("JAS/autopilot/ks_mode")
 jas_auto_ks_roll = find_dataref("JAS/autopilot/ks_roll")
 jas_a14 = find_dataref("JAS/a14")
+
+jas_fbw_override = find_dataref("JAS/fbw/override")
+jas_fbw_override_roll = find_dataref("JAS/fbw/override_roll")
+jas_fbw_override_pitch = find_dataref("JAS/fbw/override_pitch")
+jas_fbw_override_yaw = find_dataref("JAS/fbw/override_yaw")
+
+jas_fbw_extra_roll = find_dataref("JAS/fbw/extra_roll")
+jas_fbw_extra_pitch = find_dataref("JAS/fbw/extra_pitch")
+jas_fbw_extra_yaw = find_dataref("JAS/fbw/extra_yaw")
 
 
 sim_jas_sys_test = find_dataref("JAS/io/vu22/knapp/syst")
@@ -242,6 +251,7 @@ function update_dataref()
 	aj37_true_alpha = myGetAlpha()
 	sim_heartbeat = 4102
 	aj37_flight_angle = myGetFlightAngle()
+	sim_acf_flight_angle = myGetFlightAngle()
 	
 	sim_heartbeat = 4103
 	current_fade_out = interpolate(0, 1.0, 500, fade_out, dr_airspeed_kts_pilot )
@@ -456,11 +466,143 @@ function autopilot()
 		dr_trim_pitch = constrain(dr_trim_pitch, -1.0,1.0)
 	end
 	
+	
+end
+
+lock_pitch = 10.0
+lock_pitch_movement = 0
+
+lock_avg = 0.0
+auto_alt = 0.0
+autopilot_hold_alti = 0
+autopilot_hold_att = 0
+
+auto_trim = 0.0
+
+lastError = 0.0
+cumError = 0.0
+kp = 20
+ki = 2
+kd = 1
+
+clock_test = 0.0
+error_prev = 0
+rateError_prev = 0
+sim_acf_pitchrate_filtered = 1
+
+function calculateAutopilot(wanted_rate)
+	sim_heartbeat = 3061
+	if (jas_auto_mode == 0) then
+		return 0
+	end
+	--sim_acf_pitchrate_filtered = myfilter (sim_acf_pitchrate_filtered, sim_acf_pitchrate, 2)
+	sim_acf_pitchrate_filtered = dr_acf_pitchrate
+	lock = 0
+	error = 0
+
+	if (jas_auto_mode == 5) then
+		if lock_pitch_movement == 1 then
+			lock_pitch_movement = 0
+
+		end
+		
+	end
+	sim_heartbeat = 3062
+	if (jas_auto_mode == 3) then
+		if lock_pitch_movement == 1 then
+			lock_pitch_movement = 0
+
+		end
+		demand = -(dr_altitude - jas_auto_alt)/50
+		
+		autopilot_hold_att = constrain(demand, -10,10) -- Begränsar max flygvinkel
+		jas_auto_att= autopilot_hold_att
+		
+		
+	end
+	sim_heartbeat = 3063
+	if (jas_auto_mode == 2 or jas_auto_mode == 3 or jas_auto_mode == 5) then
+		if (lock_pitch_movement == 1 and jas_auto_mode == 2) then
+			lock_pitch_movement = 0
+
+		end
+		demand = (jas_auto_att - sim_acf_flight_angle)*2
+		error = constrain(demand, -10,10)
+		wanted_rate = error * math.cos(math.rad(dr_acf_roll))
+		
+		kp = 15
+		kp = constrain(interpolate(0, 30, 500, 0.2, dr_airspeed_kts_pilot ), 0.001,100)
+		ki = 4*current_fade_out
+		kd = 0
+	end
+	sim_heartbeat = 3064
+	if (jas_fbw_override >= 1 ) then
+		
+		demand = jas_fbw_override_pitch - sim_acf_flight_angle
+		error = constrain(demand, -15,15)
+		wanted_rate = error * math.cos(math.rad(dr_acf_roll))
+		
+		kp = 15
+		kp = constrain(interpolate(0, 10, 500, 0.01, dr_airspeed_kts_pilot ), 0.0001,100)
+		ki = 4*current_fade_out
+		kd = 0
+	end
+	sim_heartbeat = 3065
+	if (jas_auto_mode == 2 or jas_auto_mode == 3 or jas_auto_mode == 5 or jas_auto_mode == 20 or jas_auto_mode == 30) then 
+		if lock_pitch_movement == 1 then
+			lock_pitch = sim_pitch
+			lock_pitch_movement = 0
+			
+		end
+		error = (wanted_rate - sim_acf_pitchrate_filtered) * 0.3 -- determine error
+		
+
+	end
+	if (jas_auto_mode == 1 ) then 
+		if lock_pitch_movement == 1 then
+			lock_pitch = sim_pitch
+			lock_pitch_movement = 0
+			
+		end
+		error = (wanted_rate - sim_acf_pitchrate_filtered) * 0.03 -- Auto trim
+		
+
+	end
+	sim_heartbeat = 3066
+	-- PID försök till att få en bättre autotrim
+	elapsedTime = constrain(sim_FRP, 0,0.025)
+
+	error = constrain(error, -100,100)
+	
+	cumError = constrain(cumError + error * (elapsedTime)*10, -5,5) --compute integral
+	rateError = constrain((error - lastError)/elapsedTime, -20,20) --compute derivative
+	rateError = myfilter(rateError_prev, rateError, 8)
+	rateError_prev = constrain(rateError, -20,20)
+
+	error_prev = constrain(error, -200,200)
+	sim_heartbeat = 3067
+	kp = constrain(interpolate(200, 50, 550, 10.1, dr_airspeed_kts_pilot ), 0.001,500)
+	ki = 0.5
+	kd = 0.1
+	out = kp*error + ki*cumError + kd*rateError --PID output       
+	XLuaSetNumber(XLuaFindDataRef("JAS/debug/p"), kp*error) 
+	XLuaSetNumber(XLuaFindDataRef("JAS/debug/i"), ki*cumError) 
+	XLuaSetNumber(XLuaFindDataRef("JAS/debug/d"), kd*rateError)         
+	sim_heartbeat = 3068
+	lastError = error --remember current error
+	previousTime = currentTime --remember current time
+
+	lock = (out)
+
+	lock = constrain(lock, -50,50)
+
+	return lock
 end
 
 deadzone_pedaler = 0.020
 max_yaw_rate = 50
 sim_acf_yawrate_filtered = 0
+
 function calculateRudder()
   dr_override_wheel = 1
 	fadelagg = 1/sim_FRP
@@ -513,8 +655,8 @@ function calculateRudder()
 	delta = wanted_rate-current_rate
 
 	m_rudder = delta*rate_to_deg * current_fade_out * machfade
-
-	if (sim_jas_auto_mode == 3) then
+	
+	if (jas_auto_mode == 3) then
 		m_rudder = 0
 	end
 	
@@ -529,6 +671,7 @@ function calculateRudder()
 	else
 		dr_tire_steer = constrain(input * nos_multi, -30,30)
 	end
+
 end
 
 heartbeat = 0
@@ -536,7 +679,6 @@ function before_physics()
 	sim_heartbeat = 300
 	blink1sFunc()
 	sim_heartbeat = 301
-
 	sim_heartbeat = 302
 	update_dataref()
 	sim_heartbeat = 303
@@ -546,7 +688,8 @@ function before_physics()
 	sim_heartbeat = 305
 	update_lamps()
 	sim_heartbeat = 306
-	autopilot()
+	--autopilot()
+	jas_fbw_extra_pitch = calculateAutopilot(dr_yoke_pitch_ratio*10)
   
 	sim_heartbeat = 307
   calculateRudder()

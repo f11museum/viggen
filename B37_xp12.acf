@@ -3265,7 +3265,7 @@ P _body/0/_part_phi 0.000000000
 P _body/0/_part_psi 0.000000000
 P _body/0/_part_rad 5.971128941
 P _body/0/_part_specs_eq 1
-P _body/0/_part_specs_invis 1
+P _body/0/_part_specs_invis 0
 P _body/0/_part_specs_rmod 1
 P _body/0/_part_tex 0
 P _body/0/_part_the 0.000000000
