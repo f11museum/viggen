@@ -29,6 +29,11 @@ dr_acf_rollrate = find_dataref("sim/flightmodel/position/P")
 dr_acf_pitchrate = find_dataref("sim/flightmodel/position/Q") 
 dr_acf_yawrate = find_dataref("sim/flightmodel/position/R") 
 
+dr_override_throttles = find_dataref("sim/operation/override/override_throttles") 
+dr_throttle_use = find_dataref("sim/flightmodel/engine/ENGN_thro_use") 
+dr_throttle = find_dataref("sim/flightmodel/engine/ENGN_thro") 
+dr_throttle_burner = find_dataref("sim/flightmodel/engine/ENGN_burnrat") 
+
 sim_heartbeat = 102
 
 dr_airspeed_kts_pilot = find_dataref("sim/flightmodel/position/indicated_airspeed") 
@@ -83,6 +88,11 @@ jas_auto_afk_mode = find_dataref("JAS/autopilot/afk_mode")
 jas_auto_ks_mode = find_dataref("JAS/autopilot/ks_mode")
 jas_auto_ks_roll = find_dataref("JAS/autopilot/ks_roll")
 jas_a14 = find_dataref("JAS/a14")
+
+
+debug_afk_p = create_dataref("JAS/autopilot/debug/afk_p", "number")
+debug_afk_i = create_dataref("JAS/autopilot/debug/afk_i", "number")
+debug_afk_d = create_dataref("JAS/autopilot/debug/afk_d", "number")
 
 jas_fbw_override = find_dataref("JAS/fbw/override")
 jas_fbw_override_roll = find_dataref("JAS/fbw/override_roll")
@@ -249,6 +259,7 @@ function update_dataref()
 	end
 	sim_heartbeat = 4101
 	aj37_true_alpha = myGetAlpha()
+	sim_true_alpha = myGetAlpha()
 	sim_heartbeat = 4102
 	aj37_flight_angle = myGetFlightAngle()
 	sim_acf_flight_angle = myGetFlightAngle()
@@ -313,6 +324,60 @@ longpress = 0.0
 function update_buttons()
 	sim_heartbeat = 600
 	
+	-- AFK
+	if (jas_button_afk == 1) then
+		longpress = longpress + sim_FRP
+	elseif (longpress>0.01 and longpress<1.0 and jas_button_afk == 0) then
+		-- kort knapptryck
+		if (jas_a14 == 0) then
+			jas_a14 = 1
+		else
+			jas_a14 = 0
+		end
+		longpress = 0.0
+	else
+		longpress = 0.0
+	end
+	
+	
+	if (jas_button_afk == 1 and longpress>1.0) then
+		sim_heartbeat = 601
+		if (knapp2 == 0) then
+			sim_heartbeat = 602
+			knapp2 = 1
+			if (dr_gear == 1) then
+				-- Lås mellan alfa 12 eller alfa 14
+				if (jas_auto_afk_mode == 2) then
+					jas_auto_afk_mode = 3
+					-- vi är i läge 12 och ska välja läge 14
+				elseif (jas_auto_afk_mode == 3) then
+					-- vi är i läge 14 och ska välja avstängt läge
+					jas_auto_afk_mode = 0
+				else
+					-- vi är i avstängt läge eller normalläge och ska gå till läge 12
+					jas_auto_afk_mode = 2
+					
+					current_th = dr_throttle[0]
+				end
+			else
+				if (jas_auto_afk_mode == 0) then
+					jas_auto_afk_mode = 1
+					jas_auto_afk = 297
+					if (jas_auto_afk<172) then
+						jas_auto_afk = 172
+					end
+					current_th = dr_throttle[0]
+				else
+					jas_auto_afk = 0
+					jas_auto_afk_mode = 0
+				end
+			end
+		else
+			sim_heartbeat = 603
+		end
+	else
+		knapp2 = 0
+	end
 	
 	sim_heartbeat = 604
 	-- SPAK
@@ -376,6 +441,16 @@ end
 
 function update_lamps()
 	
+	if (jas_a14 == 1) then
+		jas_lamps_a14 = 1
+	else
+		jas_lamps_a14 = 0
+	end
+	if (jas_auto_afk_mode >= 1) then
+		jas_lamps_afk = 1
+	else
+		jas_lamps_afk = 0
+	end
 	
 	jas_lamps_spak = 0
 	jas_lamps_att = 0
@@ -674,6 +749,193 @@ function calculateRudder()
 
 end
 
+
+alpha_filtered = 0
+alpha_prev = 0
+speed_prev = 0
+afk_prev_state = 0
+
+-- PID controller variables
+Kp = 3.87  -- Proportional gain
+Ki = 0.01  -- Integral gain
+Kd = 0.18  -- Derivative gain
+
+previous_error = 0  -- Error in the previous frame
+integral = 0  -- Accumulated error over time
+dt = 0.05  -- Time step between throttle updates (seconds)
+max_throttle_change = 0.01  -- Maximum throttle change per frame to avoid sudden jumps
+
+
+-- Tuning parameters
+learning_rate = 0.001  -- Rate at which PID constants are updated
+tuning_active = true  -- Whether automatic PID tuning is enabled
+
+-- Function to dynamically tune the PID constants
+function tune_pid(error, previous_error, derivative)
+    -- Check if tuning is active
+		sim_heartbeat = 303561
+    if tuning_active then
+        -- If the system is oscillating, decrease Kp
+        if math.abs(error) > math.abs(previous_error) then
+            Kp = Kp - learning_rate * math.abs(error - previous_error)
+        else
+            Kp = Kp + learning_rate * math.abs(error - previous_error)
+        end
+sim_heartbeat = 303562
+        -- If the error is accumulating, adjust Ki
+        if math.abs(integral) > 0.1 then  -- Adjust threshold based on system behavior
+            Ki = Ki - learning_rate * integral
+        else
+            Ki = Ki + learning_rate * integral
+        end
+				sim_heartbeat = 303563
+        -- Adjust Kd based on error rate of change (derivative)
+        if math.abs(derivative) > 0.1 then  -- Adjust threshold based on system behavior
+            Kd = Kd + learning_rate * derivative
+        else
+            Kd = Kd - learning_rate * derivative
+        end
+				sim_heartbeat = 303564
+
+        -- Ensure PID constants don't go negative
+        if Kp < 0 then Kp = 0.01 end
+        if Ki < 0 then Ki = 0.0 end  -- Some systems may not need integral control
+        if Kd < 0 then Kd = 0.0 end  -- Some systems may not need derivative control
+
+				sim_heartbeat = 303565
+				debug_afk_p = Kp
+				debug_afk_i = Ki
+				debug_afk_d = Kd
+				sim_heartbeat = 303566
+        -- Print the new values for debugging (you can remove this in final version)
+        print(string.format("New PID Constants: Kp = %.5f, Ki = %.5f, Kd = %.5f", Kp, Ki, Kd))
+    end
+end
+
+
+function calculateAFK()
+	sim_heartbeat = 3031
+	if (jas_auto_afk_mode >= 1 and afk_prev_state == 0 ) then
+		current_th = dr_throttle[0]
+		afk_prev_state = 1
+	end
+	if (jas_auto_afk_mode == 0) then
+		afk_prev_state = 0
+	end
+		sim_heartbeat = 3032
+	
+	
+	if (dr_gear == 1 and jas_auto_afk_mode == 1) then
+		-- Byt läge till alfa12 när landstället fälls ner om afk va aktiv innan
+		jas_auto_afk_mode = 2
+		jas_pratorn_tal_alfa12 = 1
+	end
+	sim_heartbeat = 3033
+	if (dr_gear == 0 and jas_auto_afk_mode >= 2) then
+		-- Byt läge till vanlig afk om stället fälls upp igen
+		jas_auto_afk_mode = 1
+		jas_auto_afk = dr_airspeed_kts_pilot
+		if (jas_auto_afk<172) then
+			jas_auto_afk = 172
+		end
+	end
+	sim_heartbeat = 3034
+	--dr_override_throttles = 1
+	alpha_prev = myfilter(alpha_prev, sim_true_alpha, 100)
+	sim_heartbeat = 3034
+	if (jas_auto_afk_mode == 1) then
+		
+		
+		
+		
+		
+	elseif (jas_auto_afk_mode == 2 and jas_a14 == 0) then
+		--alfa 12
+		
+		alpha_delta = 11.8-alpha_prev
+		jas_auto_afk = dr_airspeed_kts_pilot - alpha_delta*10
+		jas_auto_afk = myfilter(speed_prev, jas_auto_afk, 100)
+		jas_auto_afk = 136
+		speed_prev = jas_auto_afk
+		
+
+	elseif (jas_auto_afk_mode >= 2 and jas_a14 == 1) then
+		-- alfa 15.5
+		
+		alpha_delta = 15.3-alpha_prev
+		jas_auto_afk = dr_airspeed_kts_pilot - alpha_delta*10
+		jas_auto_afk = myfilter(speed_prev, jas_auto_afk, 100)
+		speed_prev = jas_auto_afk
+		
+	else
+		
+		
+	end
+	sim_heartbeat = 3035	
+	if (jas_auto_afk >= 1 and jas_auto_afk_mode >= 1) then
+		
+		dr_override_throttles = 1
+		
+		error = jas_auto_afk - dr_airspeed_kts_pilot
+		
+		demand = constrain(PIDth(error), 0.0,1.0)
+		dr_throttle_use[0] = demand
+		-- dr_throttle_burner[0] = constrain( (demand-0.9)*10, 0.0,1.0)
+		sim_heartbeat = 30351
+		-- Get current airspeed in meters per second
+		local current_speed = dr_airspeed_kts_pilot
+
+		-- Calculate speed error (difference between target and current speed)
+		local error = jas_auto_afk - current_speed
+
+		-- Proportional term
+		local P = Kp * error
+sim_heartbeat = 30352
+		-- Integral term (accumulate the error over time)
+		integral = integral + error * dt
+		local I = Ki * integral
+
+		-- Derivative term (rate of change of error)
+		local derivative = (error - previous_error) / dt
+		local D = Kd * derivative
+sim_heartbeat = 30353
+		-- Calculate PID output for throttle adjustment
+		local throttle_adjustment = P + I + D
+
+		-- Clamp the throttle adjustment to avoid sudden changes
+		if throttle_adjustment > max_throttle_change then
+		    throttle_adjustment = max_throttle_change
+		elseif throttle_adjustment < -max_throttle_change then
+		    throttle_adjustment = -max_throttle_change
+		end
+sim_heartbeat = 30354
+		-- Update the throttle based on the PID output
+		local throttle = dr_throttle_use[0] + throttle_adjustment
+
+		-- Clamp throttle to range [0.0, 1.0]
+		if throttle > 1.0 then throttle = 1.0 end
+		if throttle < 0.0 then throttle = 0.0 end
+sim_heartbeat = 30355
+		-- Set the new throttle value
+		dr_throttle_use[0] = throttle
+	sim_heartbeat = 30356	
+	tune_pid(error, previous_error, derivative)
+	sim_heartbeat = 30357	
+		-- Store the current error for the next iteration (for derivative term)
+		previous_error = error
+		
+		
+		if (dr_throttle[0]>current_th+0.1 or dr_throttle[0]<current_th-0.1) then
+			-- stäng av auto throttle om någon rör vid gasen
+			jas_auto_afk_mode = 0
+		end
+	else
+		dr_override_throttles = 0
+		--dr_throttle_use[0] = dr_throttle[0]
+	end
+end
+
+
 heartbeat = 0
 function before_physics() 
 	sim_heartbeat = 300
@@ -681,10 +943,12 @@ function before_physics()
 	sim_heartbeat = 301
 	sim_heartbeat = 302
 	update_dataref()
-	sim_heartbeat = 303
-	
 	sim_heartbeat = 304
 	update_buttons()
+	
+	sim_heartbeat = 303
+	calculateAFK()
+	
 	sim_heartbeat = 305
 	update_lamps()
 	sim_heartbeat = 306
