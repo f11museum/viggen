@@ -325,38 +325,7 @@ function blink1sFunc()
 		blink1s = 0
 	end
 end
--- function myGetAlpha() 
--- 
---  	vx = sim_acf_vx
--- 	vy = sim_acf_vy
--- 	vz = sim_acf_vz
--- 	pitch = sim_pitch
--- 
--- 	length = math.sqrt(vy * vy + vx * vx + vz * vz)
--- 	if (length > 1.0) then
--- 		alpha = math.asin(vy / length)
--- 		alpha = pitch - math.deg(alpha)
--- 		return alpha
--- 	else 
--- 		return 0.0
--- 	end
--- end
--- 
--- function myGetFlightAngle() 
--- 
--- 	vx = sim_acf_vx
--- 	vy = sim_acf_vy
--- 	vz = sim_acf_vz
--- 	pitch = sim_pitch
--- 
--- 	length = math.sqrt(vy * vy + vx * vx + vz * vz)
--- 	if (length > 1.0) then
--- 		angle = math.asin(vy / length)
--- 		return math.deg(angle)
--- 	else 
--- 		return 0.0
--- 	end
--- end
+
 
 -- Våra program funktioner
 sim_FRP = 1
@@ -377,21 +346,11 @@ function update_dataref()
 	sim_nose_gear_depress = dr_nose_gear_depress
 	-- XLuaSetNumber(XLuaFindDataRef("JAS/system/logic/heartbeat"), 403)
 	sim_speedbrake_ratio = getnumber(dr_speedbrake_ratio)
-	-- sim_braking_ratio = getnumber(dr_braking_ratio)
-	-- sim_braking_ratio_left = getnumber(dr_braking_ratio_left)
-	-- sim_braking_ratio_right = getnumber(dr_braking_ratio_right)
-	-- sim_airspeed_kts_pilot = getnumber(dr_airspeed_kts_pilot)
-	-- sim_gear = getnumber(dr_gear)
-	-- sim_altitude = getnumber(dr_altitude)
+
     
     sim_master_caution = getnumber(dr_master_caution)
     sim_master_warning = getnumber(dr_master_warning)
     sim_gear_warning = getnumber(dr_gear_warning)
-	
-	-- XLuaSetNumber(XLuaFindDataRef("JAS/system/logic/heartbeat"), 404)
-	
-	
-	-- XLuaSetNumber(XLuaFindDataRef("JAS/system/logic/heartbeat"), 405)
 	
 	-- sim_jas_auto_mode = getnumber(dr_jas_auto_mode)
 	sim_jas_auto_alt = getnumber(dr_jas_auto_alt)
@@ -1161,7 +1120,7 @@ function before_physics()
 	sim_heartbeat = 307
 	prick()
 	sim_heartbeat = 308
-	--vu22()
+	vu22()
 	sim_heartbeat = 309
 	--fusk()
 	sim_heartbeat = 310
