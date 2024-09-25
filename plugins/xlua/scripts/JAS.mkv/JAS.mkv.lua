@@ -104,6 +104,7 @@ end
 
 blink1s = 0
 blink025s = 0
+blink020s = 0
 blinktimer = 0
 function blink1sFunc()
 	sim_heartbeat = 400
@@ -121,6 +122,12 @@ function blink1sFunc()
 	else 
 		blink025s = 0
 	end
+  t2 = math.floor(blinktimer*5)
+  if (t2 % 2 == 0) then
+    blink020s = 1
+  else 
+    blink020s = 0
+  end
 	sim_heartbeat = 499
 end
 
@@ -168,16 +175,21 @@ function mkv()
     tidkvar = sim_radar_alt / sim_vy
     d_tid = tidkvar
   	sim_mkv_heartbeat = 407
-    if (tidkvar <0 and tidkvar > -12 ) then
+    if (tidkvar <0 and tidkvar > -7 ) then
       larm = 1
       jas_sys_mkv_eta = -tidkvar
     end
+    
+    -- Bottenvarning: Om radarhöjden är halva lufthöjden ges höjdvarning 
+    -- if (radaralt < seaalt/2) then
+    --   larm = 1
+    -- end
   end
   sim_mkv_heartbeat = 408
 	jas_sys_mkv_larm = larm
 	aj_sys_mkv_larm = larm
   if larm == 1 then
-    jas_io_frontpanel_lamp_hojdvarn = blink025s
+    jas_io_frontpanel_lamp_hojdvarn = blink020s
   else
     jas_io_frontpanel_lamp_hojdvarn = 0
   end
