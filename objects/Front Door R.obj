@@ -327,8 +327,8 @@ IDX	228
 
 ATTR_no_cull
 ANIM_begin
-ANIM_trans 0 0 0 0 0.08 0 80 -60 sim/aircraft/gear/acf_gear_door_ang_now[1]
-ANIM_rotate 0 -0.02 1 0 -140 80 -60 sim/aircraft/gear/acf_gear_door_ang_now[1]
+ANIM_trans 0 0 0 0 0.08 0 0 1 AJ37/geardoors/nose
+ANIM_rotate 0 -0.02 1 0 -140 0 1 AJ37/geardoors/nose
 TRIS	0 834
 ANIM_end
 

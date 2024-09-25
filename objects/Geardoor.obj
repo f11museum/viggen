@@ -2709,12 +2709,12 @@ ANIM_begin
 ANIM_end
 ANIM_begin
 	ANIM_trans	   0.6241   -0.8790    3.5627	   0.6241   -0.8790    3.5627	0 0	no_ref
-	ANIM_rotate	   0.0020   -0.0685   -0.9977	  0.00  120	92.0 5.0	sim/aircraft/gear/acf_gear_door_ang_now[3]
+	ANIM_rotate	   0.0020   -0.0685   -0.9977	  0.00  120	0.0 1.0	AJ37/geardoors/right
 	TRIS	6288 723
 ANIM_end
 ANIM_begin
 	ANIM_trans	  -0.6240   -0.8790    3.5627	  -0.6240   -0.8790    3.5627	0 0	no_ref
-	ANIM_rotate	   0.0019    0.0685    0.9977	  0.00  120	-92.0 -5.0	sim/aircraft/gear/acf_gear_door_ang_now[0]
+	ANIM_rotate	   0.0019    0.0685    0.9977	  0.00  120	0.0 1.0	AJ37/geardoors/left
 	TRIS	7011 723
 ANIM_end
 

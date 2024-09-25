@@ -2089,7 +2089,7 @@ ATTR_no_cull
 ATTR_shiny_rat	0.75
 ANIM_begin
 	ANIM_trans	   0.0000    0.8511   -1.3640	   0.0000    0.8511   -1.3640	0 0	no_ref
-	ANIM_rotate	   1.0000    0.0000    0.0000	  0.00  60.00	0 1	sim/flightmodel/controls/sbrkrat
+	ANIM_rotate	   1.0000    0.0000    0.0000	  0.00  60.00	0 1	sim/flightmodel2/misc/canopy_open_ratio
 	TRIS	0 7206
 ANIM_end
 
