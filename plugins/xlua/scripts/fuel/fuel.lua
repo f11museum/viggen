@@ -166,26 +166,56 @@ end
 run_at_interval(totalFuel, 1.0)
 
 function EBKLampor()
+	-- if dr_burning > 0 then
+	-- 
+	-- 	if dr_burning < 0.25 then
+	-- 		aj37_ebk_zon1 = 1
+	-- 		aj37_ebk_zon2 = 0
+	-- 		aj37_ebk_zon3 = 0
+	-- 	elseif dr_burning < 0.52 then
+	-- 		aj37_ebk_zon1 = 1
+	-- 		aj37_ebk_zon2 = 1
+	-- 		aj37_ebk_zon3 = 0
+	-- 	elseif dr_burning < 1.1 then
+	-- 		aj37_ebk_zon1 = 1
+	-- 		aj37_ebk_zon2 = 1
+	-- 		aj37_ebk_zon3 = 1
+	-- 	end
+	-- else 
+	-- 	aj37_ebk_zon1 = 0
+	-- 	aj37_ebk_zon2 = 0
+	-- 	aj37_ebk_zon3 = 0
+	-- end
 	if dr_burning > 0 then
-		
-		if dr_burning < 0.25 then
-			aj37_ebk_zon1 = 1
-			aj37_ebk_zon2 = 0
-			aj37_ebk_zon3 = 0
-		elseif dr_burning < 0.52 then
-			aj37_ebk_zon1 = 1
-			aj37_ebk_zon2 = 1
-			aj37_ebk_zon3 = 0
-		elseif dr_burning < 1.1 then
+		if dr_throttle_pos > 0.958 then
 			aj37_ebk_zon1 = 1
 			aj37_ebk_zon2 = 1
 			aj37_ebk_zon3 = 1
+		elseif dr_throttle_pos > 0.935 then
+			aj37_ebk_zon1 = 1
+			aj37_ebk_zon2 = 1
+			aj37_ebk_zon3 = 0
+		elseif dr_throttle_pos > 0.9 then
+			aj37_ebk_zon1 = 1
+			aj37_ebk_zon2 = 0
+			aj37_ebk_zon3 = 0
+		elseif dr_throttle_pos <= 0.9 then
+			aj37_ebk_zon1 = 0
+			aj37_ebk_zon2 = 0
+			aj37_ebk_zon3 = 0
+		else
+			aj37_ebk_zon1 = 0
+			aj37_ebk_zon2 = 0
+			aj37_ebk_zon3 = 0
 		end
-	else 
+	else
 		aj37_ebk_zon1 = 0
 		aj37_ebk_zon2 = 0
 		aj37_ebk_zon3 = 0
 	end
+	
+	
+	
 	JAS_io_aj37_lamp_zon1 = aj37_ebk_zon1
 	JAS_io_aj37_lamp_zon2 = aj37_ebk_zon2
 	JAS_io_aj37_lamp_zon3 = aj37_ebk_zon3
