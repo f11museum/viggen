@@ -1359,42 +1359,42 @@ IDX	898
 ATTR_no_cull
 ANIM_begin
 	ANIM_trans	   4.1080   -0.5481    7.6380	   4.1080   -0.5481    7.6380	0 0	no_ref
-	ANIM_rotate	   1.0000    0.0000    0.0000	 30.00 -30.00	30.0 -30.0	sim/flightmodel/controls/mwing15_ail2def
+	ANIM_rotate	   1.0000    0.0000    0.0000	 30.00 -30.00	30.0 -30.0	sim/flightmodel/controls/wing4r_ail1def
 	TRIS	0 546
 ANIM_end
 ANIM_begin
 	ANIM_trans	   2.9331   -0.5481    7.6380	   2.9331   -0.5481    7.6380	0 0	no_ref
-	ANIM_rotate	   1.0000    0.0000    0.0000	 30.00 -30.00	30.0 -30.0	sim/flightmodel/controls/mwing13_ail2def
+	ANIM_rotate	   1.0000    0.0000    0.0000	 30.00 -30.00	30.0 -30.0	sim/flightmodel/controls/wing4r_elv1def
 	TRIS	546 546
 ANIM_end
 ANIM_begin
 	ANIM_trans	   2.2250   -0.5481    7.6380	   2.2250   -0.5481    7.6380	0 0	no_ref
-	ANIM_rotate	   1.0000    0.0000    0.0000	 30.00 -30.00	30.0 -30.0	sim/flightmodel/controls/mwing11_elv1def
+	ANIM_rotate	   1.0000    0.0000    0.0000	 30.00 -30.00	30.0 -30.0	sim/flightmodel/controls/wing4r_elv1def
 	TRIS	1092 546
 ANIM_end
 ANIM_begin
 	ANIM_trans	   1.4986   -0.5481    7.6379	   1.4986   -0.5481    7.6380	0 0	no_ref
-	ANIM_rotate	   1.0000    0.0000    0.0000	 30.00 -30.00	30.0 -30.0	sim/flightmodel/controls/mwing11_elv1def
+	ANIM_rotate	   1.0000    0.0000    0.0000	 30.00 -30.00	30.0 -30.0	sim/flightmodel/controls/wing4r_elv1def
 	TRIS	1638 546
 ANIM_end
 ANIM_begin
 	ANIM_trans	  -1.4990   -0.5481    7.6380	  -1.4990   -0.5481    7.6380	0 0	no_ref
-	ANIM_rotate	   1.0000    0.0000    0.0000	 30.00 -30.00	30.0 -30.0	sim/flightmodel/controls/mwing12_elv1def
+	ANIM_rotate	   1.0000    0.0000    0.0000	 30.00 -30.00	30.0 -30.0	sim/flightmodel/controls/wing4l_elv1def
 	TRIS	2184 546
 ANIM_end
 ANIM_begin
 	ANIM_trans	  -2.2248   -0.5481    7.6380	  -2.2248   -0.5481    7.6380	0 0	no_ref
-	ANIM_rotate	   1.0000    0.0000    0.0000	 30.00 -30.00	30.0 -30.0	sim/flightmodel/controls/mwing12_elv1def
+	ANIM_rotate	   1.0000    0.0000    0.0000	 30.00 -30.00	30.0 -30.0	sim/flightmodel/controls/wing4l_elv1def
 	TRIS	2730 546
 ANIM_end
 ANIM_begin
 	ANIM_trans	  -2.9330   -0.5481    7.6380	  -2.9330   -0.5481    7.6380	0 0	no_ref
-	ANIM_rotate	   1.0000    0.0000    0.0000	 30.00 -30.00	30.0 -30	sim/flightmodel/controls/mwing14_ail2def
+	ANIM_rotate	   1.0000    0.0000    0.0000	 30.00 -30.00	30.0 -30	sim/flightmodel/controls/wing4l_elv1def
 	TRIS	3276 546
 ANIM_end
 ANIM_begin
 	ANIM_trans	  -4.1080   -0.5481    7.6380	  -4.1080   -0.5481    7.6380	0 0	no_ref
-	ANIM_rotate	   1.0000    0.0000    0.0000	 30.00 -30.00	30.0 -30.0	sim/flightmodel/controls/mwing16_ail2def
+	ANIM_rotate	   1.0000    0.0000    0.0000	 30.00 -30.00	30.0 -30.0	sim/flightmodel/controls/wing4l_ail1def
 	TRIS	3822 546
 ANIM_end
 
