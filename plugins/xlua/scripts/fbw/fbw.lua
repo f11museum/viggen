@@ -274,8 +274,8 @@ function passThrough()
   m_left_elevator = constrain(-elevator + roll, -30,30.0)
   m_right_elevator = constrain(-elevator - roll, -30,30.0)
 
-  m_left_aileron = constrain(s_left_elevator  -jas_fbw_extra_pitch, -30,30.0)  * fademach * fadespeed
-  m_right_aileron = constrain(s_right_elevator  -jas_fbw_extra_pitch, -30,30.0) * fademach * fadespeed
+  m_left_aileron = constrain(  -jas_fbw_extra_pitch, -30,30.0)  * fademach * fadespeed
+  m_right_aileron = constrain(  -jas_fbw_extra_pitch, -30,30.0) * fademach * fadespeed
 
   -- m_left_aileron = constrain(m_left_aileron + (roll), -30,30.0) 
   -- m_right_aileron = constrain(m_right_aileron - (roll) , -30,30.0)
@@ -289,8 +289,8 @@ function passThrough()
   dr_left_elevator = s_left_elevator
   dr_right_elevator = s_right_elevator
 
-  dr_left_aileron = s_left_aileron
-  dr_right_aileron = s_right_aileron
+  dr_left_aileron = s_left_elevator + s_left_aileron
+  dr_right_aileron = s_right_elevator + s_right_aileron
     sim_heartbeat = 3035
     
   --Roder
