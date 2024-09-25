@@ -219,6 +219,7 @@ JAS/el/stromskena/batteri_c	int	sys	unit	unit2	AFPL krikiska block samt broms
 hydr1	lampa	vat	JAS/lampprov/p1	JAS/vat/power	Description
 
 ## Lampor Viggen
+skak	lampa	aj37	JAS/lampprov/p1	JAS/vat/power	Skak i spaken
 zon1	lampa	aj37	JAS/lampprov/p1	JAS/vat/power	EBK Zon1
 zon2	lampa	aj37	JAS/lampprov/p1	JAS/vat/power	EBK Zon2
 zon3	lampa	aj37	JAS/lampprov/p1	JAS/vat/power	EBK Zon3
@@ -278,6 +279,9 @@ a14			lampa	frontpanel	JAS/lampprov/p1	JAS/vat/power	D28
 afk			lampa	frontpanel	JAS/lampprov/p1	JAS/vat/power	D29
 ks			lampa	frontpanel	JAS/lampprov/p1	JAS/vat/power	D? ej klar
 gears		lampa	frontpanel	JAS/lampprov/p1	JAS/vat/power	D? ej klar
+gear1		lampa	frontpanel	JAS/lampprov/p1	JAS/vat/power	D? ej klar
+gear2		lampa	frontpanel	JAS/lampprov/p1	JAS/vat/power	D? ej klar
+gear3		lampa	frontpanel	JAS/lampprov/p1	JAS/vat/power	D? ej klar
 hojdvarn	lampa	frontpanel	JAS/lampprov/p1	JAS/vat/power	M60 3:PB4
 
 ## Knappar

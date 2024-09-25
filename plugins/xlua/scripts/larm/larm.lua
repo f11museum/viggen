@@ -14,7 +14,26 @@ dr_nose_gear_depress = find_dataref("sim/flightmodel/parts/tire_vrt_def_veh[0]")
 dr_left_gear_depress = find_dataref("sim/flightmodel/parts/tire_vrt_def_veh[1]") 
 dr_right_gear_depress = find_dataref("sim/flightmodel/parts/tire_vrt_def_veh[2]") 
 
+dr_gear_deployratio1 = find_dataref("sim/flightmodel2/gear/deploy_ratio[0]") 
+dr_gear_deployratio2 = find_dataref("sim/flightmodel2/gear/deploy_ratio[1]") 
+dr_gear_deployratio3 = find_dataref("sim/flightmodel2/gear/deploy_ratio[2]") 
+
+dr_ias = find_dataref("sim/flightmodel/position/indicated_airspeed")
+dr_alpha = find_dataref("sim/flightmodel/position/alpha") 
+dr_g_nrml = find_dataref("sim/flightmodel/forces/g_nrml") 
+
 jas_vat_power = find_dataref("JAS/vat/power")
+jas_fuel_pct = find_dataref("JAS/fuel/pct", "number")
+vat_larm_bramgd = find_dataref("JAS/vat/larm/bramgd")
+
+io_lamp_gears = find_dataref("JAS/io/frontpanel/lamp/gears")
+io_lamp_gear1 = find_dataref("JAS/io/frontpanel/lamp/gear1")
+io_lamp_gear2 = find_dataref("JAS/io/frontpanel/lamp/gear2")
+io_lamp_gear3 = find_dataref("JAS/io/frontpanel/lamp/gear3")
+
+io_lamp_bramgd = find_dataref("JAS/io/vat/lamp/bramgd")
+
+io_lamp_skak = find_dataref("JAS/io/aj37/lamp/skak")
 
 sim_FRP = find_dataref("sim/operation/misc/frame_rate_period")
 dr_mach = find_dataref("sim/flightmodel/misc/machno")
@@ -121,6 +140,49 @@ function transsonik()
   
 end
 
+function landstallLampa()
+	
+	if dr_gear_deployratio1 == 1 then
+		io_lamp_gear1 = 1
+	else
+		io_lamp_gear1 = 0
+	end
+	if dr_gear_deployratio2 == 1 then
+		io_lamp_gear2 = 1
+	else
+		io_lamp_gear2 = 0
+	end
+	if dr_gear_deployratio3 == 1 then
+		io_lamp_gear3 = 1
+	else
+		io_lamp_gear3 = 0
+	end
+	if dr_gear_deployratio1 == 1 and dr_gear_deployratio2 == 1 and dr_gear_deployratio3 == 1  then
+		io_lamp_gears = 1
+	else
+		io_lamp_gears = 0
+	end
+	
+	if jas_fuel_pct < 24 then
+		vat_larm_bramgd = 1
+	else
+		vat_larm_bramgd = 0
+	end
+end
+
+function spakSkak()
+	
+	io_lamp_skak = 0
+	if (dr_ias>50 and dr_alpha>18) then
+		io_lamp_skak = 1
+	end
+	if (dr_g_nrml > 6.1) then
+		io_lamp_skak = 1
+
+	end
+end
+
+
 sim_heartbeat = 300
 heartbeat = 0
 function before_physics() 
@@ -135,6 +197,10 @@ function before_physics()
   sim_heartbeat = 304
   jas_vat_power = 1
   sim_heartbeat = 305 
+	landstallLampa()
+  sim_heartbeat = 306 
+	spakSkak()
+  sim_heartbeat = 307
   
   
   
