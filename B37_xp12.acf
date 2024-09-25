@@ -19648,7 +19648,7 @@ P acf/_ap_crs_src 0
 P acf/_apt_req_plane 0
 P acf/_asi_is_kts 1
 P acf/_author Bengt F11 Airfoils, flight control system
-P acf/_auto_cowl_flaps_EQ 32766
+P acf/_auto_cowl_flaps_EQ 32765
 P acf/_auto_engage_BC_deg 0.000000000
 P acf/_auto_omega_fire 2.000000000
 P acf/_auto_omega_idle 0.000000000
@@ -21102,7 +21102,7 @@ P acf/_ff_rat_idle_JET 0.100000001
 P acf/_ff_rat_idle_PRP 0.000000000
 P acf/_ff_rat_idle_turbo 0.000000000
 P acf/_file_writer_version 121100
-P acf/_fixed_max/0 4000.000000000
+P acf/_fixed_max/0 0.000000000
 P acf/_fixed_max/1 0.000000000
 P acf/_fixed_max/2 0.000000000
 P acf/_fixed_max/3 0.000000000
@@ -21112,7 +21112,6 @@ P acf/_fixed_max/6 0.000000000
 P acf/_fixed_max/7 0.000000000
 P acf/_fixed_max/8 0.000000000
 P acf/_fixed_max/count 9
-P acf/_fixed_name/0 Extravikt
 P acf/_fixed_name/count 9
 P acf/_fixed_ref/0,0 0.000000000
 P acf/_fixed_ref/0,1 0.000000000
