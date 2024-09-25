@@ -325,7 +325,7 @@ function update_buttons()
 	sim_heartbeat = 600
 	
 	-- AFK
-	if (jas_button_afk == 1) then
+	if (jas_button_alfa == 1) then
 		longpress = longpress + sim_FRP
 	elseif (longpress>0.01 and longpress<1.0 and jas_button_afk == 0) then
 		-- kort knapptryck
@@ -340,7 +340,7 @@ function update_buttons()
 	end
 	
 	
-	if (jas_button_afk == 1 and longpress>1.0) then
+	if (jas_button_afk == 1) then
 		sim_heartbeat = 601
 		if (knapp2 == 0) then
 			sim_heartbeat = 602
