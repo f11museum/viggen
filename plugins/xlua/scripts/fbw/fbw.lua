@@ -274,8 +274,8 @@ function passThrough()
   m_left_elevator = constrain(-elevator + roll, -30,30.0)
   m_right_elevator = constrain(-elevator - roll, -30,30.0)
 
-  m_left_aileron = constrain(  -jas_fbw_extra_pitch, -30,30.0)  * fademach * fadespeed
-  m_right_aileron = constrain(  -jas_fbw_extra_pitch, -30,30.0) * fademach * fadespeed
+  m_left_aileron = constrain(  -jas_fbw_extra_pitch +jas_fbw_extra_roll, -30,30.0)  * fademach * fadespeed
+  m_right_aileron = constrain(  -jas_fbw_extra_pitch -jas_fbw_extra_roll, -30,30.0) * fademach * fadespeed
 
   -- m_left_aileron = constrain(m_left_aileron + (roll), -30,30.0) 
   -- m_right_aileron = constrain(m_right_aileron - (roll) , -30,30.0)

@@ -531,14 +531,15 @@ end
 function autopilot()
 	-- autopilot_hold_alti = dr_altitude
 	if (jas_auto_mode == 3) then
-		delta = aj37_flight_angle
+		--delta = aj37_flight_angle
 		-- if (delta>0.1) then
 		-- 	dr_trim_pitch = dr_trim_pitch - delta*0.00002
 		-- elseif (delta < -0.1) then
 		-- 	dr_trim_pitch = dr_trim_pitch - delta*0.00002
 		-- end
-		dr_trim_pitch = dr_trim_pitch - delta*0.0005
-		dr_trim_pitch = constrain(dr_trim_pitch, -1.0,1.0)
+	--	dr_trim_pitch = dr_trim_pitch - delta*0.0005
+		--dr_trim_pitch = constrain(dr_trim_pitch, -1.0,1.0)
+		jas_fbw_extra_roll = -constrain(dr_acf_roll, -10.0,10.0)*0.5
 	end
 	
 	
@@ -952,10 +953,11 @@ function before_physics()
 	sim_heartbeat = 305
 	update_lamps()
 	sim_heartbeat = 306
-	--autopilot()
+	autopilot()
+	sim_heartbeat = 307
 	jas_fbw_extra_pitch = calculateAutopilot(dr_yoke_pitch_ratio*10)
   
-	sim_heartbeat = 307
+	sim_heartbeat = 308
   calculateRudder()
   
 	sim_heartbeat = 312

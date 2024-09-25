@@ -456,13 +456,13 @@ end
 power_state = 0
 function buttonPower()
 	sim_battery_on[0] = sim_jas_button_hstrom
-    if (sim_jas_button_hstrom == 1) then
+	if (sim_jas_button_hstrom == 1) then
 		if (power_state == 0) then
 			power_state = 1
-        	simCMD_apu_gen_on:once()
+    	simCMD_apu_gen_on:once()
 			simCMD_gen_on:once()
 		end
-    else
+  else
 		if (power_state == 1) then
 			power_state = 0
 			simCMD_apu_gen_off:once()
@@ -473,7 +473,7 @@ end
 
 start_state = 0
 function buttonStart()
-    if (sim_jas_button_start == 1) then
+	if (sim_jas_button_start == 1) then
 		if (start_state == 0) then
 			start_state = 1
 			simCMD_apu_bleed_air:once()
@@ -1107,7 +1107,7 @@ function before_physics()
   --jas_ti_land_head = 263
   --jas_ti_land_lmod = 1
   
-    --update_buttons()
+  update_buttons()
 	sim_heartbeat = 302
   lampAirbrake()
     --lampMasterWarning()
