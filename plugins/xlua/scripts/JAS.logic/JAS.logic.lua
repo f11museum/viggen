@@ -1023,7 +1023,7 @@ function prick()
 			
 			
 			if (ax<glapp and ax>-glapp) then
-				prickx = constrain(interpolate(0, -target_heading, glapp, prickx, ax), -50, 55)
+				prickx = constrain(interpolate(0, -target_heading, glapp, prickx, ax)/2, -50, 55)
 			end
 		end
 
@@ -1069,7 +1069,7 @@ function prick()
 		target_bearing =  bearing(dr_lat, dr_lon, target_lat, target_lon)
 
 		target_heading = dr_acf_truehdg - target_bearing 
-		prickx = fix180(-target_heading)
+		prickx = fix180(-target_heading)/2
 		
 		-- Prick Y
 		alt_diff = jas_si_nav_alt - dr_alt
