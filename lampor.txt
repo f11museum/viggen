@@ -37,6 +37,9 @@ AJ37/system/mkv/help			int		sys	unit	unit2	Description
 # Master larm
 AJ37/system/larm/master		int		sys	unit	unit2	Description
 
+# Servon
+AJ37/servo/speed			float	sys	unit	unit2	Servo hastighet
+
 # Variabler
 JAS/huvudmod			int		sys	unit	unit2	Description
 JAS/fuel/total				float	sys	unit	unit2	Beräknad total bränsle
