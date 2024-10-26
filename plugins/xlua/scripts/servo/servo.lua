@@ -12,8 +12,8 @@ dr_ias = find_dataref("sim/flightmodel/position/indicated_airspeed")
 io_servo_speed = find_dataref("AJ37/servo/speed")
 
 
-debug1 = create_dataref("AJ37/servo/debug1", "number")
-
+debug1 = create_dataref("AJ37/servo/debugRaw", "number")
+debug2 = create_dataref("AJ37/servo/debugKmh", "number")
 
 -- Knappar
 
@@ -52,23 +52,29 @@ function servoSpeed()
 	kmh = dr_ias * 1.852
 	servo = kmh
   if kmh < 300 then
-    servo = interpolate(150, 0.89, 300, 0.635, kmh)
+    servo = interpolate(150, 800, 300, 1020, kmh)
   
   elseif kmh < 400 then
-    servo = interpolate(300, 0.635, 400, 0.51, kmh)
+    servo = interpolate(300, 1020, 400, 1130, kmh)
   
   elseif kmh < 600 then
-    servo = interpolate(400, 0.51, 600, 0.34, kmh)
+    servo = interpolate(400, 1130, 600, 1300, kmh)
   
   elseif kmh < 1000 then
-    servo = interpolate(600, 0.34, 1000, 0.12, kmh)
+    servo = interpolate(600, 1300, 1000, 1600, kmh)
   
-  elseif kmh < 1300 then
-    servo = interpolate(1000, 0.12, 1300, 0.0, kmh)
+  elseif kmh < 1400 then
+    servo = interpolate(1000, 1600, 1400, 1850, kmh)
+  elseif kmh < 1500 then
+    servo = interpolate(1400, 1850, 1500, 1900, kmh)
+  
+  elseif kmh < 24000 then
+    servo = 1900
   end
-  debug1 = kmh
-  servo = interpolate(0, 750, 0.89, 2020, servo)
-  io_servo_speed = constrain(servo, 700, 2020)
+  debug1 = servo
+  debug2 = kmh
+  --servo = interpolate(0, 750, 0.89, 2020, servo)
+  io_servo_speed = constrain(servo, 750, 1900)
   
 end
 
