@@ -8,13 +8,17 @@ sim_heartbeat = 100
 
 
 dr_ias = find_dataref("sim/flightmodel/position/indicated_airspeed")
-
+jas_fuel_pct = find_dataref("JAS/fuel/pct", "number")
+sim_heartbeat = 101
 io_servo_speed = find_dataref("AJ37/servo/speed")
+io_servo_fuel = find_dataref("AJ37/servo/fuel")
 
-
+sim_heartbeat = 102
 debug1 = create_dataref("AJ37/servo/debugRaw", "number")
 debug2 = create_dataref("AJ37/servo/debugKmh", "number")
+debug3 = create_dataref("AJ37/servo/debugFuel", "number")
 
+sim_heartbeat = 103
 -- Knappar
 
 
@@ -50,7 +54,7 @@ end
 
 function servoSpeed()
 	kmh = dr_ias * 1.852
-	servo = kmh
+	servo = 1500
   if kmh < 300 then
     servo = interpolate(150, 800, 300, 1020, kmh)
   
@@ -78,6 +82,21 @@ function servoSpeed()
   
 end
 
+function servoFuel()
+	fuel = jas_fuel_pct
+	
+  if fuel < 300 then
+    servo = interpolate(0, 750, 100, 1885, fuel)
+  
+  else
+    servo = 1000
+  
+  end
+  debug3 = servo
+  
+  io_servo_fuel = constrain(servo, 750, 2350)
+  
+end
 
 sim_heartbeat = 300
 heartbeat = 0
@@ -86,7 +105,7 @@ function before_physics()
   sim_heartbeat = 301
   servoSpeed()
   sim_heartbeat = 302
-  
+  servoFuel()
   sim_heartbeat = 303 
   
   sim_heartbeat = 304

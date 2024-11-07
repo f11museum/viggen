@@ -39,6 +39,7 @@ AJ37/system/larm/master		int		sys	unit	unit2	Description
 
 # Servon
 AJ37/servo/speed			float	sys	unit	unit2	Servo hastighet
+AJ37/servo/fuel			float	sys	unit	unit2	Servo bränslemätare
 
 # Variabler
 JAS/huvudmod			int		sys	unit	unit2	Description

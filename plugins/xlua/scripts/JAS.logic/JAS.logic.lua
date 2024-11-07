@@ -274,6 +274,11 @@ function flight_start()
 		--sim_jas_button_start = 1
 		sim_jas_button_apu_io = 1
 	end
+	
+	jas_ti_land_lat = 58.789772033691406
+	jas_ti_land_lon = 16.92980194091797
+	jas_ti_land_alt = 42.669918
+	jas_ti_land_head = 263.05276
 end
 
 function aircraft_unload()
