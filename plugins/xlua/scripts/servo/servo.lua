@@ -16,10 +16,7 @@ io_servo_fuel = find_dataref("AJ37/servo/fuel")
 sim_heartbeat = 102
 debug1 = create_dataref("AJ37/servo/debugRaw", "number")
 debug2 = create_dataref("AJ37/servo/debugKmh", "number")
-debug3 = create_dataref("AJ37/servo/debugFuel", "number")
-
-sim_heartbeat = 103
--- Knappar
+debug3 = create_dataref("AJ37/servo/debugFuel", "number")-- Knappar
 
 
 -- Lampor 
@@ -54,21 +51,21 @@ end
 
 function servoSpeed()
 	kmh = dr_ias * 1.852
-	servo = 1500
+	servo = kmh
   if kmh < 300 then
-    servo = interpolate(150, 800, 300, 1020, kmh)
+    servo = interpolate(150, 800, 300, 1070, kmh)
   
   elseif kmh < 400 then
-    servo = interpolate(300, 1020, 400, 1130, kmh)
+    servo = interpolate(300, 1070, 400, 1180, kmh)
   
   elseif kmh < 600 then
-    servo = interpolate(400, 1130, 600, 1300, kmh)
+    servo = interpolate(400, 1180, 600, 1370, kmh)
   
   elseif kmh < 1000 then
-    servo = interpolate(600, 1300, 1000, 1600, kmh)
+    servo = interpolate(600, 1370, 1000, 1655, kmh)
   
   elseif kmh < 1400 then
-    servo = interpolate(1000, 1600, 1400, 1850, kmh)
+    servo = interpolate(1000, 1655, 1400, 1850, kmh)
   elseif kmh < 1500 then
     servo = interpolate(1400, 1850, 1500, 1900, kmh)
   
@@ -77,10 +74,13 @@ function servoSpeed()
   end
   debug1 = servo
   debug2 = kmh
+  --servo = math.floor(servo/5)
+  --servo = servo * 5
   --servo = interpolate(0, 750, 0.89, 2020, servo)
   io_servo_speed = constrain(servo, 750, 1900)
   
 end
+
 
 function servoFuel()
 	fuel = jas_fuel_pct
