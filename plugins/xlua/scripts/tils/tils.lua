@@ -13,6 +13,9 @@ jas_ti_menu_currentmenu = find_dataref("JAS/ti/menu/menu")
 io_aj37_knapp_tils_on = find_dataref("JAS/io/aj37/knapp/tils_on")
 io_aj37_knapp_tils_off = find_dataref("JAS/io/aj37/knapp/tils_off")
 
+io_aj37_knapp_multi_nav = find_dataref("JAS/io/aj37/knapp/multi_nav")
+io_aj37_knapp_multi_tils = find_dataref("JAS/io/aj37/knapp/multi_tils")
+io_aj37_knapp_multi_po = find_dataref("JAS/io/aj37/knapp/multi_po")
 -- Lampor 
 io_aj37_lamp_tils_on = find_dataref("JAS/io/aj37/lamp/tils_on")
 io_aj37_lamp_tils_off = find_dataref("JAS/io/aj37/lamp/tils_off")
@@ -32,17 +35,23 @@ end
 function do_on_exit()
 
 end
-
+multi_tils_prev = 0
 function checkButtons()
   
   if io_aj37_knapp_tils_on == 1 then
     aj37_tils_mode = 1
+    io_aj37_knapp_tils_on =0
   end
 
   if io_aj37_knapp_tils_off == 1 then    
     aj37_tils_mode = 0
+    io_aj37_knapp_tils_off = 0
   end
-  
+  if io_aj37_knapp_multi_tils ~= multi_tils_prev then
+    aj37_tils_mode = io_aj37_knapp_multi_tils
+    multi_tils_prev = io_aj37_knapp_multi_tils
+  end
+
   if aj37_tils_mode == 1 then
     io_aj37_lamp_tils_on = 1
     io_aj37_lamp_tils_off = 0
@@ -56,12 +65,17 @@ function checkButtons()
 end
 
 
+
 sim_heartbeat = 300
 heartbeat = 0
 function before_physics() 
 
   sim_heartbeat = 301
   checkButtons()
+  sim_heartbeat = 302
+  
+
+sim_heartbeat = 303
   
   sim_heartbeat = 399
   sim_heartbeat = heartbeat
