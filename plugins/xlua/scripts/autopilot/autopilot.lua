@@ -15,6 +15,10 @@ dr_yoke_roll_ratio = find_dataref("sim/joystick/yoke_roll_ratio")
 dr_yoke_heading_ratio = find_dataref("sim/joystick/yoke_heading_ratio") 
 dr_yoke_pitch_ratio = find_dataref("sim/joystick/yoke_pitch_ratio") 
 
+dr_braking_ratio_left = find_dataref("sim/cockpit2/controls/left_brake_ratio") 
+
+dr_braking_ratio_right  = find_dataref("sim/cockpit2/controls/right_brake_ratio") 
+
 dr_override_surfaces = find_dataref("sim/operation/override/override_control_surfaces") 
 dr_override_wheel = find_dataref("sim/operation/override/override_wheel_steer") 
 dr_tire_steer = find_dataref("sim/flightmodel2/gear/tire_steer_command_deg[0]") 
@@ -42,6 +46,9 @@ dr_gear = find_dataref("sim/cockpit/switches/gear_handle_status")
 dr_groundspeed = find_dataref("sim/flightmodel/position/groundspeed") 
 dr_true_speed = find_dataref("sim/flightmodel/position/true_airspeed") 
 dr_mach = find_dataref("sim/flightmodel/misc/machno")
+
+dr_m_total = find_dataref("sim/flightmodel/weight/m_total")
+
 
 dr_altitude = find_dataref("sim/flightmodel/misc/h_ind") 
 
@@ -540,6 +547,9 @@ function autopilot()
 	--	dr_trim_pitch = dr_trim_pitch - delta*0.0005
 		--dr_trim_pitch = constrain(dr_trim_pitch, -1.0,1.0)
 		jas_fbw_extra_roll = -constrain(dr_acf_roll, -10.0,10.0)*0.5
+	
+	else
+		jas_fbw_extra_roll = 0
 	end
 	
 	
@@ -852,21 +862,34 @@ function calculateAFK()
 		
 	elseif (jas_auto_afk_mode == 2 and jas_a14 == 0) then
 		--alfa 12
+		--kmh = dr_ias * 1.852
 		
-		alpha_delta = 11.8-alpha_prev
+		alpha_delta = 11.5-alpha_prev
 		jas_auto_afk = dr_airspeed_kts_pilot - alpha_delta*10
-		jas_auto_afk = myfilter(speed_prev, jas_auto_afk, 100)
-		jas_auto_afk = 136
-		speed_prev = jas_auto_afk
-		
+		fart1 = myfilter(speed_prev, jas_auto_afk, 100)
+
+		fart = interpolate(11000, 255, 19000, 340, dr_m_total)
+		fart2 = fart / 1.852
+		speed_prev = fart1
+		if (fart1 > fart2) then
+			fart2 = fart1
+		end
+		jas_auto_afk = fart2
 
 	elseif (jas_auto_afk_mode >= 2 and jas_a14 == 1) then
 		-- alfa 15.5
 		
-		alpha_delta = 15.3-alpha_prev
+		alpha_delta = 15.0-alpha_prev
 		jas_auto_afk = dr_airspeed_kts_pilot - alpha_delta*10
-		jas_auto_afk = myfilter(speed_prev, jas_auto_afk, 100)
-		speed_prev = jas_auto_afk
+		fart1 = myfilter(speed_prev, jas_auto_afk, 100)
+		fart = interpolate(11000, 225, 15000, 260, dr_m_total)
+		fart2 = fart / 1.852
+
+		speed_prev = fart1
+		if (fart1 > fart2) then
+			fart2 = fart1
+		end
+		jas_auto_afk = fart2
 		
 	else
 		
@@ -950,6 +973,7 @@ function before_physics()
 	sim_heartbeat = 303
 	calculateAFK()
 	
+	bromsar()
 	sim_heartbeat = 305
 	update_lamps()
 	sim_heartbeat = 306
