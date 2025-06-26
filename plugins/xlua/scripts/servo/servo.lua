@@ -52,22 +52,23 @@ end
 function servoSpeed()
 	kmh = dr_ias * 1.852
 	servo = kmh
-  if kmh < 300 then
-    servo = interpolate(150, 800, 300, 1070, kmh)
-  
+  if kmh < 200 then
+    servo = interpolate(150, 870, 200, 940, kmh)
+  elseif kmh < 300 then
+    servo = interpolate(200, 940, 300, 1070, kmh)
   elseif kmh < 400 then
-    servo = interpolate(300, 1070, 400, 1180, kmh)
+    servo = interpolate(300, 1070, 400, 1210, kmh)
   
   elseif kmh < 600 then
-    servo = interpolate(400, 1180, 600, 1370, kmh)
+    servo = interpolate(400, 1210, 600, 1390, kmh)
   
   elseif kmh < 1000 then
-    servo = interpolate(600, 1370, 1000, 1655, kmh)
+    servo = interpolate(600, 1390, 1000, 1675, kmh)
   
   elseif kmh < 1400 then
-    servo = interpolate(1000, 1655, 1400, 1850, kmh)
+    servo = interpolate(1000, 1675, 1400, 1880, kmh)
   elseif kmh < 1500 then
-    servo = interpolate(1400, 1850, 1500, 1900, kmh)
+    servo = interpolate(1400, 1880, 1500, 1900, kmh)
   
   elseif kmh < 24000 then
     servo = 1900
@@ -77,7 +78,7 @@ function servoSpeed()
   --servo = math.floor(servo/5)
   --servo = servo * 5
   --servo = interpolate(0, 750, 0.89, 2020, servo)
-  io_servo_speed = constrain(servo, 750, 1900)
+  io_servo_speed = constrain(servo, 840, 1900)
   
 end
 
