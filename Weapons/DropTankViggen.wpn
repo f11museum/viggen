@@ -3004,7 +3004,7 @@ P shell/_mis_thrust/2 0.000000000
 P shell/_mis_thrust/count 3
 P shell/_obj_offset_Z 9.317584991
 P shell/_part_area_rule 8.500000000
-P shell/_part_cd 0.209999993
+P shell/_part_cd 0.509999990
 P shell/_part_phi 0.000000000
 P shell/_part_psi 0.000000000
 P shell/_part_rad 1.410761118

@@ -15311,13 +15311,13 @@ P _wing/6/_geo_xyz/0,0,2 32.480560303
 P _wing/6/_geo_xyz/0,1,0 0.000000000
 P _wing/6/_geo_xyz/0,1,1 -1.530981302
 P _wing/6/_geo_xyz/0,1,2 33.269309998
-P _wing/6/_geo_xyz/0,10,0 0.000000000
+P _wing/6/_geo_xyz/0,10,0 -0.000000000
 P _wing/6/_geo_xyz/0,10,1 -2.132530689
 P _wing/6/_geo_xyz/0,10,2 39.038555145
-P _wing/6/_geo_xyz/0,11,0 0.000000000
+P _wing/6/_geo_xyz/0,11,0 -0.000000000
 P _wing/6/_geo_xyz/0,11,1 -2.019437075
 P _wing/6/_geo_xyz/0,11,2 35.102386475
-P _wing/6/_geo_xyz/0,12,0 0.000000000
+P _wing/6/_geo_xyz/0,12,0 -0.000000000
 P _wing/6/_geo_xyz/0,12,1 -1.845929861
 P _wing/6/_geo_xyz/0,12,2 33.266559601
 P _wing/6/_geo_xyz/0,13,0 0.000000000
@@ -18789,7 +18789,7 @@ P _wing/7/_yawbr/count 10
 P _wing/7/_yawbr_hyd0123 0
 P _wing/count 48
 P _wpna/0/_v10_att_body -1
-P _wpna/0/_v10_att_file_stl placeholder.wpn
+P _wpna/0/_v10_att_file_stl DropTankViggen.wpn
 P _wpna/0/_v10_att_gear -1
 P _wpna/0/_v10_att_phi_ref 0.000000000
 P _wpna/0/_v10_att_psi_ref 0.000000000
@@ -19648,7 +19648,6 @@ P acf/_ap_crs_src 0
 P acf/_apt_req_plane 0
 P acf/_asi_is_kts 1
 P acf/_author Bengt F11 Airfoils, flight control system
-P acf/_auto_cowl_flaps_EQ 32765
 P acf/_auto_engage_BC_deg 0.000000000
 P acf/_auto_omega_fire 2.000000000
 P acf/_auto_omega_idle 0.000000000
@@ -21101,7 +21100,7 @@ P acf/_feathered_pitch 0.000000000
 P acf/_ff_rat_idle_JET 0.100000001
 P acf/_ff_rat_idle_PRP 0.000000000
 P acf/_ff_rat_idle_turbo 0.000000000
-P acf/_file_writer_version 121100
+P acf/_file_writer_version 122103
 P acf/_fixed_max/0 0.000000000
 P acf/_fixed_max/1 0.000000000
 P acf/_fixed_max/2 0.000000000
@@ -21281,10 +21280,10 @@ P acf/_fuel_sel_cmnd_valid_pos_rgt/5 -1
 P acf/_fuel_sel_cmnd_valid_pos_rgt/count 6
 P acf/_g1000_keyboard_EQ -1
 P acf/_gear_EQ 1
-P acf/_gear_can_ret_on_ground 0
 P acf/_gear_exposed_when_retracted 0.000000000
 P acf/_gear_extend_protect 1
 P acf/_gear_pumps 1.000000000
+P acf/_gear_retract_protect 1
 P acf/_gear_warn_above_flap_rat 0.000000000
 P acf/_gear_warn_below_kias 0.000000000
 P acf/_gear_warn_below_thro_pct 0.000000000
@@ -21425,6 +21424,7 @@ P acf/_hud_region_index 0
 P acf/_hud_tapes_track_vector 0
 P acf/_hyd_PTU_type 0
 P acf/_hyd_brakes 3
+P acf/_hyd_brakes_abs 1
 P acf/_hyd_ele_pump_0123/0 1
 P acf/_hyd_ele_pump_0123/1 0
 P acf/_hyd_ele_pump_0123/2 0
@@ -21459,6 +21459,8 @@ P acf/_hyd_max_p_ele 401.000000000
 P acf/_hyd_max_p_eng 401.000000000
 P acf/_hyd_max_p_rot 0.000000000
 P acf/_hyd_nw_steer 3
+P acf/_hyd_park_brake_toe 1
+P acf/_hyd_park_brake_trap 0
 P acf/_hyd_prop_brake 0
 P acf/_hyd_prop_pump_0123/0 0
 P acf/_hyd_prop_pump_0123/1 0
@@ -21604,6 +21606,7 @@ P acf/_n2_power_curve 2.000000000
 P acf/_name F11 Viggen SF 37 XP12
 P acf/_new_plot_XP3D_cock/0 0
 P acf/_new_plot_outer_acf/0 0
+P acf/_no_default_chocks 0
 P acf/_no_default_contact_fx 0
 P acf/_no_default_engine_fx 0
 P acf/_no_default_gear_fx 0
@@ -21626,7 +21629,7 @@ P acf/_num_generators 1
 P acf/_num_inverters 2
 P acf/_num_prop 1
 P acf/_num_xmsn 1
-P acf/_o2_bottle_liter 0
+P acf/_o2_bottle_liter 0.000000000
 P acf/_oilT_is_C 1
 P acf/_ott_asi_kts_off_for_full_def 15.000000000
 P acf/_ott_asi_sec_into_future 1.000000000
@@ -22049,7 +22052,7 @@ P acf/_tank_rat/6 0.000000000
 P acf/_tank_rat/7 0.000000000
 P acf/_tank_rat/8 0.000000000
 P acf/_tank_rat/count 9
-P acf/_tank_rat_def/0 0.500000000
+P acf/_tank_rat_def/0 1.000000000
 P acf/_tank_rat_def/1 0.500000000
 P acf/_tank_rat_def/2 0.500000000
 P acf/_tank_rat_def/3 0.500000000
