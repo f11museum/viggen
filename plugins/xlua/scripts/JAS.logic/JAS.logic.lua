@@ -73,6 +73,18 @@ dr_gear_warning = XLuaFindDataRef("sim/cockpit2/annunciators/gear_warning")
 
 
 sim_fuel1 = find_dataref("sim/flightmodel/weight/m_fuel_total")
+
+
+--Externa Lampor
+
+dr_beacon_lights_on = find_dataref("sim/cockpit/electrical/beacon_lights_on")
+dr_cockpit_lights_on = find_dataref("sim/cockpit/electrical/cockpit_lights_on")
+dr_landing_lights_on = find_dataref("sim/cockpit/electrical/landing_lights_on")
+dr_nav_lights_on = find_dataref("sim/cockpit/electrical/nav_lights_on")
+dr_strobe_lights_on = find_dataref("sim/cockpit/electrical/strobe_lights_on")
+dr_taxi_light_on = find_dataref("sim/cockpit/electrical/taxi_light_on")
+
+
 -- Egna JAS dataref
 
 XLuaSetNumber(XLuaFindDataRef("JAS/system/logic/heartbeat"), 110)
@@ -1095,7 +1107,25 @@ function prick()
 	sim_heartbeat = 799
 end
 
-
+function belysning()
+	sim_jas_button_elnik = 1
+	if (sim_jas_button_elnik == 1) then
+		dr_beacon_lights_on = 1
+		dr_cockpit_lights_on = 1
+		dr_landing_lights_on = 1
+		dr_nav_lights_on = 1
+		dr_strobe_lights_on = 1
+		dr_taxi_light_on = 1
+	else
+		dr_beacon_lights_on = 0
+		dr_cockpit_lights_on = 0
+		dr_landing_lights_on = 0
+		dr_nav_lights_on = 0
+		dr_strobe_lights_on = 0
+		dr_taxi_light_on = 0
+	end
+	
+end
 
 heartbeat = 0
 function before_physics() 
@@ -1127,8 +1157,10 @@ function before_physics()
 	sim_heartbeat = 308
 	vu22()
 	sim_heartbeat = 309
-	--fusk()
+	--fusk()	
 	sim_heartbeat = 310
+	belysning()
+	sim_heartbeat = 311
 	--systest()
     -- XLuaSetNumber(XLuaFindDataRef("JAS/system/logic/heartbeat"), 303)
     -- XLuaSetNumber(dr_status, heartbeat) 
