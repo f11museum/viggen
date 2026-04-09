@@ -128,25 +128,7 @@ end
 
 eta_prev = 0
 total_prev = 0
-function totalFuel()
-	-- sim_heartbeat = 4000
-	total = 0.0
-	total = total + dr_m_fuel_total
-	-- sim_heartbeat = 400
-	total = total + getFuelInTank(0)
-	-- sim_heartbeat = 401
-	total = total + getFuelInTank(2)
-	-- sim_heartbeat = 402
-	total = total + getFuelInTank(3)
-	total = total + getFuelInTank(4)
-	total = total + getFuelInTank(5)
-	sim_heartbeat = 406
-	aj37_fuel_total = total
-	
-	sim_heartbeat = 4061
-	aj37_fuel_pct = aj37_fuel_total /(4200)*100
-	jas_fuel_pct = aj37_fuel_pct
-	sim_heartbeat = 4062
+function etaFuel()
 	-- d_fuel = aj37_fuel
 	if (dr_fuel_flow[0]>0) then
 		eta = total / dr_fuel_flow[0]
@@ -162,9 +144,39 @@ function totalFuel()
 	
 	aj37_fuel_b_per_min = ((total_prev - aj37_fuel_total)*60.0) /42
 	total_prev = aj37_fuel_total
+
 end
 
-run_at_interval(totalFuel, 1.0)
+function totalFuel()
+
+	-- sim_heartbeat = 4000
+	total = 0.0
+	total = total + dr_m_fuel_total
+
+	-- sim_heartbeat = 400
+	total = total + getFuelInTank(0)
+
+	-- sim_heartbeat = 401
+	total = total + getFuelInTank(2)
+
+	-- sim_heartbeat = 402
+	total = total + getFuelInTank(3)
+
+	total = total + getFuelInTank(4)
+
+	total = total + getFuelInTank(5)
+	sim_heartbeat = 406
+	aj37_fuel_total = total
+
+
+	sim_heartbeat = 4061
+	aj37_fuel_pct = aj37_fuel_total /(4200)*100
+	jas_fuel_pct = aj37_fuel_pct
+	sim_heartbeat = 4062
+
+end
+
+run_at_interval(etaFuel, 1.0)
 
 function EBKLampor()
 	-- if dr_burning > 0 then
@@ -236,6 +248,7 @@ end
 heartbeat = 0
 function before_physics() 
 	sim_heartbeat = 300
+	jas_fuel_pct = 1
 	--dr_m_fuel1 = 2341
 	dr_override_fuel = 1
 	if dr_burning > 0.02 then
@@ -251,10 +264,16 @@ function before_physics()
 	
 	aj37_fuel_sfc_kgs_kN = dr_fuel_flow[0]/dr_thrust*1000
 	sim_heartbeat = 305
+	jas_fuel_pct = 2
 	EBKLampor()
 	sim_heartbeat = 306
 	fusktanka()
 	sim_heartbeat = 307
+	jas_fuel_pct = 3
+        totalFuel()
+	--jas_fuel_pct = 4
+	sim_heartbeat = 308
+	etaFuel()
 	sim_heartbeat = heartbeat
 	heartbeat = heartbeat + 1
 end
