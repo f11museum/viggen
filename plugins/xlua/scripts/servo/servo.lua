@@ -86,9 +86,12 @@ end
 function servoFuel()
 	fuel = jas_fuel_pct
 	
-  if fuel < 300 then
-    servo = interpolate(0, 750, 100, 1885, fuel)
-  
+  if fuel < 20 then
+    servo = interpolate(0, 740, 20, 970, fuel)
+  elseif fuel < 50 then
+    servo = interpolate(20, 970, 50, 1275, fuel)
+  elseif fuel < 300 then
+    servo = interpolate(50, 1275, 100, 1860, fuel)
   else
     servo = 1000
   
