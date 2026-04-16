@@ -23,6 +23,8 @@ dr_override_surfaces = find_dataref("sim/operation/override/override_control_sur
 dr_override_wheel = find_dataref("sim/operation/override/override_wheel_steer") 
 dr_tire_steer = find_dataref("sim/flightmodel2/gear/tire_steer_command_deg[0]") 
 dr_nose_speed = find_dataref("sim/flightmodel/misc/nosewheel_speed") 
+dr_alpha = find_dataref("sim/flightmodel/position/alpha") 
+
 
 dr_pitch = find_dataref("sim/flightmodel/position/theta") 
 dr_acf_vx = find_dataref("sim/flightmodel/position/local_vx") 
@@ -767,19 +769,19 @@ speed_prev = 0
 afk_prev_state = 0
 
 -- PID controller variables
-Kp = 3.87  -- Proportional gain
-Ki = 0.01  -- Integral gain
-Kd = 0.18  -- Derivative gain
+Kp = 0.1  -- Proportional gain
+Ki = 0.001  -- Integral gain
+Kd = 0.158  -- Derivative gain
 
 previous_error = 0  -- Error in the previous frame
 integral = 0  -- Accumulated error over time
 dt = 0.05  -- Time step between throttle updates (seconds)
-max_throttle_change = 0.01  -- Maximum throttle change per frame to avoid sudden jumps
+max_throttle_change = 0.001  -- Maximum throttle change per frame to avoid sudden jumps
 
 
 -- Tuning parameters
 learning_rate = 0.001  -- Rate at which PID constants are updated
-tuning_active = true  -- Whether automatic PID tuning is enabled
+tuning_active = false  -- Whether automatic PID tuning is enabled
 
 -- Function to dynamically tune the PID constants
 function tune_pid(error, previous_error, derivative)
@@ -819,7 +821,7 @@ sim_heartbeat = 303562
 				debug_afk_d = Kd
 				sim_heartbeat = 303566
         -- Print the new values for debugging (you can remove this in final version)
-        print(string.format("New PID Constants: Kp = %.5f, Ki = %.5f, Kd = %.5f", Kp, Ki, Kd))
+        --print(string.format("New PID Constants: Kp = %.5f, Ki = %.5f, Kd = %.5f", Kp, Ki, Kd))
     end
 end
 
@@ -846,8 +848,8 @@ function calculateAFK()
 		-- Byt läge till vanlig afk om stället fälls upp igen
 		jas_auto_afk_mode = 1
 		jas_auto_afk = dr_airspeed_kts_pilot
-		if (jas_auto_afk<172) then
-			jas_auto_afk = 172
+		if (jas_auto_afk<297) then
+			jas_auto_afk = 297
 		end
 	end
 	sim_heartbeat = 3034
@@ -870,10 +872,10 @@ function calculateAFK()
 
 		fart = interpolate(11000, 255, 19000, 340, dr_m_total)
 		fart2 = fart / 1.852
-		speed_prev = fart1
-		if (fart1 > fart2) then
-			fart2 = fart1
-		end
+		--speed_prev = fart1
+		--if (fart1 > fart2) then
+		--	fart2 = fart1
+		--end
 		jas_auto_afk = fart2
 
 	elseif (jas_auto_afk_mode >= 2 and jas_a14 == 1) then
@@ -882,13 +884,14 @@ function calculateAFK()
 		alpha_delta = 15.0-alpha_prev
 		jas_auto_afk = dr_airspeed_kts_pilot - alpha_delta*10
 		fart1 = myfilter(speed_prev, jas_auto_afk, 100)
+		
 		fart = interpolate(11000, 225, 15000, 260, dr_m_total)
 		fart2 = fart / 1.852
 
-		speed_prev = fart1
-		if (fart1 > fart2) then
-			fart2 = fart1
-		end
+		--speed_prev = fart1
+		--if (fart1 > fart2) then
+		--	fart2 = fart1
+		--end
 		jas_auto_afk = fart2
 		
 	else
@@ -899,24 +902,25 @@ function calculateAFK()
 	if (jas_auto_afk >= 1 and jas_auto_afk_mode >= 1) then
 		
 		dr_override_throttles = 1
+		if (dr_gear == 1 and jas_a14 == 1) then
+			error = -(15.5 - dr_alpha)*2
+		else
+			error = jas_auto_afk - dr_airspeed_kts_pilot
+		end
 		
-		error = jas_auto_afk - dr_airspeed_kts_pilot
-		
-		demand = constrain(PIDth(error), 0.0,1.0)
+		demand = constrain(PIDth(error), 0.1,1.0)
 		dr_throttle_use[0] = demand
 		-- dr_throttle_burner[0] = constrain( (demand-0.9)*10, 0.0,1.0)
 		sim_heartbeat = 30351
-		-- Get current airspeed in meters per second
-		local current_speed = dr_airspeed_kts_pilot
-
-		-- Calculate speed error (difference between target and current speed)
-		local error = jas_auto_afk - current_speed
 
 		-- Proportional term
 		local P = Kp * error
 sim_heartbeat = 30352
 		-- Integral term (accumulate the error over time)
 		integral = integral + error * dt
+		if Ki *integral > 0.30 then integral = 0.30/Ki end
+		if Ki *integral < -0.00 then integral = -0.00/Ki end
+
 		local I = Ki * integral
 
 		-- Derivative term (rate of change of error)
@@ -926,19 +930,23 @@ sim_heartbeat = 30353
 		-- Calculate PID output for throttle adjustment
 		local throttle_adjustment = P + I + D
 
+		debug_afk_p = P
+				debug_afk_i = I
+				debug_afk_d = D
 		-- Clamp the throttle adjustment to avoid sudden changes
-		if throttle_adjustment > max_throttle_change then
-		    throttle_adjustment = max_throttle_change
-		elseif throttle_adjustment < -max_throttle_change then
-		    throttle_adjustment = -max_throttle_change
-		end
+		--if throttle_adjustment > max_throttle_change then
+		--    throttle_adjustment = max_throttle_change
+		--elif throttle_adjustment < -max_throttle_change then
+		--    throttle_adjustment = -max_throttle_change
+		--end
 sim_heartbeat = 30354
 		-- Update the throttle based on the PID output
 		local throttle = dr_throttle_use[0] + throttle_adjustment
+		throttle = 0.5 + throttle_adjustment
 
 		-- Clamp throttle to range [0.0, 1.0]
-		if throttle > 1.0 then throttle = 1.0 end
-		if throttle < 0.0 then throttle = 0.0 end
+		if throttle > 2.0 then throttle = 2.0 end
+		if throttle < 0.1 then throttle = 0.1 end
 sim_heartbeat = 30355
 		-- Set the new throttle value
 		dr_throttle_use[0] = throttle
@@ -947,7 +955,8 @@ sim_heartbeat = 30355
 	sim_heartbeat = 30357	
 		-- Store the current error for the next iteration (for derivative term)
 		previous_error = error
-		
+
+
 		
 		if (dr_throttle[0]>current_th+0.1 or dr_throttle[0]<current_th-0.1) then
 			-- stäng av auto throttle om någon rör vid gasen

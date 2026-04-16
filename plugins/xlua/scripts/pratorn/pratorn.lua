@@ -61,8 +61,8 @@ sim_heartbeat = 103
 
 
 -- Lokala variabler
-mach_lo = 0.97
-mach_hi = 1.04
+mach_lo = 0.985
+mach_hi = 1.01
 mach_pass = 0
 mach_mute = 0
 
@@ -87,7 +87,7 @@ end
 
 function stall()
 	
-	if (dr_ias>50 and dr_alpha>18) then
+	if (dr_ias>50 and dr_alpha>17.5) then
 		jas_pratorn_larm_gransvarde = 1
   else
     
@@ -97,7 +97,7 @@ end
 
 function maxg()
 	
-	if (dr_g_nrml > 6.1) then
+	if (dr_g_nrml > 6.0) then
 		jas_pratorn_larm_gransvarde_g = 1
   else
     jas_pratorn_larm_gransvarde_g = 0

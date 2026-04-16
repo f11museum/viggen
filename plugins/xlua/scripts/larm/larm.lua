@@ -173,10 +173,10 @@ end
 function spakSkak()
 	
 	io_lamp_skak = 0
-	if (dr_ias>50 and dr_alpha>18) then
+	if (dr_ias>50 and dr_alpha>18.5) then
 		io_lamp_skak = 1
 	end
-	if (dr_g_nrml > 6.1) then
+	if (dr_g_nrml > 7.1) then
 		io_lamp_skak = 1
 
 	end
