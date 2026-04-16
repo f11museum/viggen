@@ -807,12 +807,12 @@ function landingprick()
 			-- IP
 			ring_dist = 20000
 		end
-		if (ang >23 or ang <-23) then
-			sidkurs = 23
+		if (ang >24 or ang <-24) then
+			sidkurs = 24
 			if (ang<0) then
-				sidkurs = 23
+				sidkurs = 24
 			else
-				sidkurs = -23
+				sidkurs = -24
 			end
 			target_lat, target_lon = gpsAddDistance(jas_ti_land_lat ,jas_ti_land_lon, ring_dist, jas_ti_land_head+180+sidkurs)
 			jas_si_nav_course = jas_ti_land_head+180
