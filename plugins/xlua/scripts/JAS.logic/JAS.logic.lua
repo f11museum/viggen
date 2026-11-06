@@ -94,8 +94,8 @@ sim_jas_system_ess_startup = find_dataref("JAS/system/ess/startup")
 
 sim_jas_sys_test = find_dataref("JAS/io/vu22/knapp/syst")
 
-sim_jas_button_lt_kran = find_dataref("JAS/io/vu22/knapp/ltbra")
-sim_jas_button_hstrom = find_dataref("JAS/io/vu22/knapp/hstrom")
+sim_jas_button_lt_kran = find_dataref("JAS/io/leftpanel/knapp/ltkran")
+sim_jas_button_hstrom = find_dataref("JAS/io/leftpanel/knapp/mainpower")
 sim_jas_button_ess = find_dataref("JAS/io/vu22/knapp/ess")
 sim_jas_button_apu = find_dataref("JAS/io/vu22/knapp/apu")
 
@@ -104,7 +104,8 @@ sim_jas_button_hstrom_io = find_dataref("JAS/io/vu22/di/hstrom")
 sim_jas_button_ess_io = find_dataref("JAS/io/vu22/di/ess")
 sim_jas_button_apu_io = find_dataref("JAS/io/vu22/di/apu")
 
-sim_jas_button_start = find_dataref("JAS/io/frontpanel/knapp/start")
+sim_jas_button_start = find_dataref("JAS/io/leftpanel/knapp/start")
+sim_jas_button_generator = find_dataref("JAS/io/leftpanel/knapp/generator")
 
 sim_jas_vu22_falltank = find_dataref("JAS/io/vu22/knapp/falltank")
 
@@ -192,6 +193,10 @@ sim_apu_power = find_dataref("JAS/system/apu/power")
 sim_vat_power = find_dataref("JAS/vat/power")
 sim_vat_larm1 = find_dataref("JAS/vat/larm/larm1")
 
+sim_main_power = find_dataref("JAS/main/power")
+
+jas_startsequence = create_dataref("AJ37/system/fuel/startsequence", "number")
+
 jas_lampprov_p1 = find_dataref("JAS/lampprov/p1")
 jas_io_vu22_knapp_lampprov = find_dataref("JAS/io/vu22/knapp/lampprov")
 sim_systprov = find_dataref("JAS/io/vu22/knapp/syst")
@@ -230,9 +235,17 @@ dr_payload =  XLuaFindDataRef("sim/flightmodel/weight/m_fixed")
 sim_apu_n1 = find_dataref("sim/cockpit2/electrical/APU_N1_percent")
 sim_engine_n1 = find_dataref("sim/flightmodel2/engines/N1_percent")
 sim_battery_on = find_dataref("sim/cockpit2/electrical/battery_on")
+sim_generator_on = find_dataref("sim/cockpit2/electrical/generator_on")
 sim_power_bus_volt = find_dataref("sim/cockpit2/electrical/bus_volts")
 sim_fuel_tank_pump = find_dataref("sim/cockpit2/fuel/fuel_tank_pump_on")
 sim_fuel_pump = find_dataref("sim/cockpit/engine/fuel_pump_on")
+
+sim_engine_igniters_on = find_dataref("sim/cockpit/engine/igniters_on")
+sim_engine_n1 = find_dataref("sim/flightmodel/engine/ENGN_N1_")
+sim_engine_n2 = find_dataref("sim/flightmodel/engine/ENGN_N2_")
+sim_engine_mix = find_dataref("sim/cockpit2/engine/actuators/mixture_ratio")
+sim_engine_apu_running = find_dataref("sim/cockpit/engine/APU_running")
+sim_time = find_dataref("sim/time/total_flight_time_sec")
 
 sim_knapparfunkar = find_dataref("JAS/knapparfunkar")
 
@@ -278,6 +291,7 @@ function flight_start()
 	--logMsg("Flight started with LUA")
 	XLuaSetNumber(XLuaFindDataRef("JAS/system/logic/heartbeat"), 299)
 	
+	sim_knapparfunkar = 1
 	-- Set alla knappar på om knappar inte funkar
 	if (sim_knapparfunkar == 0) then
 		sim_jas_button_lt_kran_io = 1
@@ -473,34 +487,26 @@ end
 power_state = 0
 function buttonPower()
 	sim_battery_on[0] = sim_jas_button_hstrom
+	sim_main_power = sim_jas_button_hstrom
 	if (sim_jas_button_hstrom == 1) then
 		if (power_state == 0) then
 			power_state = 1
-    	simCMD_apu_gen_on:once()
-			simCMD_gen_on:once()
 		end
   else
 		if (power_state == 1) then
 			power_state = 0
-			simCMD_apu_gen_off:once()
-			simCMD_gen_off:once()
 		end
 	end
 end
 
 start_state = 0
+start_time = 0
 function buttonStart()
 	if (sim_jas_button_start == 1) then
-		if (start_state == 0) then
-			start_state = 1
-			simCMD_apu_bleed_air:once()
-			simCMD_engine_starter:start()
-		end
-	else
-		
-		if (start_state == 1) then
-			start_state = 0
-			simCMD_engine_starter:stop()
+		if (jas_startsequence == 0) then
+			
+			jas_startsequence = 1
+			start_time = sim_time
 		end
 	end
 end
@@ -517,6 +523,24 @@ function buttonLTKran()
 	end
 end
 
+generator_state = 0
+function buttonGenerator()
+	sim_generator_on[0] = sim_jas_button_generator
+	if (sim_jas_button_hstrom == 1) then
+		if (generator_state == 0) then
+			generator_state = 1
+    	simCMD_apu_gen_on:once()
+			simCMD_gen_on:once()
+		end
+  else
+		if (generator_state == 1) then
+			generator_state = 0
+			simCMD_apu_gen_off:once()
+			simCMD_gen_off:once()
+		end
+	end
+end
+
 knapp = 0
 function update_buttons()
     knapp = 0
@@ -524,6 +548,7 @@ function update_buttons()
     buttonPower()
     buttonStart()
     buttonLTKran()
+		buttonGenerator()
     
 	if (sim_jas_vu22_falltank == 1) then
 		simCMD_drop_tank:once()
@@ -1108,7 +1133,7 @@ function prick()
 end
 
 function belysning()
-	sim_jas_button_elnik = 1
+	sim_jas_button_elnik = sim_main_power
 	if (sim_jas_button_elnik == 1) then
 		dr_beacon_lights_on = 1
 		dr_cockpit_lights_on = 1
@@ -1127,14 +1152,55 @@ function belysning()
 	
 end
 
+function startsekvens()
+	sim_heartbeat = 3031
+	if (sim_main_power == 0) then
+		jas_startsequence = 0
+	end
+	sim_heartbeat = 3032
+	if (jas_startsequence == 1) then
+		sim_heartbeat = 3033
+		if (start_state == 0) then
+			start_state = 1
+			simCMD_engine_starter:start()
+			simCMD_apu_start:start()
+			simCMD_apu_bleed_air:once()
+		end
+		sim_heartbeat = 3034
+		if ((sim_engine_n2[0] > 40 and sim_engine_mix[0] > 0.5) or (sim_time>(start_time+30.0))) then
+			sim_heartbeat = 3035
+			sim_engine_igniters_on[0] = 1
+			jas_startsequence = 0
+			start_state = 0
+			simCMD_engine_starter:stop()
+			
+			simCMD_apu_start:stop()
+			-- stop apu
+			simCMD_apu_off:start()
+			simCMD_apu_off:once()
+		end
+		sim_heartbeat = 3036
+	else
+		if (sim_engine_apu_running == 1) then
+			simCMD_apu_start:stop()
+			-- stop apu
+			simCMD_apu_off:start()
+			simCMD_apu_off:once()
+		end
+	end
+	
+	if (sim_engine_mix[0] < 0.5 and sim_jas_button_lt_kran == 0) then
+		sim_engine_igniters_on[0] = 0
+	end
+	
+end
+
 heartbeat = 0
 function before_physics() 
 	sim_heartbeat = 300
 	blink1sFunc()
 	update_dataref()
 	sim_heartbeat = 301
-	sim_apu_power = 1
-  
 
   --jas_ti_land_lat = 58.789736111992106
   --jas_ti_land_lon = 16.929337430874178
@@ -1150,6 +1216,7 @@ function before_physics()
 	--lampAPUGar()
 	--sysDAP()
 	--sysESS()
+	startsekvens()
 	sim_heartbeat = 306
 	landingprick()
 	sim_heartbeat = 307
