@@ -257,15 +257,15 @@ function checkLarm()
 	-- updateLarm(1, 4, sim_hgen, dr_hgen_lamp, 1)
 	-- updateLarm(1, 5, sim_motor, dr_motor_lamp, 1)
 	-- updateLarm(1, 6, sim_dragkr, dr_dragkr_lamp, 0)
-	-- updateLarm(1, 7, sim_oljetr, dr_oljetr_lamp, 1)
+	updateLarm(1, 7, sim_oljetr, dr_oljetr_lamp, 1)
 	sim_heartbeat = 501
-	-- updateLarm(2, 3, sim_hydr1, dr_hydr1_lamp, 1)
+	updateLarm(2, 3, sim_hydr1, dr_hydr1_lamp, 1)
 	-- updateLarm(2, 4, sim_resgen, dr_resgen_lamp, 1)
 	-- updateLarm(2, 5, sim_mobrand, dr_mobrand_lamp, 1)
 	-- updateLarm(2, 6, sim_apu, dr_apu_lamp, 1)
 	sim_heartbeat = 502
 	-- updateLarm(3, 1, sim_styrsak, dr_styrsak_lamp, 1)
-	-- updateLarm(3, 4, sim_likstrm, dr_likstrm_lamp, 1)
+	updateLarm(3, 4, sim_likstrm, dr_likstrm_lamp, 1)
 	-- updateLarm(3, 5, sim_landst, dr_landst_lamp, 0)
 	-- updateLarm(3, 6, sim_bromsar, dr_bromsar_lamp, 0)
 	sim_heartbeat = 503

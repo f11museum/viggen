@@ -170,6 +170,8 @@ JAS/system/ess/startup		int	sys	unit	unit2	Description
 
 JAS/vat/power		int		sys	unit	unit2		Om systemet har ström
 
+JAS/main/power		int		sys	unit	unit2		Om systemet har ström
+
 JAS/vat/larm/larm1		int		sys	unit	unit2		Larm som inte behöver kvitteras
 JAS/vat/larm/larm2		int		sys	unit	unit2		Larm som behöver kviteras
 
@@ -223,14 +225,14 @@ JAS/el/stromskena/batteri_c	int	sys	unit	unit2	AFPL krikiska block samt broms
 hydr1	lampa	vat	JAS/lampprov/p1	JAS/vat/power	Description
 
 ## Lampor Viggen
-skak	lampa	aj37	JAS/lampprov/p1	JAS/vat/power	Skak i spaken
-zon1	lampa	aj37	JAS/lampprov/p1	JAS/vat/power	EBK Zon1
-zon2	lampa	aj37	JAS/lampprov/p1	JAS/vat/power	EBK Zon2
-zon3	lampa	aj37	JAS/lampprov/p1	JAS/vat/power	EBK Zon3
-ebk	lampa	aj37	JAS/lampprov/p1	JAS/vat/power	EBK AV/PÅ Används av IS
+skak	lampa	aj37	JAS/lampprov/p1	JAS/main/power	Skak i spaken
+zon1	lampa	aj37	JAS/lampprov/p1	JAS/main/power	EBK Zon1
+zon2	lampa	aj37	JAS/lampprov/p1	JAS/main/power	EBK Zon2
+zon3	lampa	aj37	JAS/lampprov/p1	JAS/main/power	EBK Zon3
+ebk	lampa	aj37	JAS/lampprov/p1	JAS/main/power	EBK AV/PÅ Används av IS
 
-reverser	lampa	aj37	JAS/lampprov/p1	JAS/vat/power	Reverserings lampa
-transsonik	lampa	aj37	JAS/lampprov/p1	JAS/vat/power	Transsonik lampa
+reverser	lampa	aj37	JAS/lampprov/p1	JAS/main/power	Reverserings lampa
+transsonik	lampa	aj37	JAS/lampprov/p1	JAS/main/power	Transsonik lampa
 
 tils_on	knapp	aj37	JAS/vu22/override/knappar	JAS/vat/power	TILS på, finns i is
 tils_off	knapp	aj37	JAS/vu22/override/knappar	JAS/vat/power	TILS av, finns i is
@@ -271,16 +273,18 @@ sand		knapp	vu22	JAS/vu22/override/knappar	JAS/vat/power	M16 1:PA0
 rhm			knapp	vu22	JAS/vu22/override/knappar	JAS/vat/power	M17 1:PA1
 termbatt	knapp	vu22	JAS/vu22/override/knappar	JAS/vat/power	M18 1:PA2
 
+
+
 # Frontpanel
 ## Lampor
 master1		lampa	frontpanel	JAS/lampprov/p1	JAS/vat/power	D22
 master2		lampa	frontpanel	JAS/lampprov/p1	JAS/vat/power	D23
 airbrake	lampa	frontpanel	JAS/lampprov/p1	JAS/vat/power	D24
-spak		lampa	frontpanel	JAS/lampprov/p1	JAS/vat/power	D25
-att			lampa	frontpanel	JAS/lampprov/p1	JAS/vat/power	D26
-hojd		lampa	frontpanel	JAS/lampprov/p1	JAS/vat/power	D27
-a14			lampa	frontpanel	JAS/lampprov/p1	JAS/vat/power	D28
-afk			lampa	frontpanel	JAS/lampprov/p1	JAS/vat/power	D29
+spak		lampa	frontpanel	JAS/lampprov/p1	JAS/main/power	D25
+att			lampa	frontpanel	JAS/lampprov/p1	JAS/main/power	D26
+hojd		lampa	frontpanel	JAS/lampprov/p1	JAS/main/power	D27
+a14			lampa	frontpanel	JAS/lampprov/p1	JAS/main/power	D28
+afk			lampa	frontpanel	JAS/lampprov/p1	JAS/main/power	D29
 ks			lampa	frontpanel	JAS/lampprov/p1	JAS/vat/power	D? ej klar
 gears		lampa	frontpanel	JAS/lampprov/p1	JAS/vat/power	D? ej klar
 gear1		lampa	frontpanel	JAS/lampprov/p1	JAS/vat/power	D? ej klar
@@ -297,7 +301,11 @@ fall		knapp	frontpanel	JAS/frontpanel/override/knappar	JAS/vat/power	D34
 afk			knapp	frontpanel	JAS/frontpanel/override/knappar	JAS/vat/power	D35
 alfa			knapp	frontpanel	JAS/frontpanel/override/knappar	JAS/vat/power	D35
 
-start		knapp	frontpanel	JAS/frontpanel/override/knappar	JAS/vat/power	ej klar
+start		knapp	leftpanel	JAS/frontpanel/override/knappar	JAS/vat/power	ej klar
+generator	knapp	leftpanel	JAS/vu22/override/knappar	JAS/vat/power	Viggen generator
+ltkran	knapp	leftpanel	JAS/vu22/override/knappar	JAS/vat/power	Viggen generator
+mainpower	knapp	leftpanel	JAS/vu22/override/knappar	JAS/vat/power	Viggen generator
+
 
 # ST Systemtablån
 ## Lampor inuti knapp

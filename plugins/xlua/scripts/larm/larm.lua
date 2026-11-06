@@ -23,8 +23,10 @@ dr_alpha = find_dataref("sim/flightmodel/position/alpha")
 dr_g_nrml = find_dataref("sim/flightmodel/forces/g_nrml") 
 
 jas_vat_power = find_dataref("JAS/vat/power")
+jas_main_power = find_dataref("JAS/main/power")
 jas_fuel_pct = find_dataref("JAS/fuel/pct", "number")
 vat_larm_bramgd = find_dataref("JAS/vat/larm/bramgd")
+vat_larm_likstrm = find_dataref("JAS/vat/larm/likstrm")
 
 io_lamp_gears = find_dataref("JAS/io/frontpanel/lamp/gears")
 io_lamp_gear1 = find_dataref("JAS/io/frontpanel/lamp/gear1")
@@ -163,13 +165,22 @@ function landstallLampa()
 		io_lamp_gears = 0
 	end
 	
+
+end
+
+function larm()
 	if jas_fuel_pct < 24 then
 		vat_larm_bramgd = 1
 	else
 		vat_larm_bramgd = 0
 	end
+	
+	if jas_main_power == 0 then
+		vat_larm_likstrm = 1
+	else
+		vat_larm_likstrm = 0
+	end
 end
-
 function spakSkak()
 	
 	io_lamp_skak = 0
@@ -195,7 +206,8 @@ function before_physics()
   sim_heartbeat = 303 
   transsonik()
   sim_heartbeat = 304
-  jas_vat_power = 1
+	larm()
+  jas_vat_power = jas_main_power
   sim_heartbeat = 305 
 	landstallLampa()
   sim_heartbeat = 306 
