@@ -245,6 +245,7 @@ sim_engine_n1 = find_dataref("sim/flightmodel/engine/ENGN_N1_")
 sim_engine_n2 = find_dataref("sim/flightmodel/engine/ENGN_N2_")
 sim_engine_mix = find_dataref("sim/cockpit2/engine/actuators/mixture_ratio")
 sim_engine_apu_running = find_dataref("sim/cockpit/engine/APU_running")
+sim_time = find_dataref("sim/time/total_flight_time_sec")
 
 sim_knapparfunkar = find_dataref("JAS/knapparfunkar")
 
@@ -499,10 +500,14 @@ function buttonPower()
 end
 
 start_state = 0
+start_time = 0
 function buttonStart()
 	if (sim_jas_button_start == 1) then
-		jas_startsequence = 1
-		
+		if (jas_startsequence == 0) then
+			
+			jas_startsequence = 1
+			start_time = sim_time
+		end
 	end
 end
 
@@ -1148,19 +1153,22 @@ function belysning()
 end
 
 function startsekvens()
-	
+	sim_heartbeat = 3031
 	if (sim_main_power == 0) then
 		jas_startsequence = 0
 	end
+	sim_heartbeat = 3032
 	if (jas_startsequence == 1) then
+		sim_heartbeat = 3033
 		if (start_state == 0) then
 			start_state = 1
 			simCMD_engine_starter:start()
 			simCMD_apu_start:start()
 			simCMD_apu_bleed_air:once()
 		end
-
-		if (sim_engine_n2[0] > 40) then
+		sim_heartbeat = 3034
+		if ((sim_engine_n2[0] > 40 and sim_engine_mix[0] > 0.5) or (sim_time>(start_time+30.0))) then
+			sim_heartbeat = 3035
 			sim_engine_igniters_on[0] = 1
 			jas_startsequence = 0
 			start_state = 0
@@ -1171,6 +1179,7 @@ function startsekvens()
 			simCMD_apu_off:start()
 			simCMD_apu_off:once()
 		end
+		sim_heartbeat = 3036
 	else
 		if (sim_engine_apu_running == 1) then
 			simCMD_apu_start:stop()
@@ -1180,7 +1189,7 @@ function startsekvens()
 		end
 	end
 	
-	if (sim_engine_mix < 0.5 and sim_jas_button_lt_kran == 0) then
+	if (sim_engine_mix[0] < 0.5 and sim_jas_button_lt_kran == 0) then
 		sim_engine_igniters_on[0] = 0
 	end
 	

@@ -21440,9 +21440,9 @@ P acf/_gyro_spooldown_time 60.000000000
 P acf/_gyro_spoolup_time 5.000000000
 P acf/_h_eqlbm 7.665638924
 P acf/_has_ADG 1
-P acf/_has_APU_bleed_air 1
+P acf/_has_APU_bleed_air 0
 P acf/_has_APU_generator 0
-P acf/_has_APU_switch 1
+P acf/_has_APU_switch 0
 P acf/_has_DC_fd 0
 P acf/_has_GLASS_hsi 1
 P acf/_has_SC_fd 0
@@ -22088,10 +22088,10 @@ P acf/_starter_engages_fuel 0
 P acf/_starter_engages_igniter_arm 0
 P acf/_starter_engages_igniter_on 0
 P acf/_starter_engages_ignition 0
-P acf/_starter_is_air_driven 1
+P acf/_starter_is_air_driven 0
 P acf/_starter_max_rpm_rat 1.000000000
 P acf/_starter_requires_mode_sel 0
-P acf/_starter_torque_rat 0.159999996
+P acf/_starter_torque_rat 0.174999997
 P acf/_steerdeg_castor 0.000000000
 P acf/_ster_hi_speed_use 40.000000000
 P acf/_stickshaker 1
